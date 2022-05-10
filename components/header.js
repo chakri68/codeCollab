@@ -26,33 +26,35 @@ export default function Header() {
         layout="fixed"
         style={{ gridArea: "logoImgArea", borderRadius: "50%" }}
       />
-      <Link
-        className="l"
-        href="/"
-        style={{
-          gridArea: "logoTextArea",
-          fontSize: "var(--title-size)",
-        }}
-      >
-        codeEditor
+      <Link href="/">
+        <span
+          style={{
+            gridArea: "logoTextArea",
+            fontSize: "var(--title-size)",
+          }}
+          className="l"
+        >
+          codeEditor
+        </span>
       </Link>
 
-      <Link
-        href="/"
-        className="button btn is-size-5"
-        style={{
-          gridArea: "donateArea",
-        }}
-      >
-        donate
+      <Link href="/">
+        <span
+          className="button btn is-size-5"
+          style={{
+            gridArea: "donateArea",
+          }}
+        >
+          donate
+        </span>
       </Link>
       <p
         className="content is-size-6"
         style={{ gridArea: "contentArea", color: "var(--text-primary)" }}
       >
         a simple website for writing code. version 0.1.0 (
-        <Link className="l" href="/">
-          github link
+        <Link href="/">
+          <span className="l">github link</span>
         </Link>
         )
       </p>

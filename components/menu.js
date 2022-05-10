@@ -13,8 +13,8 @@ export default function Menu({ items }) {
       }}
     >
       {items.map((obj) => (
-        <Link key={obj.id} href={obj.url} className="l">
-          {obj.label}
+        <Link key={obj.id} href={obj.url}>
+          <span className="l">{obj.label}</span>
         </Link>
       ))}
       {

@@ -7,6 +7,8 @@ export default function Menu({ items }) {
       id="menu"
       style={{
         display: "flex",
+        flexWrap: "wrap",
+        rowGap: "10px",
         background: "var(--bg-light)",
         paddingTop: "15px",
         paddingBottom: "15px",

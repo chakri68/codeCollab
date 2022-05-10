@@ -1,13 +1,14 @@
 import Header from "../components/header";
 import Codearea from "../components/code";
 import Menu from "../components/menu";
-// import Script from "next/script";
+import Head from "next/head";
 
 export default function Home() {
   return (
     <>
-      {/* <Script type="text/javascript" src={cMJS} />
-      <Script type="text/javascript" src={JSJS} /> */}
+      <Head>
+        <title>codeEditor</title>
+      </Head>
       <Header />
       <Menu
         items={[

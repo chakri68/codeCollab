@@ -100,4 +100,10 @@ input:focus {
   .btn {
     padding: 2px 10px;
   }
+  .titleBlock {
+    row-gap: 15px;
+    grid:
+      "pasteTitleArea"
+      "languageArea" !important;
+  }
 }

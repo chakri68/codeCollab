@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Menu({ items }) {
   return (
     <div
@@ -11,9 +13,9 @@ export default function Menu({ items }) {
       }}
     >
       {items.map((obj) => (
-        <a key={obj.id} href={obj.link} className="l">
+        <Link key={obj.id} href={obj.url} className="l">
           {obj.label}
-        </a>
+        </Link>
       ))}
       {
         //   Should add toggle buttos!

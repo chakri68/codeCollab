@@ -1,5 +1,7 @@
-const logo = require("../../public/logo.png");
+const logo = require("../public/logo.png");
 import Image from "next/image";
+import Link from "next/link";
+
 export default function Header() {
   return (
     <nav
@@ -24,7 +26,7 @@ export default function Header() {
         layout="fixed"
         style={{ gridArea: "logoImgArea", borderRadius: "50%" }}
       />
-      <a
+      <Link
         className="l"
         href="/"
         style={{
@@ -33,9 +35,9 @@ export default function Header() {
         }}
       >
         codeEditor
-      </a>
+      </Link>
 
-      <a
+      <Link
         href="/"
         className="button btn is-size-5"
         style={{
@@ -43,15 +45,15 @@ export default function Header() {
         }}
       >
         donate
-      </a>
+      </Link>
       <p
         className="content is-size-6"
         style={{ gridArea: "contentArea", color: "var(--text-primary)" }}
       >
         a simple website for writing code. version 0.1.0 (
-        <a className="l" href="/">
+        <Link className="l" href="/">
           github link
-        </a>
+        </Link>
         )
       </p>
     </nav>

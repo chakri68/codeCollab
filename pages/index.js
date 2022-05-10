@@ -1,6 +1,6 @@
-import Header from "./components/header";
-import Codearea from "./components/code";
-import Menu from "./components/menu";
+import Header from "../components/header";
+import Codearea from "../components/code";
+import Menu from "../components/menu";
 // import Script from "next/script";
 
 export default function Home() {

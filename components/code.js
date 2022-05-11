@@ -1,6 +1,13 @@
 import Script from "next/dist/client/script";
+import { useState } from "react";
 
 export default function Codearea({ languages }) {
+  // const [isPresent, setIsPresent] = useState(false);
+  // const languageHandler = () => {
+  //   if (isPresent) {
+  //     document.getEl;
+  //   }
+  // };
   return (
     <>
       <div className="box" id="Codearea">
@@ -40,6 +47,14 @@ export default function Codearea({ languages }) {
       <Script
         strategy="beforeInteractive"
         src="/scripts/mode/javascript/javascript.js"
+      />
+      <Script
+        strategy="beforeInteractive"
+        src="/scripts/addon/closeBrackets.js"
+      />
+      <Script
+        strategy="beforeInteractive"
+        src="/scripts/addon/matchBrackets.js"
       />
       <Script src="/scripts/componentScripts/codeScript.js" />
     </>

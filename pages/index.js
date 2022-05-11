@@ -23,10 +23,13 @@ export default function Home() {
       <Codearea
         languages={[
           { id: 1, name: "plain text", value: "plainText" },
-          { id: 2, name: "C/C++", value: "c" },
+          { id: 6, name: "Javascript", value: "javascript" },
+          { id: 7, name: "JSX", value: "jsx" },
+          { id: 2, name: "Shell", value: "shell" },
           { id: 3, name: "python", value: "python" },
-          { id: 4, name: "Java", value: "java" },
-          { id: 5, name: "Rust", value: "rust" },
+          { id: 4, name: "Rust", value: "rust" },
+          { id: 5, name: "Ruby", value: "ruby" },
+          { id: 8, name: "CSS", value: "css" },
         ]}
       />
     </>

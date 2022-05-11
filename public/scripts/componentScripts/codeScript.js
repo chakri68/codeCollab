@@ -1,9 +1,10 @@
 const myTextArea = document.createElement("textarea");
-console.log("codeScript");
 myTextArea.id = "code";
 document.getElementById("text-editor").appendChild(myTextArea);
-let myCodeMirror = CodeMirror.fromTextArea(myTextArea, {
+var myCodeMirror = CodeMirror.fromTextArea(myTextArea, {
+  autoCloseBrackets: true,
   lineNumbers: true,
   mode: "javascript",
   theme: "monokai",
+  matchBrackets: true,
 });

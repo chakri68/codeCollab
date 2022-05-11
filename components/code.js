@@ -40,14 +40,15 @@ export default function Codearea({ languages }) {
         </div>
         {/* <hr style={{ backgroundColor: "var(--link-primary)" }} /> */}
         <div id="text-editor" style={{ marginTop: "10px" }}>
-          {/* <textarea name="code" id="code"></textarea> */}
+          <textarea name="code" id="code" />
         </div>
       </div>
       <Script strategy="beforeInteractive" src="/scripts/lib/codemirror.js" />
-      <Script
+      {/* <Script
         strategy="beforeInteractive"
         src="/scripts/mode/javascript/javascript.js"
-      />
+      /> */}
+      {/* <Script src="/scripts/componentScripts/checkLanguage.js"></Script> */}
       <Script
         strategy="beforeInteractive"
         src="/scripts/addon/closeBrackets.js"

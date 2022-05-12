@@ -42,6 +42,7 @@ export default function Header() {
       <a
         href="https://liberapay.com/delta68/donate"
         target="_blank"
+        rel="noreferrer"
         style={{
           gridArea: "donateArea",
         }}

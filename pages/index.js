@@ -14,9 +14,17 @@ export default function Home() {
         items={[
           { id: 1, label: "home", url: "/" },
           { id: 2, label: "login", url: "/" },
-          { id: 3, label: "github", url: "/" },
+          {
+            id: 3,
+            label: "github",
+            url: "https://github.com/delta68/code-editor",
+          },
           { id: 4, label: "api", url: "/" },
-          { id: 5, label: "changelog", url: "/" },
+          {
+            id: 5,
+            label: "changelog",
+            url: "https://github.com/delta68/code-editor/commits/main",
+          },
           { id: 6, label: "legal", url: "/" },
         ]}
       />

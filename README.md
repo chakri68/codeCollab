@@ -16,7 +16,7 @@
 
 ### Buttons
 
-### word wrap toggle
+### word wrap toggle (completed)
 
 ### auto complete / suggestions
 

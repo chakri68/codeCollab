@@ -1,6 +1,7 @@
 const logo = require("../public/logo.png");
 import Image from "next/image";
 import Link from "next/link";
+import Script from "next/script";
 
 export default function Header() {
   return (
@@ -38,24 +39,23 @@ export default function Header() {
         </span>
       </Link>
 
-      <Link href="/">
-        <span
-          className="button btn is-size-5"
-          style={{
-            gridArea: "donateArea",
-          }}
-        >
-          donate
-        </span>
-      </Link>
+      <a
+        href="https://liberapay.com/delta68/donate"
+        target="_blank"
+        style={{
+          gridArea: "donateArea",
+        }}
+      >
+        <span className="button btn is-size-5">donate</span>
+      </a>
       <p
         className="content is-size-6"
         style={{ gridArea: "contentArea", color: "var(--text-primary)" }}
       >
         a simple website for writing code. version 0.1.0 (
-        <Link href="/">
+        <a href="https://github.com/delta68/code-editor">
           <span className="l">github link</span>
-        </Link>
+        </a>
         )
       </p>
     </nav>

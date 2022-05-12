@@ -6,6 +6,7 @@ myCodeMirror.push(
     lineNumbers: true,
     theme: "monokai",
     matchBrackets: true,
+    lineWrapping: true,
   })
 );
 
@@ -76,5 +77,16 @@ toggleFullScreen.addEventListener("click", (e) => {
     e.target.checked = false;
     myCodeMirror[0].setOption("fullScreen", "true");
     window.addEventListener("keydown", toggleScreenSize);
+  }
+});
+
+// Word Wrap toggle
+const wordWrapToggle = document.getElementById("wordWrapToggle");
+wordWrapToggle.addEventListener("click", (e) => {
+  if (e.target.checked) {
+    console.log("Click!");
+    myCodeMirror[0].setOption("lineWrapping", true);
+  } else {
+    myCodeMirror[0].setOption("lineWrapping", false);
   }
 });

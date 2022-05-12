@@ -5,6 +5,10 @@ import "codemirror/theme/dracula.css";
 import "codemirror/theme/zenburn.css";
 import "codemirror/theme/ayu-mirage.css";
 import "codemirror/theme/blackboard.css";
+import "codemirror/theme/base16-light.css";
+import "codemirror/theme/eclipse.css";
+import "codemirror/theme/mdn-like.css";
+import "codemirror/theme/material.css";
 import Head from "next/head";
 
 function MyApp({ Component, pageProps }) {

@@ -104,6 +104,10 @@ input:focus {
   fill: var(--link-primary);
 }
 
+#wordWrapToggle + svg {
+  transform: scale(0.5);
+}
+
 /* CodeMirror CSS */
 .CodeMirror-fullscreen {
   position: absolute !important;

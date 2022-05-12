@@ -2,7 +2,13 @@
 
 ### Add themes (completed)
 
-### Add full screen option
+### Add full screen option (completed)
+
+#### Add fullscreen bar
+
+### Customization menu
+
+#### Font-Size
 
 ### Add a compiler option
 

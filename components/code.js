@@ -1,21 +1,8 @@
 import Script from "next/dist/client/script";
-import Head from "next/head";
 
 export default function Codearea({ languages }) {
-  // const [isPresent, setIsPresent] = useState(false);
-  // const languageHandler = () => {
-  //   if (isPresent) {
-  //     document.getEl;
-  //   }
-  // };
   return (
     <>
-      <Head>
-        <link
-          rel="stylesheet"
-          href="https://fonts.sandbox.google.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
-        />
-      </Head>
       <div className="box" id="Codearea">
         <div
           className="titleBlock"
@@ -51,20 +38,19 @@ export default function Codearea({ languages }) {
               <option value="zenburn">Zenburn</option>
               <option value="ayu-mirage">Ayu-Mirage</option>
               <option value="blackboard">Blackboard</option>
+              <option value="cobalt">Cobalt</option>
+              <option value="base16-light">Base16 light</option>
+              <option value="eclipse">Eclipse</option>
+              <option value="mdn-like">MDN like</option>
+              <option value="material">Material</option>
             </select>
           </div>
         </div>
-        {/* <hr style={{ backgroundColor: "var(--link-primary)" }} /> */}
         <div id="text-editor" style={{ marginTop: "10px" }}>
           <textarea name="code" id="code" rows="100" />
         </div>
       </div>
       <Script strategy="beforeInteractive" src="/scripts/lib/codemirror.js" />
-      {/* <Script
-        strategy="beforeInteractive"
-        src="/scripts/mode/javascript/javascript.js"
-      /> */}
-      {/* <Script src="/scripts/componentScripts/checkLanguage.js"></Script> */}
       <Script
         strategy="beforeInteractive"
         src="/scripts/addon/closeBrackets.js"

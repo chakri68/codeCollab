@@ -104,6 +104,10 @@ input:focus {
     row-gap: 15px;
     grid:
       "pasteTitleArea"
-      "languageArea" !important;
+      "languageArea themeArea" !important;
   }
+}
+
+#text-editor .CodeMirror {
+  height: 50vh;
 }

@@ -1,4 +1,28 @@
+var myCodeMirror = [];
+
+myCodeMirror.push(
+  CodeMirror.fromTextArea(document.getElementById("code"), {
+    autoCloseBrackets: true,
+    lineNumbers: true,
+    theme: "monokai",
+    matchBrackets: true,
+  })
+);
+
 const languageSelect = document.getElementById("language");
+const themeSelect = document.getElementById("theme");
+let optionObj = {
+  autoCloseBrackets: true,
+  lineNumbers: true,
+  theme: "monokai",
+  matchBrackets: true,
+  lineWrapping: true,
+};
+
+themeSelect.addEventListener("change", () => {
+  myCodeMirror[0].setOption("theme", themeSelect.value);
+});
+
 languageSelect.addEventListener("change", () => {
   let path;
   if (["c", "cpp", "java", "text"].includes(languageSelect.value)) {
@@ -10,12 +34,6 @@ languageSelect.addEventListener("change", () => {
     // const myTextArea = document.createElement("textarea");
     // myTextArea.id = "code";
     // document.getElementById("text-editor").appendChild(myTextArea);
-    let optionObj = {
-      autoCloseBrackets: true,
-      lineNumbers: true,
-      theme: "monokai",
-      matchBrackets: true,
-    };
     switch (languageSelect.value) {
       case "cpp":
         optionObj.mode = "text/x-c++src";
@@ -30,17 +48,15 @@ languageSelect.addEventListener("change", () => {
         optionObj.mode = languageSelect.value;
         break;
     }
-    document.getElementsByClassName("CodeMirror")[0].remove();
-    var myCodeMirror = CodeMirror.fromTextArea(
-      document.getElementById("code"),
-      optionObj
-    );
-  });
-});
 
-var myCodeMirror = CodeMirror.fromTextArea(document.getElementById("code"), {
-  autoCloseBrackets: true,
-  lineNumbers: true,
-  theme: "monokai",
-  matchBrackets: true,
+    // optionObj.value = myCodeMirror[0].getValue();
+    // console.log(optionObj);
+    // document.getElementsByClassName("CodeMirror")[0].remove();
+    // myCodeMirror[0] = CodeMirror.fromTextArea(
+    //   document.getElementById("code"),
+    //   optionObj
+    // );
+    // myCodeMirror[0].setValue(optionObj.value);
+    myCodeMirror[0].setOption("mode", optionObj.mode);
+  });
 });

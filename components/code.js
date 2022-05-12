@@ -17,7 +17,7 @@ export default function Codearea({ languages }) {
             borderBottom: "2px solid var(--link-primary)",
             paddingBottom: "10px",
             display: "grid",
-            grid: " 'pasteTitleArea languageArea' ",
+            grid: " 'pasteTitleArea languageArea themeArea' ",
           }}
         >
           <input
@@ -37,10 +37,20 @@ export default function Codearea({ languages }) {
               ))}
             </select>
           </div>
+          <div className="theme" style={{ gridArea: "themeArea" }}>
+            <label htmlFor="theme">theme: </label>
+            <select name="theme" id="theme">
+              <option value="monokai">Monokai</option>
+              <option value="dracula">Dracula</option>
+              <option value="zenburn">Zenburn</option>
+              <option value="ayu-mirage">Ayu-Mirage</option>
+              <option value="blackboard">Blackboard</option>
+            </select>
+          </div>
         </div>
         {/* <hr style={{ backgroundColor: "var(--link-primary)" }} /> */}
         <div id="text-editor" style={{ marginTop: "10px" }}>
-          <textarea name="code" id="code" />
+          <textarea name="code" id="code" rows="100" />
         </div>
       </div>
       <Script strategy="beforeInteractive" src="/scripts/lib/codemirror.js" />

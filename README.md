@@ -1,3 +1,19 @@
+# Currently working on:
+
+### Add themes (completed)
+
+### Add full screen option
+
+### Add a compiler option
+
+### share the codes
+
+### Buttons
+
+### word wrap toggle
+
+### auto complete / suggestions
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started

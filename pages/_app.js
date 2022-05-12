@@ -1,6 +1,10 @@
 import "../styles/globals.css";
 import "codemirror/lib/codemirror.css";
 import "codemirror/theme/monokai.css";
+import "codemirror/theme/dracula.css";
+import "codemirror/theme/zenburn.css";
+import "codemirror/theme/ayu-mirage.css";
+import "codemirror/theme/blackboard.css";
 import Head from "next/head";
 
 function MyApp({ Component, pageProps }) {

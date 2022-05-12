@@ -1,7 +1,7 @@
 const languageSelect = document.getElementById("language");
 languageSelect.addEventListener("change", () => {
   let path;
-  if (["c", "cpp", "java"].includes(languageSelect.value)) {
+  if (["c", "cpp", "java", "text"].includes(languageSelect.value)) {
     path = `../mode/clike/clike.js`;
   } else {
     path = `../mode/${languageSelect.value}/${languageSelect.value}.js`;

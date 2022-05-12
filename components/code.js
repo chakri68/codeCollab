@@ -1,5 +1,5 @@
 import Script from "next/dist/client/script";
-import { useState } from "react";
+import Head from "next/head";
 
 export default function Codearea({ languages }) {
   // const [isPresent, setIsPresent] = useState(false);
@@ -10,6 +10,12 @@ export default function Codearea({ languages }) {
   // };
   return (
     <>
+      <Head>
+        <link
+          rel="stylesheet"
+          href="https://fonts.sandbox.google.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+        />
+      </Head>
       <div className="box" id="Codearea">
         <div
           className="titleBlock"
@@ -67,6 +73,7 @@ export default function Codearea({ languages }) {
         strategy="beforeInteractive"
         src="/scripts/addon/matchBrackets.js"
       />
+      <Script strategy="beforeInteractive" src="/scripts/addon/fullScreen.js" />
       <Script src="/scripts/componentScripts/codeScript.js" />
     </>
   );

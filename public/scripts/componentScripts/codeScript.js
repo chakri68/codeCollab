@@ -60,3 +60,21 @@ languageSelect.addEventListener("change", () => {
     myCodeMirror[0].setOption("mode", optionObj.mode);
   });
 });
+
+// FullScreen Toggle
+
+function toggleScreenSize(e) {
+  if (e.key == "Escape") {
+    myCodeMirror[0].setOption("fullScreen", false);
+    window.removeEventListener("keydown", toggleScreenSize);
+  }
+}
+
+const toggleFullScreen = document.getElementById("fullScreenToggle");
+toggleFullScreen.addEventListener("click", (e) => {
+  if (e.target.checked) {
+    e.target.checked = false;
+    myCodeMirror[0].setOption("fullScreen", "true");
+    window.addEventListener("keydown", toggleScreenSize);
+  }
+});

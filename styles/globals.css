@@ -90,7 +90,32 @@ input:focus {
   outline: none;
 }
 
-@media screen and (max-width: 480px) {
+.svgButton svg {
+  transform: scale(0.6);
+  fill: var(--text-gray);
+}
+
+.svgButton:hover svg {
+  cursor: pointer;
+  fill: var(--link-primary);
+}
+
+.svgButton input:checked + svg {
+  fill: var(--link-primary);
+}
+
+/* CodeMirror CSS */
+.CodeMirror-fullscreen {
+  position: absolute !important;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: auto;
+  z-index: 9;
+}
+
+@media screen and (max-width: 530px) {
   #header {
     grid:
       "logoImgArea logoTextArea . . ."
@@ -104,7 +129,8 @@ input:focus {
     row-gap: 15px;
     grid:
       "pasteTitleArea"
-      "languageArea themeArea" !important;
+      "languageArea"
+      "themeArea" !important;
   }
 }
 

@@ -8,6 +8,7 @@ export default function Menu({ items }) {
       style={{
         display: "grid",
         grid: " 'linksArea . . . . toggleButtonsArea' ",
+        justifyContent: "space-between",
       }}
     >
       <div

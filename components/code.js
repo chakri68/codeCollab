@@ -76,7 +76,7 @@ export default function Codearea({ languages }) {
           >
             <path d="M16 37.85V9.85L38 23.85ZM19 23.85ZM19 32.4 32.45 23.85 19 15.3Z" />
           </svg>
-          Run code using J doodle
+          Run code using Jdoodle
         </button>
       </div>
       <Script strategy="beforeInteractive" src="/scripts/lib/codemirror.js" />

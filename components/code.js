@@ -47,8 +47,37 @@ export default function Codearea({ languages }) {
           </div>
         </div>
         <div id="text-editor" style={{ marginTop: "10px" }}>
-          <textarea name="code" id="code" rows="100" />
+          <form
+            method="post"
+            id="codeForm"
+            target="print_popup"
+            onSubmit={() => {
+              window.open("about:blank", "print_popup", "width=800,height=600");
+            }}
+          >
+            <textarea name="initScript" id="code" rows="100" />
+          </form>
         </div>
+      </div>
+      <div id="compilerBtnDiv">
+        <button
+          type="submit"
+          id="compilerBtn"
+          form="codeForm"
+          className="button btn is-size-6 has-text-weight-medium"
+          style={{ width: "100%", height: "2.5rem" }}
+          disabled
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="48"
+            width="48"
+            style={{ transform: "scale(0.6)", fill: "var(--bg-dark)" }}
+          >
+            <path d="M16 37.85V9.85L38 23.85ZM19 23.85ZM19 32.4 32.45 23.85 19 15.3Z" />
+          </svg>
+          Run code using J doodle
+        </button>
       </div>
       <Script strategy="beforeInteractive" src="/scripts/lib/codemirror.js" />
       <Script

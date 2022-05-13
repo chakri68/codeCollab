@@ -10,7 +10,7 @@
 
 #### Font-Size
 
-### Add a compiler option
+### Add a compiler option (Completed)
 
 ### share the codes
 
@@ -20,7 +20,13 @@
 
 ### auto complete / suggestions
 
+### Code folding
+
 ### Add a search and replace button
+
+### Linting
+
+### Theme for the whole website
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 

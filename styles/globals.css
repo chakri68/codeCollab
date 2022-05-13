@@ -6,7 +6,6 @@ body {
   margin: 0;
   font-family: "UbuntuMono", monospace;
   margin: 0;
-  padding: 0;
   background-color: #141414;
   --text-primary: white;
   --bg-dark: #141414;
@@ -26,6 +25,10 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+button {
+  font-family: inherit;
 }
 
 .header {
@@ -124,6 +127,9 @@ input:focus {
 }
 
 @media screen and (max-width: 530px) {
+  body {
+    padding: 0;
+  }
   #header {
     grid:
       "logoImgArea logoTextArea . . ."

@@ -13,7 +13,7 @@ export default function Header() {
         grid: "'logoImgArea logoTextArea . . donateArea' 'contentArea contentArea contentArea contentArea contentArea'",
         rowGap: "20px",
         columnGap: "10px",
-        gridTemplateColumns: "auto auto auto auto 80px",
+        gridTemplateColumns: "80px auto auto auto 80px",
       }}
       className="box"
       role="navigation"

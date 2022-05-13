@@ -16,6 +16,40 @@ myCodeMirror.push(
   })
 );
 
+// Linking a compiler
+
+const COMP_URL = "https://www.jdoodle.com/api/redirect-to-post/";
+
+const urlObj = {
+  cpp: `${COMP_URL}online-compiler-c++/`,
+  python: `${COMP_URL}python3-programming-online/`,
+  java: `${COMP_URL}online-java-compiler/`,
+  c: `${COMP_URL}c-online-compiler/`,
+  csharp: `${COMP_URL}compile-c-sharp-online/`,
+  javascript: `${COMP_URL}execute-rhino-online/`,
+  lua: `${COMP_URL}execute-lua-online/`,
+  ruby: `${COMP_URL}execute-ruby-online/`,
+  rust: `${COMP_URL}execute-rust-online/`,
+  html: `${COMP_URL}html-css-javascript-online-editor/`,
+  css: `${COMP_URL}html-css-javascript-online-editor/`,
+  cobol: `${COMP_URL}execute-cobol-online/`,
+  fortran: `${COMP_URL}execute-fortran-online/`,
+  shell: `${COMP_URL}test-bash-shell-script-online/`,
+  verilog: `${COMP_URL}execute-verilog-online/`,
+};
+document.getElementById("compilerBtn").addEventListener("click", () => {
+  myCodeMirror[0].save();
+});
+
+// document.getElementById("codeForm").addEventListener("submit", (e) => {
+//   e.preventDefault();
+//   if (document.getElementById("code").value != "") {
+//     document.getElementById("codeForm").submit();
+//   }
+// });
+
+//  End
+
 const languageSelect = document.getElementById("language");
 const themeSelect = document.getElementById("theme");
 let optionObj = {
@@ -32,7 +66,12 @@ themeSelect.addEventListener("change", () => {
 
 languageSelect.addEventListener("change", () => {
   let path;
-  if (["c", "cpp", "java", "text"].includes(languageSelect.value)) {
+  if (!urlObj.hasOwnProperty(languageSelect.value)) {
+    document.getElementById("compilerBtn").disabled = true;
+  } else {
+    document.getElementById("compilerBtn").disabled = false;
+  }
+  if (["c", "cpp", "java", "text", "csharp"].includes(languageSelect.value)) {
     path = `../mode/clike/clike.js`;
   } else {
     path = `../mode/${languageSelect.value}/${languageSelect.value}.js`;
@@ -51,6 +90,9 @@ languageSelect.addEventListener("change", () => {
       case "java":
         optionObj.mode = "text/x-java";
         break;
+      case "csharp":
+        optionObj.mode = "text/x-csharp";
+        break;
       default:
         optionObj.mode = languageSelect.value;
         break;
@@ -65,6 +107,9 @@ languageSelect.addEventListener("change", () => {
     // );
     // myCodeMirror[0].setValue(optionObj.value);
     myCodeMirror[0].setOption("mode", optionObj.mode);
+    document
+      .getElementById("codeForm")
+      .setAttribute("action", urlObj[languageSelect.value]);
   });
 });
 

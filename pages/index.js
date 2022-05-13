@@ -36,11 +36,18 @@ export default function Home() {
           { id: 10, name: "Java", value: "java" },
           { id: 9, name: "C", value: "c" },
           { id: 6, name: "Javascript", value: "javascript" },
-          { id: 4, name: "Rust", value: "rust" },
-          { id: 7, name: "JSX", value: "jsx" },
+          { id: 2, name: "Lua", value: "lua" },
           { id: 5, name: "Ruby", value: "ruby" },
+          { id: 4, name: "Rust", value: "rust" },
+          { id: 12, name: "HTML", value: "htmlmixed" },
+          { id: 13, name: "XML", value: "xml" },
+          { id: 7, name: "JSX", value: "jsx" },
           { id: 8, name: "CSS", value: "css" },
-          { id: 2, name: "Shell", value: "shell" },
+          { id: 14, name: "SASS", value: "sass" },
+          { id: 15, name: "Cobol", value: "cobol" },
+          { id: 16, name: "Fortran", value: "fortran" },
+          { id: 17, name: "Shell", value: "shell" },
+          { id: 18, name: "Verilog", value: "verilog" },
         ]}
       />
     </>

@@ -1,7 +1,6 @@
 const logo = require("../public/logo.png");
 import Image from "next/image";
 import Link from "next/link";
-import Script from "next/script";
 
 export default function Header() {
   return (
@@ -14,6 +13,7 @@ export default function Header() {
         grid: "'logoImgArea logoTextArea . . donateArea' 'contentArea contentArea contentArea contentArea contentArea'",
         rowGap: "20px",
         columnGap: "10px",
+        gridTemplateColumns: "auto auto auto auto 80px",
       }}
       className="box"
       role="navigation"

@@ -1,3 +1,7 @@
+import("../mode/xml/xml.js");
+import("../mode/javascript/javascript.js");
+import("../mode/css/css.js");
+
 var myCodeMirror = [];
 
 myCodeMirror.push(
@@ -7,6 +11,8 @@ myCodeMirror.push(
     theme: "monokai",
     matchBrackets: true,
     lineWrapping: true,
+    autoCloseTags: true,
+    matchTags: true,
   })
 );
 
@@ -85,7 +91,6 @@ toggleFullScreen.addEventListener("click", (e) => {
 const wordWrapToggle = document.getElementById("wordWrapToggle");
 wordWrapToggle.addEventListener("click", (e) => {
   if (e.target.checked) {
-    console.log("Click!");
     myCodeMirror[0].setOption("lineWrapping", true);
   } else {
     myCodeMirror[0].setOption("lineWrapping", false);

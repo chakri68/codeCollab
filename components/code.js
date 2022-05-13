@@ -59,7 +59,10 @@ export default function Codearea({ languages }) {
         strategy="beforeInteractive"
         src="/scripts/addon/matchBrackets.js"
       />
+      <Script strategy="beforeInteractive" src="/scripts/addon/closeTag.js" />
+      <Script strategy="beforeInteractive" src="/scripts/addon/matchTags.js" />
       <Script strategy="beforeInteractive" src="/scripts/addon/fullScreen.js" />
+      <Script strategy="beforeInteractive" src="/scripts/addon/xml-fold.js" />
       <Script src="/scripts/componentScripts/codeScript.js" />
     </>
   );

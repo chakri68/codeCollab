@@ -13,6 +13,8 @@ myCodeMirror.push(
     lineWrapping: true,
     autoCloseTags: true,
     matchTags: true,
+    gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"],
+    foldGutter: true,
   })
 );
 

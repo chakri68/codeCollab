@@ -18,9 +18,9 @@
 
 ### word wrap toggle (completed)
 
-### auto complete / suggestions
+### auto complete / suggestions (Hard)
 
-### Code folding
+### Code folding (Completed)
 
 ### Add a search and replace button
 

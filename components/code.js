@@ -92,6 +92,18 @@ export default function Codearea({ languages }) {
       <Script strategy="beforeInteractive" src="/scripts/addon/matchTags.js" />
       <Script strategy="beforeInteractive" src="/scripts/addon/fullScreen.js" />
       <Script strategy="beforeInteractive" src="/scripts/addon/xml-fold.js" />
+      <Script
+        strategy="beforeInteractive"
+        src="/scripts/addon/fold/foldcode.js"
+      />
+      <Script
+        strategy="beforeInteractive"
+        src="/scripts/addon/fold/foldgutter.js"
+      />
+      <Script
+        strategy="beforeInteractive"
+        src="/scripts/addon/fold/allfolds.js"
+      />
       <Script src="/scripts/componentScripts/codeScript.js" />
     </>
   );

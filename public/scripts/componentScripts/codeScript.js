@@ -166,3 +166,18 @@ toggleLint.addEventListener("change", () => {
     myCodeMirror[0].setOption("lint", false);
   }
 });
+
+// JS for the primary color toggle
+const root = document.querySelector(":root");
+let rs = getComputedStyle(root);
+const color = document.getElementById("prmyColorBtn");
+color.addEventListener("change", () => {
+  if (color.value != rs.getPropertyValue("--link-primary")) {
+    if (
+      confirm(`Are you sure you want to change the color to ${color.value}?`)
+    ) {
+      console.log("Changed");
+      root.style.setProperty("--link-primary", color.value);
+    }
+  }
+});

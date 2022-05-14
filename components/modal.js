@@ -20,10 +20,10 @@ export default function ModalPopUp({ id, options }) {
         >
           {options}
         </section>
-        <footer className="modal-card-foot">
+        {/* <footer className="modal-card-foot">
           <button className="btn button">Save changes</button>
           <button className="button btn-white">Cancel</button>
-        </footer>
+        </footer> */}
       </div>
     </div>
   );

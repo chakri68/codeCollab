@@ -33,7 +33,6 @@ export default function Menu({ items }) {
         style={{
           gridArea: "toggleButtonsArea",
           display: "grid",
-          width: "130px",
           gridAutoFlow: "column",
           placeItems: "baseline",
         }}

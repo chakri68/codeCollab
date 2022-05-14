@@ -10,6 +10,8 @@ import "codemirror/theme/eclipse.css";
 import "codemirror/theme/mdn-like.css";
 import "codemirror/theme/material.css";
 import "../public/scripts/addon/fold/foldgutter.css";
+import "../public/scripts/addon/lint/lint.css";
+
 import Head from "next/head";
 
 function MyApp({ Component, pageProps }) {

@@ -52,7 +52,8 @@ button {
   color: var(--link-hover) !important;
   cursor: pointer;
 }
-.btn {
+.btn,
+.btn-white {
   border-color: var(--link-primary) !important;
   background-color: var(--link-primary) !important;
   color: var(--bg-dark) !important;
@@ -61,9 +62,15 @@ button {
   /* padding-left: 15px;
   padding-right: 15px; */
 }
-.btn:hover {
+.btn:hover,
+.btn-white:hover {
   border-color: var(--link-hover) !important;
   background-color: var(--link-hover) !important;
+}
+
+.btn-white {
+  border-color: var(--text-primary) !important;
+  background-color: var(--text-primary) !important;
 }
 
 #menu > a:last-child {
@@ -100,8 +107,97 @@ input:focus {
   outline: none;
 }
 
-.svgButton svg {
+input[type="checkbox"] {
+  width: 15px;
+  height: 15px;
+  border-radius: 3px;
+  transition: box-shadow 0.3s;
+  background-color: var(--text-primary);
+  border: 0;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+input[type="checkbox"]:checked {
+  box-shadow: inset 0 0 0 7.5px var(--link-primary);
+}
+
+/* input range CSS */
+input[type="range"] {
+  -webkit-appearance: none;
+  border-radius: 10px;
+}
+input[type="range"]:focus {
+  outline: none;
+}
+input[type="range"]::-webkit-slider-runnable-track {
+  border-radius: 10px;
+  width: 100%;
+  height: 10px;
+  cursor: pointer;
+  animate: 0.2s;
+  background: var(--link-primary);
+}
+input[type="range"]::-webkit-slider-thumb {
+  height: 15px;
+  width: 15px;
+  border-radius: 2px;
+  background: var(--bg-dark);
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -2.5px;
+}
+input[type="range"]:focus::-webkit-slider-runnable-track {
+  background: var(--link-primary);
+}
+input[type="range"]::-moz-range-track {
+  cursor: pointer;
+  animate: 0.2s;
+  background: var(--link-primary);
+}
+input[type="range"]::-moz-range-thumb {
+  height: 15px;
+  width: 15px;
+  border-radius: 2px;
+  background: var(--bg-dark);
+  cursor: pointer;
+}
+input[type="range"]::-ms-track {
+  cursor: pointer;
+  animate: 0.2s;
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+input[type="range"]::-ms-fill-lower {
+  background: var(--link-primary);
+  border-radius: 10px;
+}
+input[type="range"]::-ms-fill-upper {
+  background: var(--link-primary);
+  border-radius: 10px;
+}
+input[type="range"]::-ms-thumb {
+  height: 15px;
+  width: 15px;
+  border-radius: 2px;
+  background: var(--bg-dark);
+  cursor: pointer;
+}
+input[type="range"]:focus::-ms-fill-lower {
+  background: var(--link-primary);
+}
+input[type="range"]:focus::-ms-fill-upper {
+  background: var(--link-primary);
+}
+
+/* END input range CSS */
+
+.svgButton {
   transform: scale(0.6);
+}
+
+.svgButton svg {
   fill: var(--text-gray);
 }
 
@@ -115,7 +211,7 @@ input:focus {
 }
 
 #wordWrapToggle + svg {
-  transform: scale(0.5);
+  transform: scale(0.85);
 }
 
 /* CodeMirror CSS */
@@ -133,6 +229,31 @@ input:focus {
 .toggleButtons {
   margin: auto;
 }
+
+/* Modal CSS */
+
+.modal-background {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.modal-card {
+  border-radius: 10px;
+  width: calc(100% - 50px);
+}
+
+.modal-card header,
+.modal-card header *,
+.modal-card footer {
+  border-color: var(--link-primary);
+  background-color: var(--bg-dark);
+  color: var(--link-primary);
+}
+
+.modal-card section {
+  background-color: var(--bg-light);
+}
+
+/* END Modal CSS */
 
 @media screen and (max-width: 530px) {
   body {

@@ -104,6 +104,28 @@ export default function Codearea({ languages }) {
         strategy="beforeInteractive"
         src="/scripts/addon/fold/allfolds.js"
       />
+      <Script strategy="beforeInteractive" src="/scripts/addon/lint/lint.js" />
+      <Script
+        strategy="beforeInteractive"
+        src="https://unpkg.com/jshint@2.13.2/dist/jshint.js"
+      />
+      <Script
+        strategy="beforeInteractive"
+        src="https://unpkg.com/jsonlint@1.6.3/web/jsonlint.js"
+      />
+      <Script
+        strategy="beforeInteractive"
+        src="https://unpkg.com/csslint@1.0.5/dist/csslint.js"
+      />
+      <Script
+        strategy="beforeInteractive"
+        src="https://unpkg.com/htmlhint@1.1.4/dist/htmlhint.js"
+      />
+      <Script
+        strategy="beforeInteractive"
+        src="https://unpkg.com/js-yaml@4.1.0/dist/js-yaml.js"
+      />
+      <Script strategy="beforeInteractive" src="/scripts/addon/simple.js" />
       <Script src="/scripts/componentScripts/codeScript.js" />
     </>
   );

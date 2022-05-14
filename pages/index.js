@@ -2,6 +2,8 @@ import Header from "../components/header";
 import Codearea from "../components/code";
 import Menu from "../components/menu";
 import Head from "next/head";
+import ModalPopUp from "../components/modal";
+import Script from "next/dist/client/script";
 
 export default function Home() {
   return (
@@ -10,6 +12,19 @@ export default function Home() {
         <title>codeEditor</title>
       </Head>
       <Header />
+      <ModalPopUp
+        id="settingsModal"
+        options={
+          <>
+            <label htmlFor="lintToggleBtn">Toggle Lint</label>
+            <input id="lintToggleBtn" type="checkbox" />
+            <label htmlFor="fontSizeBtn">Font Size</label>
+            <input id="fontSizeBtn" type="range" />
+            <label htmlFor="prmyColorBtn">Primary Color</label>
+            <input id="prmyColorBtn" type="color" defaultValue="#0cf07b" />
+          </>
+        }
+      />
       <Menu
         items={[
           { id: 1, label: "home", url: "/" },
@@ -51,6 +66,7 @@ export default function Home() {
           { id: 19, name: "C#", value: "csharp" },
         ]}
       />
+      <Script src="scripts/componentScripts/modalScript.js"></Script>
     </>
   );
 }

@@ -2,6 +2,7 @@ import("../mode/xml/xml.js");
 import("../mode/javascript/javascript.js");
 import("../mode/css/css.js");
 
+const lintLanguages = ["css", "javascript", "json", "yaml", "html"];
 var myCodeMirror = [];
 
 myCodeMirror.push(
@@ -13,8 +14,13 @@ myCodeMirror.push(
     lineWrapping: true,
     autoCloseTags: true,
     matchTags: true,
-    gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"],
+    gutters: [
+      "CodeMirror-lint-markers",
+      "CodeMirror-linenumbers",
+      "CodeMirror-foldgutter",
+    ],
     foldGutter: true,
+    highlightLines: true,
   })
 );
 
@@ -113,6 +119,13 @@ languageSelect.addEventListener("change", () => {
       .getElementById("codeForm")
       .setAttribute("action", urlObj[languageSelect.value]);
   });
+  if (lintLanguages.includes(languageSelect.value)) {
+    import(`../addon/lint/${languageSelect.value}-lint.js`).then(() => {
+      if (toggleLint.checked) {
+        myCodeMirror[0].setOption("lint", true);
+      }
+    });
+  }
 });
 
 // FullScreen Toggle
@@ -141,5 +154,15 @@ wordWrapToggle.addEventListener("click", (e) => {
     myCodeMirror[0].setOption("lineWrapping", true);
   } else {
     myCodeMirror[0].setOption("lineWrapping", false);
+  }
+});
+
+// JS for settings
+const toggleLint = document.getElementById("lintToggleBtn");
+toggleLint.addEventListener("change", () => {
+  if (toggleLint.checked) {
+    myCodeMirror[0].setOption("lint", true);
+  } else {
+    myCodeMirror[0].setOption("lint", false);
   }
 });

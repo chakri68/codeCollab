@@ -1,16 +1,24 @@
 @import "../node_modules/bulma/css/bulma.css";
+@import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: "UbuntuMono", monospace;
+  /* font-family: "Ubuntu Mono", monospace; */
+  font-family: "Fira Code", monospace;
   margin: 0;
   background-color: #141414;
   --text-primary: white;
   --bg-dark: #141414;
-  --link-primary: #ee720d;
+  /* OG */
+  /* --link-primary: #ee720d; */
   --link-hover: #1eaedb;
+  /* END - OG */
+  /* NEW */
+  --link-primary: #0cf07b;
+  /* --link-hover: #fe2603; */
+  /* END - NEW */
   --bg-light: #222222;
   --title-size: xx-large;
   --text-gray: #999999;
@@ -112,6 +120,7 @@ input:focus {
 }
 
 /* CodeMirror CSS */
+
 .CodeMirror-fullscreen {
   position: absolute !important;
   top: 0;

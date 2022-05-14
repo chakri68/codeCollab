@@ -6,7 +6,7 @@ body {
   padding: 0;
   margin: 0;
   /* font-family: "Ubuntu Mono", monospace; */
-  font-family: "Fira Code", monospace;
+  font-family: "Fira Code", monospace !important;
   margin: 0;
   background-color: #141414;
   --text-primary: white;
@@ -36,7 +36,7 @@ a {
 }
 
 button {
-  font-family: inherit;
+  font-family: inherit !important;
 }
 
 .header {
@@ -54,17 +54,17 @@ button {
   cursor: pointer;
 }
 .btn {
-  border-color: var(--link-primary);
-  background-color: var(--link-primary);
-  color: var(--bg-dark);
+  border-color: var(--link-primary) !important;
+  background-color: var(--link-primary) !important;
+  color: var(--bg-dark) !important;
   height: fit-content;
   padding: 2px 10px;
   /* padding-left: 15px;
   padding-right: 15px; */
 }
 .btn:hover {
-  border-color: var(--link-hover);
-  background-color: var(--link-hover);
+  border-color: var(--link-hover) !important;
+  background-color: var(--link-hover) !important;
 }
 
 #menu > a:last-child {
@@ -75,7 +75,7 @@ button {
 }
 
 .box {
-  background-color: var(--bg-light);
+  background-color: var(--bg-light) !important;
 }
 
 input,
@@ -86,7 +86,7 @@ select {
   border: none;
   outline: none;
   color: var(--text-primary);
-  font-family: "UbuntuMono", monospace;
+  font-family: inherit;
 }
 select option {
   color: var(--text-primary);

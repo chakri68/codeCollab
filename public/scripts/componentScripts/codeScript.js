@@ -271,10 +271,14 @@ let extensionsObj = {
 document.getElementById("codeDownloadBtn").addEventListener("click", () => {
   console.save(
     myCodeMirror[0].getDoc().getValue(),
-    `cE-${document.getElementById("pasteName").value}.${
-      extensionsObj.hasOwnProperty(optionObj.mode)
-        ? extensionsObj[optionObj.mode]
-        : optionObj.mode
+    `cE-${
+      document.getElementById("pasteName").value
+        ? document.getElementById("pasteName").value
+        : "untitled"
+    }.${
+      extensionsObj.hasOwnProperty(languageSelect.value)
+        ? extensionsObj[languageSelect.value]
+        : languageSelect.value
     }`
   );
 });

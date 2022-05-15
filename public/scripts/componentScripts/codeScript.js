@@ -212,6 +212,7 @@ let extensionsObj = {
   shell: "sh",
   verilog: "v",
   csharp: "cs",
+  htmlmixed: "html",
 };
 
 // localStorage.setItem("code", myCodeMirror[0].getDoc().getValue());

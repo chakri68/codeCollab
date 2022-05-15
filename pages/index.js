@@ -18,8 +18,48 @@ export default function Home() {
           <>
             <label htmlFor="lintToggleBtn">Toggle Lint</label>
             <input id="lintToggleBtn" type="checkbox" />
-            <label htmlFor="fontSizeBtn">Font Size</label>
-            <input id="fontSizeBtn" type="range" />
+            <label htmlFor="fontStyleBtn">Font Style</label>
+            <select id="fontStyleBtn">
+              <option
+                value="Fira Code, monospace"
+                style={{ fontFamily: "Fira Code, monospace" }}
+              >
+                default
+              </option>
+              <option value="monospace" style={{ fontFamily: "monospace" }}>
+                monospace
+              </option>
+              <option
+                value="Ubuntu Mono, monospace"
+                style={{ fontFamily: "Ubuntu Mono, monospace" }}
+              >
+                ubuntu mono
+              </option>
+              <option
+                value="IBM Plex Mono, monospace"
+                style={{ fontFamily: "IBM Plex Mono, monospace" }}
+              >
+                IBM Plex Mono
+              </option>
+              <option
+                value="Nova Mono, monospace"
+                style={{ fontFamily: "Nova Mono, monospace" }}
+              >
+                Nova Mono
+              </option>
+              <option
+                value="Syne Mono, monospace"
+                style={{ fontFamily: "Syne Mono, monospace" }}
+              >
+                Syne Mono
+              </option>
+              <option
+                value="Major Mono Display, monospace"
+                style={{ fontFamily: "Major Mono Display, monospace" }}
+              >
+                Major Mono Display
+              </option>
+            </select>
             <label htmlFor="prmyColorBtn">Primary Color</label>
             <input id="prmyColorBtn" type="color" defaultValue="#0cf07b" />
           </>

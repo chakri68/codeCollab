@@ -14,6 +14,7 @@
   --bg-light: #222222;
   --title-size: xx-large;
   --text-gray: #999999;
+  --font-family: "Fira Code", monospace;
 }
 
 html,
@@ -21,7 +22,7 @@ body {
   padding: 0;
   margin: 0;
   /* font-family: "Ubuntu Mono", monospace; */
-  font-family: "Fira Code", monospace !important;
+  font-family: var(--font-family) !important;
   margin: 0;
   background-color: #141414;
   color: var(--text-primary);
@@ -254,6 +255,10 @@ input[type="range"]:focus::-ms-fill-upper {
 
 .modal-card section {
   background-color: var(--bg-light);
+}
+
+#fontStyleBtn {
+  font-size: small;
 }
 
 /* END Modal CSS */

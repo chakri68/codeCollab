@@ -182,6 +182,22 @@ color.addEventListener("change", () => {
   }
 });
 
+// Font size setting
+const fontStyle = document.getElementById("fontStyleBtn");
+
+fontStyle.addEventListener("change", () => {
+  if (fontStyle.value != rs.getPropertyValue("--font-family")) {
+    if (
+      confirm(
+        `Are you sure you want to change the font style to ${fontStyle.value}?`
+      )
+    ) {
+      console.log("Changed");
+      root.style.setProperty("--font-family", fontStyle.value);
+    }
+  }
+});
+
 // Local Storage
 
 let extensionsObj = {

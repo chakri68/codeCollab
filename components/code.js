@@ -59,13 +59,37 @@ export default function Codearea({ languages }) {
           </form>
         </div>
       </div>
-      <div id="compilerBtnDiv">
+      <div
+        id="codeBtnDiv"
+        style={{ display: "grid", gridAutoFlow: "column", columnGap: "20px" }}
+      >
+        <button
+          className="button btn is-size-6 has-text-weight-medium"
+          style={{ height: "3rem", width: "100%" }}
+          id="codeDownloadBtn"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="48"
+            width="48"
+            style={{
+              transform: "scale(0.55)",
+              fill: "var(--bg-dark)",
+            }}
+          >
+            <path d="M24 32.35 14.35 22.7 16.5 20.55 22.5 26.55V8H25.5V26.55L31.5 20.55L33.65 22.7ZM11 40Q9.8 40 8.9 39.1Q8 38.2 8 37V29.85H11V37Q11 37 11 37Q11 37 11 37H37Q37 37 37 37Q37 37 37 37V29.85H40V37Q40 38.2 39.1 39.1Q38.2 40 37 40Z" />
+          </svg>
+          Download the code
+        </button>
         <button
           type="submit"
           id="compilerBtn"
           form="codeForm"
           className="button btn is-size-6 has-text-weight-medium"
-          style={{ width: "100%", height: "2.5rem" }}
+          style={{
+            height: "3rem",
+            width: "100%",
+          }}
           disabled
         >
           <svg

@@ -258,7 +258,7 @@ input[type="range"]:focus::-ms-fill-upper {
 
 /* END Modal CSS */
 
-@media screen and (max-width: 530px) {
+@media screen and (max-width: 630px) {
   body {
     padding: 0;
   }
@@ -277,6 +277,10 @@ input[type="range"]:focus::-ms-fill-upper {
       "pasteTitleArea"
       "languageArea"
       "themeArea" !important;
+  }
+  #codeBtnDiv {
+    row-gap: 15px;
+    grid-auto-flow: row !important;
   }
 }
 

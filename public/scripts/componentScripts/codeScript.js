@@ -181,3 +181,84 @@ color.addEventListener("change", () => {
     }
   }
 });
+
+// Local Storage
+
+let extensionsObj = {
+  python: "py",
+  text: "txt",
+  javascript: "js",
+  ruby: "rb",
+  rust: "rs",
+  sass: "scss",
+  cobol: "cbl",
+  fortran: "f60",
+  shell: "sh",
+  verilog: "v",
+  csharp: "cs",
+};
+
+// localStorage.setItem("code", myCodeMirror[0].getDoc().getValue());
+// let myCode = localStorage.getItem("code");
+// chrome.downloads.download(
+//   {
+//     url: "data:text/plain," + myName,
+//     filename: "data.txt",
+//     conflictAction: "uniquify",
+//     saveAs: true,
+//   },
+//   function (downloadId) {
+//     console.log("downloaded with ID", downloadId);
+//   }
+// );
+(function (console) {
+  console.save = function (data, filename) {
+    if (!data) {
+      console.error("Console.save: No data");
+      return;
+    }
+
+    if (!filename) filename = "console.json";
+
+    if (typeof data === "object") {
+      data = JSON.stringify(data, undefined, 4);
+    }
+
+    var blob = new Blob([data], { type: "text/json" }),
+      e = document.createEvent("MouseEvents"),
+      a = document.createElement("a");
+
+    a.download = filename;
+    a.href = window.URL.createObjectURL(blob);
+    a.dataset.downloadurl = ["text/json", a.download, a.href].join(":");
+    e.initMouseEvent(
+      "click",
+      true,
+      false,
+      window,
+      0,
+      0,
+      0,
+      0,
+      0,
+      false,
+      false,
+      false,
+      false,
+      0,
+      null
+    );
+    a.dispatchEvent(e);
+  };
+})(console);
+
+document.getElementById("codeDownloadBtn").addEventListener("click", () => {
+  console.save(
+    myCodeMirror[0].getDoc().getValue(),
+    `cE-${document.getElementById("pasteName").value}.${
+      extensionsObj.hasOwnProperty(optionObj.mode)
+        ? extensionsObj[optionObj.mode]
+        : optionObj.mode
+    }`
+  );
+});

@@ -1,5 +1,5 @@
 import "../styles/globals.css";
-import "codemirror/lib/codemirror.css";
+import "../public/scripts/lib/codemirror.css";
 import "codemirror/theme/monokai.css";
 import "codemirror/theme/dracula.css";
 import "codemirror/theme/zenburn.css";

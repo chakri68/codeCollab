@@ -68,11 +68,11 @@ let optionObj = {
   lineWrapping: true,
 };
 
-themeSelect.addEventListener("change", () => {
-  myCodeMirror[0].setOption("theme", themeSelect.value);
-});
-
-languageSelect.addEventListener("change", () => {
+function changeLanguage() {
+  if (document.getElementById("code").readOnly) {
+    myCodeMirror[0].setOption("readOnly", true);
+    console.log("TRUE!");
+  }
   let path;
   if (!urlObj.hasOwnProperty(languageSelect.value)) {
     document.getElementById("compilerBtn").disabled = true;
@@ -126,7 +126,15 @@ languageSelect.addEventListener("change", () => {
       }
     });
   }
+}
+
+changeLanguage();
+
+themeSelect.addEventListener("change", () => {
+  myCodeMirror[0].setOption("theme", themeSelect.value);
 });
+
+languageSelect.addEventListener("change", changeLanguage);
 
 // FullScreen Toggle
 
@@ -272,7 +280,7 @@ let extensionsObj = {
 document.getElementById("codeDownloadBtn").addEventListener("click", () => {
   console.save(
     myCodeMirror[0].getDoc().getValue(),
-    `cE-${
+    `${
       document.getElementById("pasteName").value
         ? document.getElementById("pasteName").value
         : "untitled"
@@ -283,3 +291,47 @@ document.getElementById("codeDownloadBtn").addEventListener("click", () => {
     }`
   );
 });
+// To upload code
+
+function checkUploadData() {
+  if (!myCodeMirror[0].getDoc().getValue())
+    return alert("Enter some code to upload the file!");
+  if (myCodeMirror[0].getDoc().getValue().length > 300)
+    return alert("Cannot store more than 300 characters!");
+  if (!document.getElementById("pasteName").value)
+    return alert("Enter a title!");
+  return true;
+}
+
+if (document.getElementById("codeUploadBtn"))
+  document
+    .getElementById("codeUploadBtn")
+    .addEventListener("click", async () => {
+      if (checkUploadData()) {
+        const author = prompt("Enter the author name (optional)", null);
+        let postObj = {
+          title: document.getElementById("pasteName").value,
+          language: languageSelect.value,
+          date: Date.now(),
+          code: myCodeMirror[0].getDoc().getValue(),
+        };
+        if (author) postObj.author = author;
+        console.log(postObj);
+        const response = await fetch("/api/postCode", {
+          method: "POST",
+          body: JSON.stringify({
+            title: document.getElementById("pasteName").value,
+            language: languageSelect.value,
+            date: Date.now(),
+            code: myCodeMirror[0].getDoc().getValue(),
+          }),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+        const data = await response.json();
+        console.log(data);
+        if (data.success) window.open(`/${data.id}`);
+        else console.log("ERROR!");
+      }
+    });

@@ -16,6 +16,7 @@
     "js-yaml": "^4.1.0",
     "jshint": "^2.13.4",
     "jsonlint": "^1.6.3",
+    "mongoose": "^6.3.3",
     "next": "12.1.6",
     "react": "18.1.0",
     "react-dom": "18.1.0",

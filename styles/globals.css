@@ -48,6 +48,12 @@ button {
   display: grid;
 }
 
+.logo span img {
+  /* filter: invert(1);
+  mix-blend-mode: exclusion; */
+  fill: var(--text-gray);
+}
+
 .l {
   color: var(--link-primary);
   margin: 0px 10px;

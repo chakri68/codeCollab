@@ -9,7 +9,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>codeEditor</title>
+        <title>codeCollab - Edit and Share Code!</title>
       </Head>
       <Header />
       <ModalPopUp
@@ -72,13 +72,13 @@ export default function Home() {
           {
             id: 3,
             label: "github",
-            url: "https://github.com/delta68/code-editor",
+            url: "https://github.com/chakri68/codeCollab",
           },
           { id: 4, label: "api", url: "/" },
           {
             id: 5,
             label: "changelog",
-            url: "https://github.com/delta68/code-editor/commits/main",
+            url: "https://github.com/chakri68/codeCollab/tree/main",
           },
           { id: 6, label: "legal", url: "/" },
         ]}

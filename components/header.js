@@ -1,4 +1,4 @@
-const logo = require("../public/logo.png");
+const logo = require("../public/logo.svg");
 import Image from "next/image";
 import Link from "next/link";
 
@@ -19,14 +19,19 @@ export default function Header() {
       role="navigation"
       aria-label="main navigation"
     >
-      <Image
-        src={logo}
-        alt="heyo"
-        width="64px"
-        height="64px"
-        layout="fixed"
-        style={{ gridArea: "logoImgArea", borderRadius: "50%" }}
-      />
+      <div
+        className="logo"
+        style={{
+          gridArea: "logoImgArea",
+          position: "relative",
+          width: "64px",
+          height: "64px",
+          backgroundColor: "var(--link-primary)",
+          borderRadius: "50%",
+        }}
+      >
+        <Image src={logo} alt="heyo" layout="fill" objectFit="cover" />
+      </div>
       <Link href="/">
         <span
           style={{
@@ -35,7 +40,7 @@ export default function Header() {
           }}
           className="l"
         >
-          codeEditor
+          codeCollab
         </span>
       </Link>
 
@@ -54,7 +59,7 @@ export default function Header() {
         style={{ gridArea: "contentArea", color: "var(--text-primary)" }}
       >
         a simple website for writing code. version 0.1.0 (
-        <a href="https://github.com/delta68/code-editor">
+        <a href="https://github.com/chakri68/codeCollab" target="_blank">
           <span className="l">github link</span>
         </a>
         )

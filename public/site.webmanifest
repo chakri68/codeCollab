@@ -1,6 +1,6 @@
 {
-    "name": "Delta",
-    "short_name": "Delta",
+    "name": "codeCollab",
+    "short_name": "codeCollab",
     "icons": [
         {
             "src": "/android-chrome-192x192.png",
@@ -13,7 +13,7 @@
             "type": "image/png"
         }
     ],
-    "theme_color": "#2b5797",
-    "background_color": "#2b5797",
+    "theme_color": "#0cf07b",
+    "background_color": "#0cf07b",
     "display": "standalone"
 }

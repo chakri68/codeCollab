@@ -4,18 +4,25 @@ export default function Document() {
   return (
     <Html>
       <Head>
-        <meta name="title" content="codeCollab - Edit and Share Code!" />
+        <title>codeCollab - Edit, Share Code and Collaborate!</title>
+        <meta
+          name="title"
+          content="codeCollab - Edit, Share Code and Collaborate!"
+        />
         <meta
           name="description"
-          content="Write, share codes and collaborate with other developers!"
+          content="Write, share code and collaborate with other developers!"
         />
 
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://metatags.io/" />
-        <meta property="og:title" content="codeCollab - Edit and Share Code!" />
+        <meta
+          property="og:title"
+          content="codeCollab - Edit, Share Code and Collaborate!"
+        />
         <meta
           property="og:description"
-          content="Write, share codes and collaborate with other developers!"
+          content="Write, share code and collaborate with other developers!"
         />
         <meta
           property="og:image"
@@ -26,11 +33,11 @@ export default function Document() {
         <meta property="twitter:url" content="https://metatags.io/" />
         <meta
           property="twitter:title"
-          content="codeCollab - Edit and Share Code!"
+          content="codeCollab - Edit, Share Code and Collaborate!"
         />
         <meta
           property="twitter:description"
-          content="Write, share codes and collaborate with other developers!"
+          content="Write, share code and collaborate with other developers!"
         />
         <meta
           property="twitter:image"

@@ -59,7 +59,11 @@ export default function Header() {
         style={{ gridArea: "contentArea", color: "var(--text-primary)" }}
       >
         a simple website for writing code. version 0.1.0 (
-        <a href="https://github.com/chakri68/codeCollab" target="_blank">
+        <a
+          href="https://github.com/chakri68/codeCollab"
+          target="_blank"
+          rel="noreferrer"
+        >
           <span className="l">github link</span>
         </a>
         )

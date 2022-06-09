@@ -55,7 +55,12 @@ export default function Codearea({ languages }) {
               window.open("about:blank", "print_popup", "width=800,height=600");
             }}
           >
-            <textarea name="initScript" id="code" rows="100" />
+            <textarea
+              name="initScript"
+              id="code"
+              rows="100"
+              style={{ display: "none" }}
+            />
           </form>
         </div>
       </div>

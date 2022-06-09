@@ -1,10 +1,17 @@
-export default function ModalPopUp({ id, options }) {
+export default function ModalPopUp({
+  id,
+  titleJSX,
+  prColor = "var(--link-primary)",
+  options,
+}) {
   return (
     <div className="modal" id={id}>
       <div className="modal-background" />
       <div className="modal-card" style={{ background: "var(--bg-dark)" }}>
-        <header className="modal-card-head">
-          <p className="modal-card-title">Settings</p>
+        <header className="modal-card-head" style={{ borderColor: prColor }}>
+          <p className="modal-card-title" style={{ color: prColor }}>
+            {titleJSX}
+          </p>
           <button className="delete" aria-label="close"></button>
         </header>
         <section

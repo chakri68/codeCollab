@@ -1,5 +1,14 @@
 @import "../node_modules/bulma/css/bulma.css";
 
+input,
+textarea,
+button,
+select,
+a,
+svg {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
 :root {
   --text-primary: white;
   --bg-dark: #141414;
@@ -297,4 +306,12 @@ input[type="range"]:focus::-ms-fill-upper {
 
 #text-editor .CodeMirror {
   height: 50vh;
+}
+
+/* Hover Problems */
+
+@media (hover: none) {
+  .svgButton:hover svg {
+    fill: var(--text-gray);
+  }
 }

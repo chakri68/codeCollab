@@ -66,7 +66,11 @@ export default function Codearea({ languages }) {
       </div>
       <div
         id="codeBtnDiv"
-        style={{ display: "grid", gridAutoFlow: "column", columnGap: "20px" }}
+        style={{
+          display: "grid",
+          gridAutoFlow: "column",
+          columnGap: "20px",
+        }}
       >
         <button
           className="button btn is-size-6 has-text-weight-medium"

@@ -2,6 +2,8 @@
 
 ### Add themes (completed)
 
+### Add an open file option
+
 ### Add full screen option (completed)
 
 #### Add fullscreen bar

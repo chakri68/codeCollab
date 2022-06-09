@@ -6,6 +6,9 @@ const lintLanguages = ["css", "javascript", "json", "yaml", "html"];
 var myCodeMirror = [];
 const languageSelect = document.getElementById("language");
 const themeSelect = document.getElementById("theme");
+const pasteTitle = document.getElementById("pasteName");
+const textArea = document.getElementById("code");
+const errorPopUp = document.getElementById("errorPopUp");
 let optionObj = {
   autoCloseBrackets: true,
   lineNumbers: true,
@@ -13,24 +16,26 @@ let optionObj = {
   matchBrackets: true,
   lineWrapping: true,
 };
-myCodeMirror.push(
-  CodeMirror.fromTextArea(document.getElementById("code"), {
-    autoCloseBrackets: true,
-    lineNumbers: true,
-    theme: "monokai",
-    matchBrackets: true,
-    lineWrapping: true,
-    autoCloseTags: true,
-    matchTags: true,
-    gutters: [
-      "CodeMirror-lint-markers",
-      "CodeMirror-linenumbers",
-      "CodeMirror-foldgutter",
-    ],
-    foldGutter: true,
-    highlightLines: true,
-  })
-);
+function codeEditorinit(obj) {
+  myCodeMirror.push(
+    CodeMirror.fromTextArea(obj, {
+      autoCloseBrackets: true,
+      lineNumbers: true,
+      theme: "monokai",
+      matchBrackets: true,
+      lineWrapping: true,
+      autoCloseTags: true,
+      matchTags: true,
+      gutters: [
+        "CodeMirror-lint-markers",
+        "CodeMirror-linenumbers",
+        "CodeMirror-foldgutter",
+      ],
+      foldGutter: true,
+      highlightLines: true,
+    })
+  );
+}
 
 // Linking a compiler
 
@@ -54,6 +59,88 @@ const urlObj = {
   verilog: `${COMP_URL}execute-verilog-online/`,
 };
 
+let extensionsObj = {
+  text: "txt",
+  python: "py",
+  cpp: "cpp",
+  java: "java",
+  c: "c",
+  javascript: "js",
+  lua: "lua",
+  ruby: "rb",
+  rust: "rs",
+  htmlmixed: "html",
+  xml: "xml",
+  jsx: "jsx",
+  css: "css",
+  sass: "scss",
+  cobol: "cbl",
+  fortran: "f60",
+  shell: "sh",
+  verilog: "v",
+  csharp: "cs",
+};
+
+function handleLanguageSelect() {
+  let path;
+  if (!urlObj.hasOwnProperty(languageSelect.value)) {
+    document.getElementById("compilerBtn").disabled = true;
+  } else {
+    document.getElementById("compilerBtn").disabled = false;
+  }
+  if (["c", "cpp", "java", "text", "csharp"].includes(languageSelect.value)) {
+    path = `../mode/clike/clike.js`;
+  } else {
+    path = `../mode/${languageSelect.value}/${languageSelect.value}.js`;
+  }
+  import(path).then(() => {
+    // const myTextArea = document.createElement("textarea");
+    // myTextArea.id = "code";
+    // document.getElementById("text-editor").appendChild(myTextArea);
+    switch (languageSelect.value) {
+      case "cpp":
+        optionObj.mode = "text/x-c++src";
+        break;
+      case "c":
+        optionObj.mode = "text/x-csrc";
+        break;
+      case "java":
+        optionObj.mode = "text/x-java";
+        break;
+      case "csharp":
+        optionObj.mode = "text/x-csharp";
+        break;
+      default:
+        optionObj.mode = languageSelect.value;
+        break;
+    }
+
+    // optionObj.value = myCodeMirror[0].getValue();
+    // console.log(optionObj);
+    // document.getElementsByClassName("CodeMirror")[0].remove();
+    // myCodeMirror[0] = CodeMirror.fromTextArea(
+    //   document.getElementById("code"),
+    //   optionObj
+    // );
+    // myCodeMirror[0].setValue(optionObj.value);
+    myCodeMirror[0].setOption("mode", optionObj.mode);
+    document
+      .getElementById("codeForm")
+      .setAttribute("action", urlObj[languageSelect.value]);
+  });
+  if (lintLanguages.includes(languageSelect.value)) {
+    import(`../addon/lint/${languageSelect.value}-lint.js`).then(() => {
+      if (toggleLint.checked) {
+        myCodeMirror[0].setOption("lint", true);
+      }
+    });
+  }
+}
+
+function getKeyByValue(object, value) {
+  return Object.keys(object).find((key) => object[key] === value);
+}
+
 // FullScreen Toggle
 
 function toggleScreenSize(e) {
@@ -64,68 +151,51 @@ function toggleScreenSize(e) {
   }
 }
 
+function readFile(file) {
+  const reader = new FileReader();
+  reader.onload = (evt) => {
+    myCodeMirror[0].setValue(evt.target.result);
+    handleLanguageSelect();
+  };
+  reader.readAsText(file);
+}
+
+function flagRead(files) {
+  if (!files) return;
+  const fileList = files;
+  const file = fileList[0];
+  // let type = "file.name.py";
+  let rxExtension = /.+\.(.+)$/g;
+  let rxTitle = /(.+)\..+$/g;
+  let type = rxExtension.exec(file.name)[1];
+  let title = rxTitle.exec(file.name)[1];
+  if (type) {
+    type = getKeyByValue(extensionsObj, type);
+    if (type) languageSelect.value = type;
+    else return;
+  } else return;
+  if (title) pasteTitle.value = title;
+  readFile(file);
+  return 1;
+}
+
+function handleFile() {
+  let flag = flagRead(this.files);
+  if (!flag) openModal(errorPopUp);
+}
+
 function init() {
+  codeEditorinit(textArea);
+  document
+    .getElementById("selectFile")
+    .addEventListener("change", handleFile, false);
   document.getElementById("compilerBtn").addEventListener("click", () => {
     myCodeMirror[0].save();
   });
   themeSelect.addEventListener("change", () => {
     myCodeMirror[0].setOption("theme", themeSelect.value);
   });
-  languageSelect.addEventListener("change", () => {
-    let path;
-    if (!urlObj.hasOwnProperty(languageSelect.value)) {
-      document.getElementById("compilerBtn").disabled = true;
-    } else {
-      document.getElementById("compilerBtn").disabled = false;
-    }
-    if (["c", "cpp", "java", "text", "csharp"].includes(languageSelect.value)) {
-      path = `../mode/clike/clike.js`;
-    } else {
-      path = `../mode/${languageSelect.value}/${languageSelect.value}.js`;
-    }
-    import(path).then(() => {
-      // const myTextArea = document.createElement("textarea");
-      // myTextArea.id = "code";
-      // document.getElementById("text-editor").appendChild(myTextArea);
-      switch (languageSelect.value) {
-        case "cpp":
-          optionObj.mode = "text/x-c++src";
-          break;
-        case "c":
-          optionObj.mode = "text/x-csrc";
-          break;
-        case "java":
-          optionObj.mode = "text/x-java";
-          break;
-        case "csharp":
-          optionObj.mode = "text/x-csharp";
-          break;
-        default:
-          optionObj.mode = languageSelect.value;
-          break;
-      }
-
-      // optionObj.value = myCodeMirror[0].getValue();
-      // console.log(optionObj);
-      // document.getElementsByClassName("CodeMirror")[0].remove();
-      // myCodeMirror[0] = CodeMirror.fromTextArea(
-      //   document.getElementById("code"),
-      //   optionObj
-      // );
-      // myCodeMirror[0].setValue(optionObj.value);
-      myCodeMirror[0].setOption("mode", optionObj.mode);
-      document
-        .getElementById("codeForm")
-        .setAttribute("action", urlObj[languageSelect.value]);
-    });
-    if (lintLanguages.includes(languageSelect.value)) {
-      import(`../addon/lint/${languageSelect.value}-lint.js`).then(() => {
-        if (toggleLint.checked) {
-          myCodeMirror[0].setOption("lint", true);
-        }
-      });
-    }
-  });
+  languageSelect.addEventListener("change", handleLanguageSelect);
   const toggleFullScreen = document.getElementById("fullScreenToggle");
   toggleFullScreen.addEventListener("click", (e) => {
     if (e.target.checked) {
@@ -207,21 +277,6 @@ function init() {
 //  End
 
 // Local Storage
-
-let extensionsObj = {
-  python: "py",
-  text: "txt",
-  javascript: "js",
-  ruby: "rb",
-  rust: "rs",
-  sass: "scss",
-  cobol: "cbl",
-  fortran: "f60",
-  shell: "sh",
-  verilog: "v",
-  csharp: "cs",
-  htmlmixed: "html",
-};
 
 // localStorage.setItem("code", myCodeMirror[0].getDoc().getValue());
 // let myCode = localStorage.getItem("code");

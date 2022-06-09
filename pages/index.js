@@ -14,6 +14,7 @@ export default function Home() {
       <Header />
       <ModalPopUp
         id="settingsModal"
+        titleJSX="Settings"
         options={
           <>
             <label htmlFor="lintToggleBtn">Toggle Lint</label>
@@ -82,6 +83,16 @@ export default function Home() {
           },
           { id: 6, label: "legal", url: "/" },
         ]}
+      />
+      <ModalPopUp
+        id="errorPopUp"
+        titleJSX="Error"
+        prColor="var(--error-text)"
+        options={
+          <>
+            <p>The file format is not supported!</p>
+          </>
+        }
       />
       <Codearea
         languages={[

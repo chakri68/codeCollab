@@ -4,7 +4,15 @@ import("../mode/css/css.js");
 
 const lintLanguages = ["css", "javascript", "json", "yaml", "html"];
 var myCodeMirror = [];
-
+const languageSelect = document.getElementById("language");
+const themeSelect = document.getElementById("theme");
+let optionObj = {
+  autoCloseBrackets: true,
+  lineNumbers: true,
+  theme: "monokai",
+  matchBrackets: true,
+  lineWrapping: true,
+};
 myCodeMirror.push(
   CodeMirror.fromTextArea(document.getElementById("code"), {
     autoCloseBrackets: true,
@@ -45,88 +53,6 @@ const urlObj = {
   shell: `${COMP_URL}test-bash-shell-script-online/`,
   verilog: `${COMP_URL}execute-verilog-online/`,
 };
-document.getElementById("compilerBtn").addEventListener("click", () => {
-  myCodeMirror[0].save();
-});
-
-// document.getElementById("codeForm").addEventListener("submit", (e) => {
-//   e.preventDefault();
-//   if (document.getElementById("code").value != "") {
-//     document.getElementById("codeForm").submit();
-//   }
-// });
-
-//  End
-
-const languageSelect = document.getElementById("language");
-const themeSelect = document.getElementById("theme");
-let optionObj = {
-  autoCloseBrackets: true,
-  lineNumbers: true,
-  theme: "monokai",
-  matchBrackets: true,
-  lineWrapping: true,
-};
-
-themeSelect.addEventListener("change", () => {
-  myCodeMirror[0].setOption("theme", themeSelect.value);
-});
-
-languageSelect.addEventListener("change", () => {
-  let path;
-  if (!urlObj.hasOwnProperty(languageSelect.value)) {
-    document.getElementById("compilerBtn").disabled = true;
-  } else {
-    document.getElementById("compilerBtn").disabled = false;
-  }
-  if (["c", "cpp", "java", "text", "csharp"].includes(languageSelect.value)) {
-    path = `../mode/clike/clike.js`;
-  } else {
-    path = `../mode/${languageSelect.value}/${languageSelect.value}.js`;
-  }
-  import(path).then(() => {
-    // const myTextArea = document.createElement("textarea");
-    // myTextArea.id = "code";
-    // document.getElementById("text-editor").appendChild(myTextArea);
-    switch (languageSelect.value) {
-      case "cpp":
-        optionObj.mode = "text/x-c++src";
-        break;
-      case "c":
-        optionObj.mode = "text/x-csrc";
-        break;
-      case "java":
-        optionObj.mode = "text/x-java";
-        break;
-      case "csharp":
-        optionObj.mode = "text/x-csharp";
-        break;
-      default:
-        optionObj.mode = languageSelect.value;
-        break;
-    }
-
-    // optionObj.value = myCodeMirror[0].getValue();
-    // console.log(optionObj);
-    // document.getElementsByClassName("CodeMirror")[0].remove();
-    // myCodeMirror[0] = CodeMirror.fromTextArea(
-    //   document.getElementById("code"),
-    //   optionObj
-    // );
-    // myCodeMirror[0].setValue(optionObj.value);
-    myCodeMirror[0].setOption("mode", optionObj.mode);
-    document
-      .getElementById("codeForm")
-      .setAttribute("action", urlObj[languageSelect.value]);
-  });
-  if (lintLanguages.includes(languageSelect.value)) {
-    import(`../addon/lint/${languageSelect.value}-lint.js`).then(() => {
-      if (toggleLint.checked) {
-        myCodeMirror[0].setOption("lint", true);
-      }
-    });
-  }
-});
 
 // FullScreen Toggle
 
@@ -138,65 +64,147 @@ function toggleScreenSize(e) {
   }
 }
 
-const toggleFullScreen = document.getElementById("fullScreenToggle");
-toggleFullScreen.addEventListener("click", (e) => {
-  if (e.target.checked) {
-    e.target.checked = false;
-    // myCodeMirror[0].setOption("fullScreen", "true");
-    document.getElementsByClassName("CodeMirror")[0].requestFullscreen();
-  }
-});
-
-// Word Wrap toggle
-const wordWrapToggle = document.getElementById("wordWrapToggle");
-wordWrapToggle.addEventListener("click", (e) => {
-  if (e.target.checked) {
-    myCodeMirror[0].setOption("lineWrapping", true);
-  } else {
-    myCodeMirror[0].setOption("lineWrapping", false);
-  }
-});
-
-// JS for settings
-const toggleLint = document.getElementById("lintToggleBtn");
-toggleLint.addEventListener("change", () => {
-  if (toggleLint.checked) {
-    myCodeMirror[0].setOption("lint", true);
-  } else {
-    myCodeMirror[0].setOption("lint", false);
-  }
-});
-
-// JS for the primary color toggle
-const root = document.querySelector(":root");
-let rs = getComputedStyle(root);
-const color = document.getElementById("prmyColorBtn");
-color.addEventListener("change", () => {
-  if (color.value != rs.getPropertyValue("--link-primary")) {
-    if (
-      confirm(`Are you sure you want to change the color to ${color.value}?`)
-    ) {
-      console.log("Changed");
-      root.style.setProperty("--link-primary", color.value);
+function init() {
+  document.getElementById("compilerBtn").addEventListener("click", () => {
+    myCodeMirror[0].save();
+  });
+  themeSelect.addEventListener("change", () => {
+    myCodeMirror[0].setOption("theme", themeSelect.value);
+  });
+  languageSelect.addEventListener("change", () => {
+    let path;
+    if (!urlObj.hasOwnProperty(languageSelect.value)) {
+      document.getElementById("compilerBtn").disabled = true;
+    } else {
+      document.getElementById("compilerBtn").disabled = false;
     }
-  }
-});
-
-// Font size setting
-const fontStyle = document.getElementById("fontStyleBtn");
-
-fontStyle.addEventListener("change", () => {
-  if (fontStyle.value != rs.getPropertyValue("--font-family")) {
-    if (
-      confirm(
-        `Are you sure you want to change the font style to ${fontStyle.value}?`
-      )
-    ) {
-      console.log("Changed");
-      root.style.setProperty("--font-family", fontStyle.value);
+    if (["c", "cpp", "java", "text", "csharp"].includes(languageSelect.value)) {
+      path = `../mode/clike/clike.js`;
+    } else {
+      path = `../mode/${languageSelect.value}/${languageSelect.value}.js`;
     }
-  }
-});
+    import(path).then(() => {
+      // const myTextArea = document.createElement("textarea");
+      // myTextArea.id = "code";
+      // document.getElementById("text-editor").appendChild(myTextArea);
+      switch (languageSelect.value) {
+        case "cpp":
+          optionObj.mode = "text/x-c++src";
+          break;
+        case "c":
+          optionObj.mode = "text/x-csrc";
+          break;
+        case "java":
+          optionObj.mode = "text/x-java";
+          break;
+        case "csharp":
+          optionObj.mode = "text/x-csharp";
+          break;
+        default:
+          optionObj.mode = languageSelect.value;
+          break;
+      }
+
+      // optionObj.value = myCodeMirror[0].getValue();
+      // console.log(optionObj);
+      // document.getElementsByClassName("CodeMirror")[0].remove();
+      // myCodeMirror[0] = CodeMirror.fromTextArea(
+      //   document.getElementById("code"),
+      //   optionObj
+      // );
+      // myCodeMirror[0].setValue(optionObj.value);
+      myCodeMirror[0].setOption("mode", optionObj.mode);
+      document
+        .getElementById("codeForm")
+        .setAttribute("action", urlObj[languageSelect.value]);
+    });
+    if (lintLanguages.includes(languageSelect.value)) {
+      import(`../addon/lint/${languageSelect.value}-lint.js`).then(() => {
+        if (toggleLint.checked) {
+          myCodeMirror[0].setOption("lint", true);
+        }
+      });
+    }
+  });
+  const toggleFullScreen = document.getElementById("fullScreenToggle");
+  toggleFullScreen.addEventListener("click", (e) => {
+    if (e.target.checked) {
+      e.target.checked = false;
+      // myCodeMirror[0].setOption("fullScreen", "true");
+      document.getElementsByClassName("CodeMirror")[0].requestFullscreen();
+    }
+  });
+  // Word Wrap toggle
+  const wordWrapToggle = document.getElementById("wordWrapToggle");
+  wordWrapToggle.addEventListener("click", (e) => {
+    if (e.target.checked) {
+      myCodeMirror[0].setOption("lineWrapping", true);
+    } else {
+      myCodeMirror[0].setOption("lineWrapping", false);
+    }
+  });
+  // JS for settings
+  const toggleLint = document.getElementById("lintToggleBtn");
+  toggleLint.addEventListener("change", () => {
+    if (toggleLint.checked) {
+      myCodeMirror[0].setOption("lint", true);
+    } else {
+      myCodeMirror[0].setOption("lint", false);
+    }
+  });
+  // JS for the primary color toggle
+  const root = document.querySelector(":root");
+  let rs = getComputedStyle(root);
+  const color = document.getElementById("prmyColorBtn");
+  color.addEventListener("change", () => {
+    if (color.value != rs.getPropertyValue("--link-primary")) {
+      if (
+        confirm(`Are you sure you want to change the color to ${color.value}?`)
+      ) {
+        console.log("Changed");
+        root.style.setProperty("--link-primary", color.value);
+      }
+    }
+  });
+  // Font size setting
+  const fontStyle = document.getElementById("fontStyleBtn");
+
+  fontStyle.addEventListener("change", () => {
+    if (fontStyle.value != rs.getPropertyValue("--font-family")) {
+      if (
+        confirm(
+          `Are you sure you want to change the font style to ${fontStyle.value}?`
+        )
+      ) {
+        console.log("Changed");
+        root.style.setProperty("--font-family", fontStyle.value);
+      }
+    }
+  });
+  document.getElementById("codeDownloadBtn").addEventListener("click", () => {
+    console.save(
+      myCodeMirror[0].getDoc().getValue(),
+      `cE-${
+        document.getElementById("pasteName").value
+          ? document.getElementById("pasteName").value
+          : "untitled"
+      }.${
+        extensionsObj.hasOwnProperty(languageSelect.value)
+          ? extensionsObj[languageSelect.value]
+          : languageSelect.value
+      }`
+    );
+  });
+}
+
+// document.getElementById("codeForm").addEventListener("submit", (e) => {
+//   e.preventDefault();
+//   if (document.getElementById("code").value != "") {
+//     document.getElementById("codeForm").submit();
+//   }
+// });
+
+//  End
 
 // Local Storage
 
@@ -269,17 +277,4 @@ let extensionsObj = {
   };
 })(console);
 
-document.getElementById("codeDownloadBtn").addEventListener("click", () => {
-  console.save(
-    myCodeMirror[0].getDoc().getValue(),
-    `cE-${
-      document.getElementById("pasteName").value
-        ? document.getElementById("pasteName").value
-        : "untitled"
-    }.${
-      extensionsObj.hasOwnProperty(languageSelect.value)
-        ? extensionsObj[languageSelect.value]
-        : languageSelect.value
-    }`
-  );
-});
+init();

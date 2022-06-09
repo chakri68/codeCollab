@@ -4,7 +4,6 @@ export default function Document() {
   return (
     <Html>
       <Head>
-        <title>codeCollab - Edit, Share Code and Collaborate!</title>
         <meta
           name="title"
           content="codeCollab - Edit, Share Code and Collaborate!"

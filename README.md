@@ -1,12 +1,6 @@
 # Currently working on:
 
-### Add themes (completed)
-
-### Add an open file option
-
-### Add full screen option (completed)
-
-#### Add fullscreen bar
+#### Add fullscreen bar (added)
 
 ### Customization menu
 

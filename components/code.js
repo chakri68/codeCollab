@@ -76,6 +76,7 @@ export default function Codearea({ languages }) {
           className="button btn is-size-6 has-text-weight-medium"
           style={{ height: "3rem", width: "100%" }}
           id="codeDownloadBtn"
+          title="Download the code to your device"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -100,6 +101,7 @@ export default function Codearea({ languages }) {
             width: "100%",
           }}
           disabled
+          title="Run the code in Jdoodle"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"

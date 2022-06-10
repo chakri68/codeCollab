@@ -44,6 +44,42 @@ function codeEditorinit(obj) {
   );
 }
 
+// Make fullscreen
+
+function changeVisibilityZero(e) {
+  e.currentTarget.style.opacity = "0";
+}
+
+function changeVisibilityOne(e) {
+  e.currentTarget.style.opacity = "1";
+}
+
+function fullScreen(box, hover, isFullScreen) {
+  if (isFullScreen) {
+    box.style.visibility = "hidden";
+    hover.style.visibility = "visible";
+    box.style.position = "absolute";
+    hover.style.opacity = "0";
+    hover.style.position = "fixed";
+    hover.style.top = "50%";
+    hover.style.right = "25px";
+    hover.style.transform = "translateY(-50%)";
+    hover.style["grid-auto-flow"] = "row";
+    hover.addEventListener("mouseover", changeVisibilityOne);
+    hover.addEventListener("mouseleave", changeVisibilityZero);
+  } else {
+    box.style.visibility = "visible";
+    hover.style.opacity = "1";
+    hover.style.visibility = "visible";
+    box.style.position = "inherit";
+    hover.style.position = "inherit";
+    hover.style.transform = "none";
+    hover.style["grid-auto-flow"] = "column";
+    hover.removeEventListener("mouseover", changeVisibilityOne);
+    hover.removeEventListener("mouseleave", changeVisibilityZero);
+  }
+}
+
 // Make an element a drop zone
 function makeDropZone(el) {
   el.addEventListener("dragenter", dragenter, false);
@@ -239,14 +275,30 @@ function init() {
     myCodeMirror[0].setOption("theme", themeSelect.value);
   });
   languageSelect.addEventListener("change", handleLanguageSelect);
-  const toggleFullScreen = document.getElementById("fullScreenToggle");
-  toggleFullScreen.addEventListener("click", (e) => {
+  document.getElementById("fullScreenToggle").addEventListener("click", (e) => {
     if (e.target.checked) {
-      e.target.checked = false;
       // myCodeMirror[0].setOption("fullScreen", "true");
-      document.getElementsByClassName("CodeMirror")[0].requestFullscreen();
+      // document.getElementsByClassName("CodeMirror")[0].requestFullscreen();
+      document.getElementById("fullScreen").requestFullscreen();
+      myCodeMirror[0].setSize(null, "calc(92vh - 20px)");
+    } else {
+      document.exitFullscreen();
     }
   });
+
+  document
+    .getElementById("fullScreen")
+    .addEventListener("fullscreenchange", () => {
+      fullScreen(
+        document.getElementById("menu"),
+        document.getElementsByClassName("toggleButtons")[0],
+        document.fullscreenElement
+      );
+      if (!document.fullscreenElement) {
+        document.getElementById("fullScreenToggle").checked = false;
+        myCodeMirror[0].setSize(null, 400); // Default height
+      }
+    });
 
   // Word Wrap toggle
   const wordWrapToggle = document.getElementById("wordWrapToggle");
@@ -298,7 +350,7 @@ function init() {
   document.getElementById("codeDownloadBtn").addEventListener("click", () => {
     console.save(
       myCodeMirror[0].getDoc().getValue(),
-      `cE-${
+      `${
         document.getElementById("pasteName").value
           ? document.getElementById("pasteName").value
           : "untitled"

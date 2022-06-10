@@ -110,6 +110,7 @@ export default function Menu({ items }) {
           display: "grid",
           grid: " 'linksArea . . . . toggleButtonsArea' ",
           justifyContent: "space-between",
+          zIndex: "10",
         }}
       >
         <div

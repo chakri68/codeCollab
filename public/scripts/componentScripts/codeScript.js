@@ -2,6 +2,12 @@ import("../mode/xml/xml.js");
 import("../mode/javascript/javascript.js");
 import("../mode/css/css.js");
 
+// Global varaibles!!
+
+// let appendState = false;
+
+// End
+
 const lintLanguages = ["css", "javascript", "json", "yaml", "html"];
 var myCodeMirror = [];
 const languageSelect = document.getElementById("language");
@@ -9,6 +15,7 @@ const themeSelect = document.getElementById("theme");
 const pasteTitle = document.getElementById("pasteName");
 const textArea = document.getElementById("code");
 const errorPopUp = document.getElementById("errorPopUp");
+const cpyBehaviour = document.getElementById("copyBehaviour");
 let optionObj = {
   autoCloseBrackets: true,
   lineNumbers: true,
@@ -37,6 +44,33 @@ function codeEditorinit(obj) {
   );
 }
 
+// Make an element a drop zone
+function makeDropZone(el) {
+  el.addEventListener("dragenter", dragenter, false);
+  el.addEventListener("dragover", dragover, false);
+  el.addEventListener("drop", drop, false);
+}
+
+function dragenter(e) {
+  e.stopPropagation();
+  e.preventDefault();
+}
+
+function dragover(e) {
+  e.stopPropagation();
+  e.preventDefault();
+}
+
+function drop(e) {
+  e.stopPropagation();
+  e.preventDefault();
+
+  const dt = e.dataTransfer;
+  const files = dt.files;
+
+  let flag = flagRead(files);
+  if (!flag) openModal(errorPopUp);
+}
 // Linking a compiler
 
 const COMP_URL = "https://www.jdoodle.com/api/redirect-to-post/";
@@ -154,14 +188,23 @@ function toggleScreenSize(e) {
 function readFile(file) {
   const reader = new FileReader();
   reader.onload = (evt) => {
-    myCodeMirror[0].setValue(evt.target.result);
+    switch (cpyBehaviour.value) {
+      case "append":
+        let pvText = myCodeMirror[0].getValue();
+        myCodeMirror[0].setValue(`${pvText}\n${evt.target.result}`);
+        break;
+      case "replace":
+        myCodeMirror[0].setValue(evt.target.result);
+        break;
+    }
     handleLanguageSelect();
   };
   reader.readAsText(file);
 }
 
 function flagRead(files) {
-  if (!files) return;
+  if (files.length == 0) return;
+  console.log(files);
   const fileList = files;
   const file = fileList[0];
   // let type = "file.name.py";
@@ -204,6 +247,7 @@ function init() {
       document.getElementsByClassName("CodeMirror")[0].requestFullscreen();
     }
   });
+
   // Word Wrap toggle
   const wordWrapToggle = document.getElementById("wordWrapToggle");
   wordWrapToggle.addEventListener("click", (e) => {
@@ -333,3 +377,4 @@ function init() {
 })(console);
 
 init();
+makeDropZone(document.getElementById("text-editor"));

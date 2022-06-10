@@ -278,8 +278,35 @@ input[type="range"]:focus::-ms-fill-upper {
   background-color: var(--bg-light);
 }
 
-#fontStyleBtn {
+.modal-card-body select {
   font-size: small;
+}
+
+.tableCols2 {
+  display: grid;
+  grid-template-columns: auto 100px;
+  justify-content: space-around;
+  justify-items: stretch;
+  align-items: center;
+  row-gap: 10px;
+}
+
+.modalSubHeading {
+  color: var(--text-gray);
+  grid-column: 1 / 3;
+  border-bottom: 1px dotted var(--text-gray);
+  padding-bottom: 2px;
+  margin-bottom: 7px;
+  margin-top: 5px;
+}
+
+.modalSubHeading:hover,
+.modal-card p:hover {
+  cursor: default;
+}
+
+.modalSubHeading:nth-child(1) {
+  margin-top: 0px;
 }
 
 /* END Modal CSS */

@@ -1,42 +1,143 @@
 import Link from "next/link";
+import ModalPopUp from "./modal";
 
 export default function Menu({ items }) {
   return (
-    <div
-      className="box"
-      id="menu"
-      style={{
-        display: "grid",
-        grid: " 'linksArea . . . . toggleButtonsArea' ",
-        justifyContent: "space-between",
-      }}
-    >
+    <>
+      <ModalPopUp
+        id="settingsModal"
+        titleJSX="Settings"
+        options={
+          <>
+            <p
+              className="modalSubHeading"
+              // style={{
+              //   color: "var(--text-gray)",
+              //   gridColumnStart: "1",
+              //   gridColumnEnd: "3",
+              //   borderBottom: "1px dotted var(--text-gray)",
+              //   paddingBottom: "5px",
+              //   marginBottom: "7px",
+              // }}
+            >
+              Appearance
+            </p>
+            <label
+              htmlFor="fontStyleBtn"
+              title="Stylize the font in the website"
+            >
+              Font Style
+            </label>
+            <select id="fontStyleBtn">
+              <option
+                value="Fira Code, monospace"
+                style={{ fontFamily: "Fira Code, monospace" }}
+              >
+                default
+              </option>
+              <option value="monospace" style={{ fontFamily: "monospace" }}>
+                monospace
+              </option>
+              <option
+                value="Ubuntu Mono, monospace"
+                style={{ fontFamily: "Ubuntu Mono, monospace" }}
+              >
+                ubuntu mono
+              </option>
+              <option
+                value="IBM Plex Mono, monospace"
+                style={{ fontFamily: "IBM Plex Mono, monospace" }}
+              >
+                IBM Plex Mono
+              </option>
+              <option
+                value="Nova Mono, monospace"
+                style={{ fontFamily: "Nova Mono, monospace" }}
+              >
+                Nova Mono
+              </option>
+              <option
+                value="Syne Mono, monospace"
+                style={{ fontFamily: "Syne Mono, monospace" }}
+              >
+                Syne Mono
+              </option>
+              <option
+                value="Major Mono Display, monospace"
+                style={{ fontFamily: "Major Mono Display, monospace" }}
+              >
+                Major Mono Display
+              </option>
+            </select>
+            <label htmlFor="prmyColorBtn" title="Change the primary color">
+              Primary Color
+            </label>
+            <input
+              id="prmyColorBtn"
+              type="color"
+              defaultValue="#0cf07b"
+              title="Primary color"
+            />
+            <p className="modalSubHeading">Text Editor</p>
+            <label
+              htmlFor="lintToggleBtn"
+              title="Toogle linting - showing errors"
+            >
+              Toggle Lint
+            </label>
+            <input id="lintToggleBtn" type="checkbox" />
+            <label
+              htmlFor="copyBehaviour"
+              title="Select what happens when you select a new file"
+            >
+              Copy Behaviour
+            </label>
+            <select
+              name="copyBehaviour"
+              id="copyBehaviour"
+              title="Select what happens when you select a new file"
+            >
+              <option value="append">Append</option>
+              <option value="replace">Replace</option>
+            </select>
+          </>
+        }
+      />
       <div
+        className="box"
+        id="menu"
         style={{
-          display: "flex",
-          flexWrap: "wrap",
-          rowGap: "10px",
-          background: "var(--bg-light)",
-          paddingTop: "15px",
-          paddingBottom: "15px",
-          gridArea: "linksArea",
-        }}
-      >
-        {items.map((obj) => (
-          <Link key={obj.id} href={obj.url}>
-            <span className="l">{obj.label}</span>
-          </Link>
-        ))}
-      </div>
-      <div
-        className="toggleButtons"
-        style={{
-          gridArea: "toggleButtonsArea",
           display: "grid",
-          gridAutoFlow: "column",
-          placeItems: "baseline",
+          grid: " 'linksArea . . . . toggleButtonsArea' ",
+          justifyContent: "space-between",
         }}
       >
+        <div
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+            rowGap: "10px",
+            background: "var(--bg-light)",
+            paddingTop: "15px",
+            paddingBottom: "15px",
+            gridArea: "linksArea",
+          }}
+        >
+          {items.map((obj) => (
+            <Link key={obj.id} href={obj.url}>
+              <span className="l">{obj.label}</span>
+            </Link>
+          ))}
+        </div>
+        <div
+          className="toggleButtons"
+          style={{
+            gridArea: "toggleButtonsArea",
+            display: "grid",
+            gridAutoFlow: "column",
+            placeItems: "baseline",
+          }}
+        >
           <label
             className="svgButton"
             htmlFor="fullScreenToggle"
@@ -71,6 +172,7 @@ export default function Menu({ items }) {
           <label
             className="svgButton"
             htmlFor="selectFile"
+            title="Select a file from your device"
             style={{ position: "relative", bottom: "1.2px" }}
           >
             <input
@@ -88,6 +190,7 @@ export default function Menu({ items }) {
             htmlFor="settingsBtn"
             style={{ position: "relative", bottom: "3.2px" }}
             data-target="settingsModal"
+            title="Settings"
           >
             <input
               type="button"
@@ -101,5 +204,6 @@ export default function Menu({ items }) {
           </label>
         </div>
       </div>
+    </>
   );
 }

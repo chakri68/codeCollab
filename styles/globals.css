@@ -218,6 +218,28 @@ input[type="range"]:focus::-ms-fill-upper {
 
 /* END input range CSS */
 
+div.full-screen-visible {
+  visibility: visible;
+  opacity: 0.35;
+  position: fixed;
+  top: 50%;
+  right: 45px;
+  transform: translateY(-50%);
+  border-radius: 5px;
+  grid-auto-flow: row !important;
+  transition: opacity 0.15s ease-in, background-color 0.15s ease-in;
+}
+
+div.full-screen-visible:hover {
+  background-color: var(--bg-light);
+  opacity: 1;
+}
+
+div.full-screen-invisible {
+  visibility: hidden;
+  position: absolute;
+}
+
 .svgButton {
   transform: scale(0.6);
 }

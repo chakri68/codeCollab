@@ -279,6 +279,19 @@ div.full-screen-invisible {
 
 /* Modal CSS */
 
+.modal {
+  display: flex !important;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.25s ease-out; /* Closing the modal */
+}
+
+.modal.is-active {
+  visibility: visible;
+  opacity: 1;
+  transition: all 0.25s ease-in; /* Opening the modal */
+}
+
 .modal-background {
   background-color: rgba(0, 0, 0, 0.6);
 }

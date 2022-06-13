@@ -122,6 +122,7 @@ export default function Menu({ items }) {
             paddingTop: "15px",
             paddingBottom: "15px",
             gridArea: "linksArea",
+            cursor: "default",
           }}
         >
           {items.map((obj) => (

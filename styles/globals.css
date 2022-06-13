@@ -398,3 +398,12 @@ div.full-screen-invisible {
     fill: var(--text-gray);
   }
 }
+
+/* Transition problems */
+
+.preload * {
+  -webkit-transition: none !important;
+  -moz-transition: none !important;
+  -ms-transition: none !important;
+  -o-transition: none !important;
+}

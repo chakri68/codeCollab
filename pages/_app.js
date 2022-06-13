@@ -11,6 +11,7 @@ import "codemirror/theme/mdn-like.css";
 import "codemirror/theme/material.css";
 import "../public/scripts/addon/fold/foldgutter.css";
 import "../public/scripts/addon/lint/lint.css";
+import Script from "next/dist/client/script";
 
 import Head from "next/head";
 
@@ -42,6 +43,10 @@ function MyApp({ Component, pageProps }) {
         <meta name="theme-color" content="#0cf07b" />
       </Head>
       <Component {...pageProps} />
+      <Script
+        strategy="beforeInteractive"
+        src="/scripts/componentScripts/initBody.js"
+      />
     </>
   );
 }

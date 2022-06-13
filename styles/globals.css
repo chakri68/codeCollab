@@ -346,6 +346,15 @@ div.full-screen-invisible {
 
 /* END Modal CSS */
 
+
+/* Transitions */
+
+.hvrBtn:hover,
+.hvrBtn:hover svg {
+  transition: color 0.15s ease-in, background-color 0.15s ease-in,
+    background 0.15s ease-in, fill 0.2s ease-in;
+}
+
 @media screen and (max-width: 630px) {
   body {
     padding: 0;

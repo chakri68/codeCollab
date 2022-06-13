@@ -38,7 +38,7 @@ export default function Header() {
             gridArea: "logoTextArea",
             fontSize: "var(--title-size)",
           }}
-          className="l"
+          className="l hvrBtn"
         >
           codeCollab
         </span>
@@ -52,7 +52,7 @@ export default function Header() {
           gridArea: "donateArea",
         }}
       >
-        <span className="button btn is-size-5">donate</span>
+        <span className="button btn is-size-5 hvrBtn">donate</span>
       </a>
       <p
         className="content is-size-6"
@@ -64,7 +64,7 @@ export default function Header() {
           target="_blank"
           rel="noreferrer"
         >
-          <span className="l">github link</span>
+          <span className="l hvrBtn">github link</span>
         </a>
         )
       </p>

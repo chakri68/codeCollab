@@ -126,7 +126,7 @@ export default function Menu({ items }) {
         >
           {items.map((obj) => (
             <Link key={obj.id} href={obj.url}>
-              <span className="l">{obj.label}</span>
+              <span className="l hvrBtn">{obj.label}</span>
             </Link>
           ))}
         </div>
@@ -140,7 +140,7 @@ export default function Menu({ items }) {
           }}
         >
           <label
-            className="svgButton"
+            className="svgButton hvrBtn"
             htmlFor="fullScreenToggle"
             title="Toggle full-screen"
           >
@@ -155,7 +155,7 @@ export default function Menu({ items }) {
             </svg>
           </label>
           <label
-            className="svgButton"
+            className="svgButton hvrBtn"
             htmlFor="wordWrapToggle"
             title="Toggle word-wrap"
           >
@@ -171,7 +171,7 @@ export default function Menu({ items }) {
             </svg>
           </label>
           <label
-            className="svgButton"
+            className="svgButton hvrBtn"
             htmlFor="selectFile"
             title="Select a file from your device"
             style={{ position: "relative", bottom: "1.2px" }}
@@ -187,7 +187,7 @@ export default function Menu({ items }) {
             </svg>
           </label>
           <label
-            className="svgButton js-modal-trigger"
+            className="svgButton js-modal-trigger hvrBtn"
             htmlFor="settingsBtn"
             style={{ position: "relative", bottom: "3.2px" }}
             data-target="settingsModal"

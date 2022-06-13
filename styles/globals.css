@@ -269,6 +269,11 @@ div.full-screen-invisible {
 
 /* CodeMirror CSS */
 
+.CodeMirror,
+.CodeMirror-gutters {
+  transition: all 0.75s ease-in, height 0s, width 0s, border-right 0s !important;
+}
+
 .CodeMirror-fullscreen {
   position: absolute !important;
   top: 0;

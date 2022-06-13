@@ -250,7 +250,7 @@ div.full-screen-invisible {
 
 .svgButton:hover svg {
   cursor: pointer;
-  fill: var(--link-primary);
+  fill: var(--link-hover);
 }
 
 .svgButton input:checked + svg {
@@ -261,6 +261,12 @@ div.full-screen-invisible {
 #selectFile + svg {
   transform: scale(0.85);
 }
+
+/* Code menu CSS */
+.titleBlock label {
+  color: var(--text-gray);
+}
+
 /* CodeMirror CSS */
 
 .CodeMirror-fullscreen {

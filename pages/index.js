@@ -3,6 +3,7 @@ import Codearea from "../components/code";
 import Menu from "../components/menu";
 import Head from "next/head";
 import ModalPopUp from "../components/modal";
+import Footer from "../components/footer";
 import Script from "next/dist/client/script";
 
 export default function Home() {
@@ -65,6 +66,7 @@ export default function Home() {
           ]}
         />
       </div>
+      <Footer />
       <Script src="scripts/componentScripts/modalScript.js"></Script>
     </>
   );

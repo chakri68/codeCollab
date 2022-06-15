@@ -25,6 +25,7 @@ svg {
   --text-gray: #999999;
   --font-family: "Fira Code", monospace;
   --error-text: red;
+  --code-font-size: small;
 }
 
 html,
@@ -277,6 +278,9 @@ div.full-screen-invisible {
 
 /* CodeMirror CSS */
 
+.CodeMirror {
+  font-size: var(--code-font-size);
+}
 .CodeMirror,
 .CodeMirror-gutters {
   transition: all 0.75s ease-in, height 0s, width 0s, border-right 0s !important;

@@ -33,7 +33,7 @@ export default function Menu({ items }) {
                 value="Fira Code, monospace"
                 style={{ fontFamily: "Fira Code, monospace" }}
               >
-                default
+                Default
               </option>
               <option value="monospace" style={{ fontFamily: "monospace" }}>
                 monospace
@@ -80,12 +80,23 @@ export default function Menu({ items }) {
             />
             <p className="modalSubHeading">Text Editor</p>
             <label
-              htmlFor="lintToggleBtn"
-              title="Toogle linting - showing errors"
+              htmlFor="code-font-size"
+              title="Font size in the code-editor"
             >
-              Toggle Lint
+              Font Size
             </label>
-            <input id="lintToggleBtn" type="checkbox" />
+            <select
+              name="code-font-size"
+              id="code-font-size"
+              defaultValue="normal"
+              title="Font size in the code-editor"
+            >
+              <option value="x-small">Extra small</option>
+              <option value="small">Small</option>
+              <option value="normal">Normal</option>
+              <option value="large">Large</option>
+              <option value="x-large">Extra Large</option>
+            </select>
             <label
               htmlFor="copyBehaviour"
               title="Select what happens when you select a new file"
@@ -111,6 +122,7 @@ export default function Menu({ items }) {
           grid: " 'linksArea . . . . toggleButtonsArea' ",
           justifyContent: "space-between",
           zIndex: "10",
+          alignContent: "center",
         }}
       >
         <div
@@ -123,6 +135,7 @@ export default function Menu({ items }) {
             paddingBottom: "15px",
             gridArea: "linksArea",
             cursor: "default",
+            alignContent: "center",
           }}
         >
           {items.map((obj) => (
@@ -136,6 +149,7 @@ export default function Menu({ items }) {
           style={{
             gridArea: "toggleButtonsArea",
             display: "grid",
+            alignContent: "center",
             gridAutoFlow: "column",
             placeItems: "baseline",
           }}

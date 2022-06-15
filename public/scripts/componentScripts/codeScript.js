@@ -332,6 +332,8 @@ function init() {
       }
     }
   });
+  // Font size
+  fontSize.addEventListener("change", handleFontSize);
   document.getElementById("codeDownloadBtn").addEventListener("click", () => {
     console.save(
       myCodeMirror[0].getDoc().getValue(),

@@ -54,6 +54,7 @@ function codeEditorinit(obj) {
       ],
       foldGutter: true,
       highlightLines: true,
+      keyMap: "sublime",
     })
   );
 }
@@ -68,6 +69,15 @@ function codeEditorinit(obj) {
 //   e.currentTarget.style.opacity = "1";
 // }
 
+function handleKeyMaps(e) {
+  if (e.target.value == "default") {
+    myCodeMirror[0].setOption("keyMap", e.target.value);
+    return;
+  }
+  import(`../keymap/${e.target.value}.js`).then(() => {
+    myCodeMirror[0].setOption("keyMap", e.target.value);
+  });
+}
 function fullScreen(box, hover, isFullScreen) {
   if (isFullScreen) {
     box.classList.add("full-screen-invisible");
@@ -347,6 +357,8 @@ function init() {
   });
   // Font size
   fontSize.addEventListener("change", handleFontSize);
+  // keyMaps
+  keyMap.addEventListener("change", handleKeyMaps);
   document.getElementById("codeDownloadBtn").addEventListener("click", () => {
     console.save(
       myCodeMirror[0].getDoc().getValue(),

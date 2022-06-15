@@ -8,7 +8,8 @@ export default function Codearea({ languages }) {
           className="titleBlock"
           style={{
             borderBottom: "2px solid var(--link-primary)",
-            paddingBottom: "10px",
+            paddingBottom: "1.5rem",
+            paddingTop: "1.5rem",
             display: "grid",
             grid: " 'pasteTitleArea languageArea themeArea' ",
           }}
@@ -18,7 +19,7 @@ export default function Codearea({ languages }) {
             name="pasteName"
             id="pasteName"
             placeholder="paste title"
-            style={{ gridArea: "pasteTitleArea" }}
+            style={{ gridArea: "pasteTitleArea", paddingLeft: "1.5rem" }}
           />
           <div className="language" style={{ gridArea: "languageArea" }}>
             <label htmlFor="language">language: </label>
@@ -46,7 +47,7 @@ export default function Codearea({ languages }) {
             </select>
           </div>
         </div>
-        <div id="text-editor" style={{ marginTop: "10px" }}>
+        <div id="text-editor">
           <form
             method="post"
             id="codeForm"
@@ -66,10 +67,14 @@ export default function Codearea({ languages }) {
       </div>
       <div
         id="codeBtnDiv"
+        className="box"
         style={{
           display: "grid",
           gridAutoFlow: "column",
           columnGap: "20px",
+          margin: "0 !important",
+          padding: "0 !important",
+          backgroundColor: "transparent !important",
         }}
       >
         <button

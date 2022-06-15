@@ -111,6 +111,31 @@ export default function Menu({ items }) {
               <option value="append">Append</option>
               <option value="replace">Replace</option>
             </select>
+            <label htmlFor="keyMap" title="Select the keyboard shortcut style">
+              Key Maps
+            </label>
+            <select
+              name="keyMap"
+              id="keyMap"
+              title="Select the keyboard shortcut style"
+            >
+              <option value="default">Default</option>
+              <option value="emacs">Emacs</option>
+              <option value="sublime">Sublime</option>
+              <option value="vim">Vim</option>
+            </select>
+            <label
+              htmlFor="lintToggleBtn"
+              title="Toogle linting - showing errors"
+            >
+              Toggle Lint
+            </label>
+            <input
+              id="lintToggleBtn"
+              title="Toogle linting - showing errors"
+              type="checkbox"
+            />
+            {/* <input type="range" name="code-font-size" id="code-font-size" /> */}
           </>
         }
       />

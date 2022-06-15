@@ -34,7 +34,6 @@ svg {
   --link-primary: #0cf07b;
   /* --link-hover: #fe2603; */
   /* END - NEW */
-  --bg-light: #222222;
   --title-size: xx-large;
   --text-gray: #999999;
   --font-family: "Fira Code", monospace;
@@ -295,6 +294,7 @@ div.full-screen-invisible {
 .CodeMirror {
   font-size: var(--code-font-size);
 }
+
 .CodeMirror,
 .CodeMirror-gutters {
   transition: all 0.75s ease-in, height 0s, width 0s, border-right 0s !important;

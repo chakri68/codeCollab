@@ -220,6 +220,22 @@ function handleKeyMaps(e) {
     myCodeMirror[0].setOption("keyMap", e.target.value);
   });
 }
+
+function handleFontSize(e) {
+  if (e.target.value != rs.getPropertyValue("--code-font-size")) {
+    if (
+      confirm(
+        `Are you sure you want to chnage the font size to ${e.target.value}?`
+      )
+    ) {
+      changeObj.fontSize = e.target.value;
+      root.style.setProperty("--code-font-size", e.target.value);
+    } else {
+      e.target.value = changeObj.fontSize;
+    }
+  }
+}
+
 function fullScreen(box, hover, isFullScreen) {
   if (isFullScreen) {
     box.classList.add("full-screen-invisible");
@@ -469,8 +485,6 @@ function init() {
     }
   });
   // JS for the primary color toggle
-  const root = document.querySelector(":root");
-  let rs = getComputedStyle(root);
   const color = document.getElementById("prmyColorBtn");
   color.addEventListener("change", () => {
     if (color.value != rs.getPropertyValue("--link-primary")) {

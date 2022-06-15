@@ -10,6 +10,7 @@ import("../mode/css/css.js");
 
 const lintLanguages = ["css", "javascript", "json", "yaml", "html"];
 var myCodeMirror = [];
+const toggleLint = document.getElementById("lintToggleBtn");
 const languageSelect = document.getElementById("language");
 const themeSelect = document.getElementById("theme");
 const pasteTitle = document.getElementById("pasteName");

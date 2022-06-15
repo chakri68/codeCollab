@@ -41,8 +41,8 @@ body {
 }
 
 body {
-  padding-top: 15px;
-  padding-bottom: 15px;
+  /* padding-top: 15px; */
+  padding-bottom: 10px;
 }
 
 a {
@@ -58,17 +58,19 @@ button {
   font-family: inherit !important;
 }
 
-.header {
+nav#header {
   min-height: 50px;
   background-color: inherit;
   display: grid;
+  padding: 0 1.2rem;
+  margin: 1.5rem 0;
 }
 
-.logo span img {
-  /* filter: invert(1);
-  mix-blend-mode: exclusion; */
-  fill: var(--text-gray);
-}
+/* .logo span img {
+  filter: invert(1);
+  mix-blend-mode: difference;
+  fill: var(--text-primary);
+} */
 
 .l {
   color: var(--link-primary);
@@ -108,6 +110,11 @@ button {
 
 .box {
   background-color: var(--bg-light) !important;
+  padding: 5px !important;
+}
+
+#Codearea {
+  padding: 0 !important;
 }
 
 input,

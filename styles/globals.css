@@ -36,7 +36,8 @@ body {
   margin: 0;
   background-color: #141414;
   color: var(--text-primary);
-  padding: 2px 10px;
+  padding: 5px 20px;
+  font-size: 92% !important;
 }
 
 body {
@@ -111,7 +112,7 @@ button {
 
 input,
 select {
-  font-size: large;
+  font-size: larger;
   caret-color: var(--text-primary);
   background-color: inherit;
   border: none;
@@ -393,6 +394,9 @@ div.full-screen-invisible {
 }
 
 @media screen and (max-width: 630px) {
+  html {
+    font-size: 85% !important;
+  }
   body {
     padding: 0;
   }

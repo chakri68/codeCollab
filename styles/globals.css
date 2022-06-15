@@ -402,8 +402,7 @@ div.full-screen-invisible {
   }
   #header {
     grid:
-      "logoImgArea logoTextArea . . ."
-      "donateArea . . . ."
+      "logoImgArea logoTextArea . . donateArea"
       "contentArea contentArea contentArea contentArea contentArea" !important;
   }
   .btn {
@@ -411,10 +410,10 @@ div.full-screen-invisible {
   }
   .titleBlock {
     row-gap: 15px;
+    justify-content: space-between;
     grid:
-      "pasteTitleArea"
-      "languageArea"
-      "themeArea" !important;
+      "pasteTitleArea ."
+      "languageArea themeArea" !important;
   }
   #codeBtnDiv {
     row-gap: 15px;

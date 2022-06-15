@@ -11,7 +11,21 @@ svg {
 
 :root {
   --text-primary: white;
-  --bg-dark: #141414;
+  --bg-rgbh1: 0;
+  --bg-rgbh2: 0;
+  --bg-rgbs1: 0%;
+  --bg-rgbs2: 0%;
+  --bg-rgbl1: 13.3%;
+  --bg-rgbl2: 7.8%;
+  --bg-a: 0%;
+  --bg-rgb1: var(--bg-rgbh1), var(--bg-rgbs1), var(--bg-rgbl1); /* Lighter color */
+  --bg-rgb2: var(--bg-rgbh1), var(--bg-rgbs2),
+    calc(var(--bg-rgbl2) - var(--bg-a)); /* Darker color */
+  /* --bg-dark: #141414; */
+  /* --bg-light: #222222; */
+  --bg-light: hsl(var(--bg-rgb1));
+  --bg-dark: hsl(var(--bg-rgb2));
+  /* --bg-dark: rgb(var(--bg-rgb2), var(--bg-a)); */
   /* OG */
   /* --link-primary: #ee720d; */
   --link-hover: #1eaedb;
@@ -35,7 +49,7 @@ body {
   /* font-family: "Ubuntu Mono", monospace; */
   font-family: var(--font-family) !important;
   margin: 0;
-  background-color: #141414;
+  background-color: var(--bg-dark);
   color: var(--text-primary);
   padding: 5px 20px;
   font-size: 92% !important;

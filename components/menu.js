@@ -69,6 +69,12 @@ export default function Menu({ items }) {
                 Major Mono Display
               </option>
             </select>
+            <label htmlFor="pageTheme">Page Theme</label>
+            <select name="pageTheme" id="pageTheme" defaultValue="default">
+              <option value="codeCollab">Default</option>
+              <option value="current">Current</option>
+              <option value="codeEditor">Follow code-editor</option>
+            </select>
             <label htmlFor="prmyColorBtn" title="Change the primary color">
               Primary Color
             </label>

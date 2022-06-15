@@ -17,12 +17,109 @@ import "../mode/css/css.js";
 
 // Global varaibles!!
 
+const lightThemes = ["cobalt", "base16-light", "eclipse", "mdn-like"];
+
+const pageThemeObj = {
+  codeCollab: {
+    primary: {
+      h: "0",
+      s: "0%",
+      l: "13.3%",
+    },
+    dark: {
+      h: "0",
+      s: "0%",
+      l: "7.8%",
+    },
+  },
+  monokai: {
+    primary: {
+      h: "70",
+      s: "8.1%",
+      l: "14.5%",
+    },
+  },
+  dracula: {
+    primary: {
+      h: "231",
+      s: "14.9%",
+      l: "18.4%",
+    },
+  },
+  zenburn: {
+    primary: {
+      h: "0",
+      s: "0%",
+      l: "24.7%",
+    },
+  },
+  "ayu-mirage": {
+    primary: {
+      h: "222",
+      s: "21.5%",
+      l: "15.5%",
+    },
+  },
+  blackboard: {
+    primary: {
+      h: "229",
+      s: "46.7%",
+      l: "8.8%",
+    },
+  },
+  cobalt: {
+    primary: {
+      h: "0",
+      s: "0%",
+      l: "100%",
+    },
+  },
+  "base16-light": {
+    primary: {
+      h: "0",
+      s: "0%",
+      l: "96.1%",
+    },
+  },
+  eclipse: {
+    primary: {
+      h: "0",
+      s: "0%",
+      l: "100%",
+    },
+  },
+  "mdn-like": {
+    primary: {
+      h: "0",
+      s: "0%",
+      l: "99.6%",
+    },
+  },
+  material: {
+    primary: {
+      h: "200",
+      s: "19.1%",
+      l: "18.4%",
+    },
+  },
+};
+
+let changeObj = {
+  color: "#0cf07b",
+  fontSize: "normal",
+  fontStyle: "Fira Code, monospace",
+  // keyMap: "default",
+};
+
 // let appendState = false;
 
 // End
 
 const lintLanguages = ["css", "javascript", "json", "yaml", "html"];
 var myCodeMirror = [];
+const root = document.querySelector(":root");
+let rs = getComputedStyle(root);
+const pageTheme = document.getElementById("pageTheme");
 const toggleLint = document.getElementById("lintToggleBtn");
 const languageSelect = document.getElementById("language");
 const themeSelect = document.getElementById("theme");
@@ -30,6 +127,8 @@ const pasteTitle = document.getElementById("pasteName");
 const textArea = document.getElementById("code");
 const errorPopUp = document.getElementById("errorPopUp");
 const cpyBehaviour = document.getElementById("copyBehaviour");
+const fontSize = document.getElementById("code-font-size");
+const keyMap = document.getElementById("keyMap");
 let optionObj = {
   autoCloseBrackets: true,
   lineNumbers: true,
@@ -68,6 +167,49 @@ function codeEditorinit(obj) {
 // function changeVisibilityOne(e) {
 //   e.currentTarget.style.opacity = "1";
 // }
+
+function setTheme(obj, theme) {
+  root.style.setProperty("--bg-rgbh1", obj[`${theme}`].primary.h);
+  root.style.setProperty("--bg-rgbs1", obj[`${theme}`].primary.s);
+  root.style.setProperty("--bg-rgbl1", obj[`${theme}`].primary.l);
+  if (obj[`${theme}`].hasOwnProperty("dark")) {
+    root.style.setProperty("--bg-rgbh2", obj[`${theme}`].dark.h);
+    root.style.setProperty("--bg-rgbs2", obj[`${theme}`].dark.s);
+    root.style.setProperty("--bg-rgbl2", obj[`${theme}`].dark.l);
+    root.style.setProperty("--bg-a", "0%");
+  } else {
+    root.style.setProperty("--bg-rgbh2", obj[`${theme}`].primary.h);
+    root.style.setProperty("--bg-rgbs2", obj[`${theme}`].primary.s);
+    root.style.setProperty("--bg-rgbl2", obj[`${theme}`].primary.l);
+    root.style.setProperty("--bg-a", "10%");
+  }
+  if (lightThemes.includes(theme))
+    root.style.setProperty("--text-primary", "black");
+  else {
+    root.style.setProperty("--text-primary", "white");
+  }
+}
+
+function currentTheme(e) {
+  setTheme(pageThemeObj, e.target.value);
+}
+
+function handlePageTheme(e) {
+  switch (e.target.value) {
+    case "codeEditor":
+      setTheme(pageThemeObj, themeSelect.value);
+      themeSelect.addEventListener("change", currentTheme);
+      break;
+    case "codeCollab":
+      setTheme(pageThemeObj, e.target.value);
+      themeSelect.removeEventListener("change", currentTheme);
+      break;
+    case "current":
+      setTheme(pageThemeObj, themeSelect.value);
+      themeSelect.removeEventListener("change", currentTheme);
+      break;
+  }
+}
 
 function handleKeyMaps(e) {
   if (e.target.value == "default") {
@@ -335,12 +477,14 @@ function init() {
       if (
         confirm(`Are you sure you want to change the color to ${color.value}?`)
       ) {
-        console.log("Changed");
+        changeObj.color = color.value;
         root.style.setProperty("--link-primary", color.value);
+      } else {
+        color.value = changeObj.color;
       }
     }
   });
-  // Font size setting
+  // Font family setting
   const fontStyle = document.getElementById("fontStyleBtn");
 
   fontStyle.addEventListener("change", () => {
@@ -350,8 +494,10 @@ function init() {
           `Are you sure you want to change the font style to ${fontStyle.value}?`
         )
       ) {
-        console.log("Changed");
+        changeObj.fontStyle = fontStyle.value;
         root.style.setProperty("--font-family", fontStyle.value);
+      } else {
+        fontStyle.value = changeObj.fontStyle;
       }
     }
   });
@@ -359,6 +505,9 @@ function init() {
   fontSize.addEventListener("change", handleFontSize);
   // keyMaps
   keyMap.addEventListener("change", handleKeyMaps);
+  // themeChange
+  pageTheme.addEventListener("change", handlePageTheme);
+
   document.getElementById("codeDownloadBtn").addEventListener("click", () => {
     console.save(
       myCodeMirror[0].getDoc().getValue(),

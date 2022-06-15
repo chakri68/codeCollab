@@ -1,5 +1,5 @@
-const logo = require("../public/logo.svg");
-import Image from "next/image";
+// const logo = require("../public/logo.svg");
+// import Image from "next/image";
 import Link from "next/link";
 
 export default function Header() {
@@ -11,11 +11,12 @@ export default function Header() {
         background: "inherit",
         alignItems: "center",
         grid: "'logoImgArea logoTextArea . . donateArea' 'contentArea contentArea contentArea contentArea contentArea'",
-        rowGap: "20px",
-        columnGap: "10px",
+        rowGap: "10px",
+        marginBottom: "1.5rem",
+        // columnGap: "10px",
         gridTemplateColumns: "80px auto auto auto 100px",
       }}
-      className="box"
+      // className="box"
       role="navigation"
       aria-label="main navigation"
     >
@@ -26,8 +27,9 @@ export default function Header() {
           position: "relative",
           width: "64px",
           height: "64px",
-          backgroundColor: "var(--link-primary)",
-          borderRadius: "50%",
+          // backgroundColor: "var(--link-primary)",
+          // borderRadius: "50%",
+          backgroundColor: "transparent",
         }}
       >
         {/* <Image

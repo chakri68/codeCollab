@@ -1,6 +1,19 @@
-import("../mode/xml/xml.js");
-import("../mode/javascript/javascript.js");
-import("../mode/css/css.js");
+import "../lib/codemirror.js";
+import "../addon/closeBrackets.js";
+import "../addon/matchBrackets.js";
+import "../addon/matchTags.js";
+import "../addon/fullScreen.js";
+import "../addon/xml-fold.js";
+import "../addon/fold/foldcode.js";
+import "../addon/fold/foldgutter.js";
+import "../addon/fold/allfolds.js";
+import "../addon/lint/lint.js";
+import "../addon/simple.js";
+import "../addon/closeTag.js";
+import "../keymap/sublime.js";
+import "../mode/xml/xml.js";
+import "../mode/javascript/javascript.js";
+import "../mode/css/css.js";
 
 // Global varaibles!!
 

@@ -8,9 +8,9 @@ export default function Codearea({ languages }) {
           className="titleBlock"
           style={{
             borderBottom: "2px solid var(--link-primary)",
-            paddingBottom: "1.5rem",
-            paddingTop: "1.5rem",
+            padding: "1.5rem",
             display: "grid",
+            alignContent: "center",
             grid: " 'pasteTitleArea languageArea themeArea' ",
           }}
         >
@@ -19,7 +19,7 @@ export default function Codearea({ languages }) {
             name="pasteName"
             id="pasteName"
             placeholder="paste title"
-            style={{ gridArea: "pasteTitleArea", paddingLeft: "1.5rem" }}
+            style={{ gridArea: "pasteTitleArea" }}
           />
           <div className="language" style={{ gridArea: "languageArea" }}>
             <label htmlFor="language">language: </label>
@@ -75,6 +75,7 @@ export default function Codearea({ languages }) {
           margin: "0 !important",
           padding: "0 !important",
           backgroundColor: "transparent !important",
+          boxShadow: "none",
         }}
       >
         <button
@@ -119,7 +120,7 @@ export default function Codearea({ languages }) {
           Run code using Jdoodle
         </button>
       </div>
-      <Script strategy="beforeInteractive" src="/scripts/lib/codemirror.js" />
+      {/* <Script strategy="beforeInteractive" src="/scripts/lib/codemirror.js" />
       <Script
         strategy="beforeInteractive"
         src="/scripts/addon/closeBrackets.js"
@@ -144,7 +145,7 @@ export default function Codearea({ languages }) {
         strategy="beforeInteractive"
         src="/scripts/addon/fold/allfolds.js"
       />
-      <Script strategy="beforeInteractive" src="/scripts/addon/lint/lint.js" />
+      <Script strategy="beforeInteractive" src="/scripts/addon/lint/lint.js" /> */}
       <Script
         strategy="beforeInteractive"
         src="https://unpkg.com/jshint@2.13.2/dist/jshint.js"
@@ -165,8 +166,8 @@ export default function Codearea({ languages }) {
         strategy="beforeInteractive"
         src="https://unpkg.com/js-yaml@4.1.0/dist/js-yaml.js"
       />
-      <Script strategy="beforeInteractive" src="/scripts/addon/simple.js" />
-      <Script src="/scripts/componentScripts/codeScript.js" />
+      {/* <Script strategy="beforeInteractive" src="/scripts/addon/simple.js" /> */}
+      <Script type="module" src="/scripts/componentScripts/codeScript.js" />
     </>
   );
 }

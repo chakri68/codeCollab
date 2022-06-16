@@ -18,6 +18,9 @@ svg {
   --bg-rgbl1: 13.3%;
   --bg-rgbl2: 7.8%;
   --bg-a: 0%;
+  --text-h: 149;
+  --text-s: 90%;
+  --text-l: 49%;
   --bg-rgb1: var(--bg-rgbh1), var(--bg-rgbs1), var(--bg-rgbl1); /* Lighter color */
   --bg-rgb2: var(--bg-rgbh1), var(--bg-rgbs2),
     calc(var(--bg-rgbl2) - var(--bg-a)); /* Darker color */
@@ -28,10 +31,24 @@ svg {
   /* --bg-dark: rgb(var(--bg-rgb2), var(--bg-a)); */
   /* OG */
   /* --link-primary: #ee720d; */
-  --link-hover: #1eaedb;
+  /* --link-hover: #1eaedb; */
   /* END - OG */
   /* NEW */
-  --link-primary: #0cf07b;
+  /* --link-primary: #0cf07b; */
+  --link-primary: hsl(var(--text-h), var(--text-s), var(--text-l));
+  /* calc(var(--bg-rgbs1) var(--operator-light) 70%), */
+  /* calc(var(--bg-rgbl1) var(--operator-light) 47%) */
+  --link-hover: hsl(
+    var(--text-h),
+    calc(var(--text-s) / 1.5),
+    calc(var(--text-l) / 1.5)
+  );
+  /* New */
+  /* calc(var(--text-s) var(--op-s) var(--op-value-s)),
+    calc(var(--text-l) var(--op-l) var(--op-value-l)) */
+  /* Old */
+  /* calc(var(--bg-rgbs1) var(--operator-dark) 50%), */
+  /* calc(var(--bg-rgbl1) var(--operator-dark) 30%) */
   /* --link-hover: #fe2603; */
   /* END - NEW */
   --title-size: xx-large;

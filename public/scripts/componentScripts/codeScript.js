@@ -190,10 +190,18 @@ function setTheme(obj, theme) {
     root.style.setProperty("--bg-rgbl2", obj[`${theme}`].primary.l);
     root.style.setProperty("--bg-a", "10%");
   }
-  if (lightThemes.includes(theme))
+  if (lightThemes.includes(theme)) {
     root.style.setProperty("--text-primary", "black");
-  else {
-    root.style.setProperty("--text-primary", "white");
+    root.style.setProperty("--text-h", "var(--bg-rgbh1)");
+    root.style.setProperty("--text-s", "calc(var(--bg-rgbs1) / 4.5)");
+    root.style.setProperty("--text-l", "calc(var(--bg-rgbl1) / 25)");
+  } else {
+    {
+      root.style.setProperty("--text-primary", "white");
+      root.style.setProperty("--text-h", "var(--bg-rgbh1)");
+      root.style.setProperty("--text-s", "calc(var(--bg-rgbs1) * 4)");
+      root.style.setProperty("--text-l", "calc(var(--bg-rgbl1) * 4)");
+    }
   }
 }
 

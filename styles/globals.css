@@ -314,6 +314,10 @@ div.full-screen-invisible {
 
 /* CodeMirror CSS */
 
+.CodeMirror-lines {
+  padding-bottom: 10em !important;
+}
+
 .CodeMirror {
   font-size: var(--code-font-size);
 }
@@ -321,6 +325,10 @@ div.full-screen-invisible {
 .CodeMirror,
 .CodeMirror-gutters {
   transition: all 0.75s ease-in, height 0s, width 0s, border-right 0s !important;
+}
+
+.cm-s-mdn-like .CodeMirror-scroll .CodeMirror-sizer {
+  margin-left: 62px !important;
 }
 
 .CodeMirror-fullscreen {

@@ -131,6 +131,11 @@ export default function Menu({ items }) {
               <option value="sublime">Sublime</option>
               <option value="vim">Vim</option>
             </select>
+            <label htmlFor="tabSize">Select Indentation</label>
+            <select name="tabSize" id="tabSize">
+              <option value="2">2</option>
+              <option value="4">4</option>
+            </select>
             <label
               htmlFor="lintToggleBtn"
               title="Toogle linting - showing errors"

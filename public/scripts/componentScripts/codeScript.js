@@ -129,6 +129,7 @@ const errorPopUp = document.getElementById("errorPopUp");
 const cpyBehaviour = document.getElementById("copyBehaviour");
 const fontSize = document.getElementById("code-font-size");
 const keyMap = document.getElementById("keyMap");
+const tabSize = document.getElementById("tabSize");
 let optionObj = {
   autoCloseBrackets: true,
   lineNumbers: true,
@@ -153,7 +154,8 @@ function codeEditorinit(obj) {
       ],
       foldGutter: true,
       highlightLines: true,
-      keyMap: "sublime",
+      indentUnit: 2,
+      cursorScrollMargin: 20,
     })
   );
 }
@@ -167,6 +169,11 @@ function codeEditorinit(obj) {
 // function changeVisibilityOne(e) {
 //   e.currentTarget.style.opacity = "1";
 // }
+
+function handleTabSize(e) {
+  myCodeMirror[0].setOption("indentUnit", parseInt(e.target.value));
+  myCodeMirror[0].setOption("tabSize", parseInt(e.target.value));
+}
 
 function setTheme(obj, theme) {
   root.style.setProperty("--bg-rgbh1", obj[`${theme}`].primary.h);
@@ -521,6 +528,8 @@ function init() {
   keyMap.addEventListener("change", handleKeyMaps);
   // themeChange
   pageTheme.addEventListener("change", handlePageTheme);
+  // tabSize
+  tabSize.addEventListener("change", handleTabSize);
 
   document.getElementById("codeDownloadBtn").addEventListener("click", () => {
     console.save(

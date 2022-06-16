@@ -79,7 +79,7 @@ export default function Codearea({ languages }) {
         }}
       >
         <button
-          className="button btn is-size-6 has-text-weight-medium"
+          className="button btn is-size-6 has-text-weight-medium hvrBtn"
           style={{ height: "3rem", width: "100%" }}
           id="codeDownloadBtn"
           title="Download the code to your device"
@@ -101,7 +101,7 @@ export default function Codearea({ languages }) {
           type="submit"
           id="compilerBtn"
           form="codeForm"
-          className="button btn is-size-6 has-text-weight-medium"
+          className="button btn is-size-6 has-text-weight-medium hvrBtn"
           style={{
             height: "3rem",
             width: "100%",

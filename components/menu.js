@@ -124,6 +124,7 @@ export default function Menu({ items }) {
               name="keyMap"
               id="keyMap"
               title="Select the keyboard shortcut style"
+              defaultValue="default"
             >
               <option value="default">Default</option>
               <option value="emacs">Emacs</option>

@@ -493,7 +493,7 @@ div.full-screen-invisible {
     font-size: 85% !important;
   }
   body {
-    padding: 0;
+    padding: 0px 2% 10px 2%;
   }
   #header {
     grid:

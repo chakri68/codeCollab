@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Dropdown from "./dropdown";
 import ModalPopUp from "./modal";
 
 export default function Menu({ items }) {
@@ -9,8 +10,94 @@ export default function Menu({ items }) {
         titleJSX="Settings"
         options={
           <>
-            <p
-              className="modalSubHeading"
+            <Dropdown
+              className="is-active"
+              title="Appearance"
+              bodyJSX={
+                <>
+                  <label
+                    htmlFor="fontStyleBtn"
+                    title="Stylize the font in the website"
+                  >
+                    Font Style
+                  </label>
+                  <select id="fontStyleBtn">
+                    <option
+                      value="Fira Code, monospace"
+                      style={{ fontFamily: "Fira Code, monospace" }}
+                    >
+                      Default
+                    </option>
+                    <option
+                      value="monospace"
+                      style={{ fontFamily: "monospace" }}
+                    >
+                      monospace
+                    </option>
+                    <option
+                      value="Ubuntu Mono, monospace"
+                      style={{ fontFamily: "Ubuntu Mono, monospace" }}
+                    >
+                      ubuntu mono
+                    </option>
+                    <option
+                      value="IBM Plex Mono, monospace"
+                      style={{ fontFamily: "IBM Plex Mono, monospace" }}
+                    >
+                      IBM Plex Mono
+                    </option>
+                    <option
+                      value="Nova Mono, monospace"
+                      style={{ fontFamily: "Nova Mono, monospace" }}
+                    >
+                      Nova Mono
+                    </option>
+                    <option
+                      value="Syne Mono, monospace"
+                      style={{ fontFamily: "Syne Mono, monospace" }}
+                    >
+                      Syne Mono
+                    </option>
+                    <option
+                      value="Major Mono Display, monospace"
+                      style={{ fontFamily: "Major Mono Display, monospace" }}
+                    >
+                      Major Mono Display
+                    </option>
+                  </select>
+                  <label htmlFor="pageTheme">Page Theme</label>
+                  <select
+                    name="pageTheme"
+                    id="pageTheme"
+                    defaultValue="default"
+                  >
+                    <option value="codeCollab">Default</option>
+                    <option value="codeEditor">Follow code-editor</option>
+                  </select>
+                  <label htmlFor="customToggle">Override Theme Color</label>
+                  <input
+                    type="checkbox"
+                    name="customToggle"
+                    id="customToggle"
+                    defaultChecked={false}
+                  />
+                  <label
+                    htmlFor="prmyColorBtn"
+                    title="Change the primary color"
+                  >
+                    Primary Color
+                  </label>
+                  <input
+                    id="prmyColorBtn"
+                    type="color"
+                    defaultValue="#0cf07b"
+                    title="Primary color"
+                  />
+                </>
+              }
+            />
+            {/*<p
+              className="modalSubHeading .dotted-border"
               // style={{
               //   color: "var(--text-gray)",
               //   gridColumnStart: "1",
@@ -21,8 +108,8 @@ export default function Menu({ items }) {
               // }}
             >
               Appearance
-            </p>
-            <label
+            </p> */
+            /* <label
               htmlFor="fontStyleBtn"
               title="Stylize the font in the website"
             >
@@ -72,9 +159,15 @@ export default function Menu({ items }) {
             <label htmlFor="pageTheme">Page Theme</label>
             <select name="pageTheme" id="pageTheme" defaultValue="default">
               <option value="codeCollab">Default</option>
-              <option value="current">Current</option>
               <option value="codeEditor">Follow code-editor</option>
             </select>
+            <label htmlFor="customToggle">Override Theme Color</label>
+            <input
+              type="checkbox"
+              name="customToggle"
+              id="customToggle"
+              defaultChecked={false}
+            />
             <label htmlFor="prmyColorBtn" title="Change the primary color">
               Primary Color
             </label>
@@ -83,9 +176,83 @@ export default function Menu({ items }) {
               type="color"
               defaultValue="#0cf07b"
               title="Primary color"
+            />*/}
+            <Dropdown
+              className="is-active"
+              title="Text Editor"
+              bodyJSX={
+                <>
+                  <label
+                    htmlFor="code-font-size"
+                    title="Font size in the code-editor"
+                  >
+                    Font Size
+                  </label>
+                  <select
+                    name="code-font-size"
+                    id="code-font-size"
+                    defaultValue="normal"
+                    title="Font size in the code-editor"
+                  >
+                    <option value="x-small">Extra small</option>
+                    <option value="small">Small</option>
+                    <option value="normal">Normal</option>
+                    <option value="large">Large</option>
+                    <option value="x-large">Extra Large</option>
+                  </select>
+                  <label
+                    htmlFor="copyBehaviour"
+                    title="Select what happens when you select a new file"
+                  >
+                    Copy Behaviour
+                  </label>
+                  <select
+                    name="copyBehaviour"
+                    id="copyBehaviour"
+                    title="Select what happens when you select a new file"
+                  >
+                    <option value="append">Append</option>
+                    <option value="replace">Replace</option>
+                  </select>
+                  <label
+                    htmlFor="keyMap"
+                    title="Select the keyboard shortcut style"
+                  >
+                    Key Maps
+                  </label>
+                  <select
+                    name="keyMap"
+                    id="keyMap"
+                    title="Select the keyboard shortcut style"
+                    defaultValue="default"
+                  >
+                    <option value="default">Default</option>
+                    <option value="emacs">Emacs</option>
+                    <option value="sublime">Sublime</option>
+                    <option value="vim">Vim</option>
+                  </select>
+                  <label htmlFor="tabSize">Select Indentation</label>
+                  <select name="tabSize" id="tabSize">
+                    <option value="2">2</option>
+                    <option value="4">4</option>
+                  </select>
+                  <label
+                    htmlFor="lintToggleBtn"
+                    title="Toogle linting - showing errors"
+                  >
+                    Toggle Lint
+                  </label>
+                  <input
+                    id="lintToggleBtn"
+                    title="Toogle linting - showing errors"
+                    type="checkbox"
+                  />
+                  {/* <input type="range" name="code-font-size" id="code-font-size" /> */}
+                </>
+              }
             />
-            <p className="modalSubHeading">Text Editor</p>
-            <label
+            {/* <p className="modalSubHeading dotted-border">Text Editor</p> */}
+            {/* <label
               htmlFor="code-font-size"
               title="Font size in the code-editor"
             >
@@ -146,7 +313,7 @@ export default function Menu({ items }) {
               id="lintToggleBtn"
               title="Toogle linting - showing errors"
               type="checkbox"
-            />
+            /> */}
             {/* <input type="range" name="code-font-size" id="code-font-size" /> */}
           </>
         }

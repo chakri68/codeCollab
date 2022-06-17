@@ -414,6 +414,45 @@ div.full-screen-invisible {
 
 /* END Modal CSS */
 
+/* Dropdown CSS */
+
+.dropdown-trigger.is-active + .dropdown-menu {
+  display: grid;
+  /* visibility: visible; */
+  /* position: static; */
+  /* unshrink, then fade in */
+  transform: translateY(0%);
+  opacity: 1;
+  transition: font-size 0.25s, margin 0.25s, padding 0.25s, opacity 0.5s 0.25s,
+    transform 0.5s;
+}
+
+.dropdown label {
+  color: var(--text-primary);
+}
+
+.dropdown * {
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
+}
+.dropdown {
+  display: block;
+}
+
+.dropdown-menu {
+  transition: opacity 0.25s, font-size 0.5s 0.25s, margin 0.5s 0.25s,
+    padding 0.5s 0.25s, transform 0.5s;
+  transform: translateY(-100%);
+  opacity: 0;
+  display: none;
+  /* visibility: hidden; */
+  /* fade out, then shrink */
+  /* position: absolute; */
+}
+
+/* End */
+
 /* Custom scroll bar in Chromium browsers */
 /* custom scrollbar */
 

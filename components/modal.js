@@ -7,7 +7,16 @@ export default function ModalPopUp({
   return (
     <div className="modal" id={id}>
       <div className="modal-background" />
-      <div className="modal-card" style={{ background: "var(--bg-dark)" }}>
+      <div
+        className="modal-card"
+        style={{
+          background: "var(--bg-light)",
+          height: "60%",
+          paddingBottom: "10px",
+          borderRadius: "10px",
+          maxWidth: "min(500px, calc(100% - 40px))",
+        }}
+      >
         <header className="modal-card-head" style={{ borderColor: prColor }}>
           <p className="modal-card-title" style={{ color: prColor }}>
             {titleJSX}
@@ -17,15 +26,25 @@ export default function ModalPopUp({
         <section
           className="modal-card-body"
           style={{
-            display: "grid",
-            gridTemplateColumns: "auto 100px",
-            justifyContent: "space-around",
-            justifyItems: "stretch",
-            alignItems: "center",
-            rowGap: "10px",
+            overflow: "auto",
           }}
         >
-          {options}
+          <section
+            className="settingsList"
+            style={{
+              display: "grid",
+              gridTemplateColumns: "auto 100px",
+              justifyContent: "space-between",
+              justifyItems: "stretch",
+              flexDirection: "column",
+              alignItems: "center",
+              rowGap: "10px",
+              height: "fit-content",
+              padding: "0px 45px 20px 45px",
+            }}
+          >
+            {options}
+          </section>
         </section>
         {/* <footer className="modal-card-foot">
           <button className="btn button">Save changes</button>

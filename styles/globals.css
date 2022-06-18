@@ -480,7 +480,20 @@ div.full-screen-invisible {
 
 /* Transitions */
 
-.height-transitions {
+.modal.pop-down {
+  justify-content: flex-start;
+  transition: all 0.75s;
+}
+
+.modal.pop-down .modal-card {
+  opacity: 0;
+  transform: translateY(-400%);
+  transition: all 0.5s;
+}
+
+.modal.pop-down.is-active .modal-card {
+  opacity: 1;
+  transform: translateY(50%);
 }
 
 body,

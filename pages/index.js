@@ -33,6 +33,16 @@ export default function Home() {
           ]}
         />
         <ModalPopUp
+          id="customModal"
+          titleJSX="Custom"
+          className="pop-down"
+          options={
+            <>
+              <p>Custom</p>
+            </>
+          }
+        />
+        <ModalPopUp
           id="errorPopUp"
           titleJSX="Error"
           prColor="var(--error-text)"

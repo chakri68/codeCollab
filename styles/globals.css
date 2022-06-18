@@ -286,10 +286,13 @@ div.full-screen-invisible {
 }
 
 .svgButton {
+  display: flex;
+  justify-content: center;
   transform: scale(0.6);
 }
 
 .svgButton svg {
+  display: inline-block;
   fill: var(--text-gray);
 }
 
@@ -302,7 +305,11 @@ div.full-screen-invisible {
   fill: var(--link-primary);
 }
 
-#wordWrapToggle + svg,
+#fullScreenToggle + svg {
+  transform: scale(1.1);
+  position: relative;
+  top: 2px;
+}
 #selectFile + svg {
   transform: scale(0.85);
 }

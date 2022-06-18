@@ -10,6 +10,7 @@ export default function Menu({ items }) {
       <ModalPopUp
         id="settingsModal"
         titleJSX="Settings"
+        settings={true}
         options={
           <>
             <Dropdown

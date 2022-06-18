@@ -483,6 +483,31 @@ div.full-screen-invisible {
   border: 4px solid transparent;
 }
 
+/* CustomModal Stylings - progressbar */
+
+/* #customModal progress[value] {
+  background-color: var(--bg-dark);
+  border: none; Remove border from Firefox
+  margin-top: 15px;
+  color: var(--link-primary);
+} */
+#customModal .progress {
+  margin-top: 15px;
+}
+#customModal .progress::-webkit-progress-value {
+  background-color: var(--link-primary) !important;
+}
+#customModal .progress::-moz-progress-bar {
+  background-color: var(--link-primary) !important;
+}
+
+#customModal .progress::-ms-fill {
+  background-color: var(--link-primary) !important;
+  border: none;
+}
+
+/* END */
+
 /* Transitions */
 
 .appear {

@@ -2,6 +2,8 @@ import Link from "next/link";
 import Dropdown from "./dropdown";
 import ModalPopUp from "./modal";
 
+// Giving default values is important!
+
 export default function Menu({ items }) {
   return (
     <>
@@ -21,7 +23,7 @@ export default function Menu({ items }) {
                   >
                     Font Style
                   </label>
-                  <select id="fontStyleBtn">
+                  <select id="fontStyleBtn" defaultValue="Fira Code, monospace">
                     <option
                       value="Fira Code, monospace"
                       style={{ fontFamily: "Fira Code, monospace" }}
@@ -69,7 +71,7 @@ export default function Menu({ items }) {
                   <select
                     name="pageTheme"
                     id="pageTheme"
-                    defaultValue="default"
+                    defaultValue="codeCollab"
                   >
                     <option value="codeCollab">Default</option>
                     <option value="codeEditor">Follow code-editor</option>
@@ -210,6 +212,7 @@ export default function Menu({ items }) {
                     name="copyBehaviour"
                     id="copyBehaviour"
                     title="Select what happens when you select a new file"
+                    defaultValue="append"
                   >
                     <option value="append">Append</option>
                     <option value="replace">Replace</option>
@@ -232,7 +235,7 @@ export default function Menu({ items }) {
                     <option value="vim">Vim</option>
                   </select>
                   <label htmlFor="tabSize">Select Indentation</label>
-                  <select name="tabSize" id="tabSize">
+                  <select name="tabSize" id="tabSize" defaultValue="2">
                     <option value="2">2</option>
                     <option value="4">4</option>
                   </select>

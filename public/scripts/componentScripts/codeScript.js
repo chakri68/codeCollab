@@ -144,7 +144,7 @@ function codeEditorinit(obj) {
     CodeMirror.fromTextArea(obj, {
       autoCloseBrackets: true,
       lineNumbers: true,
-      theme: "monokai",
+      theme: themeSelect.value,
       matchBrackets: true,
       lineWrapping: true,
       autoCloseTags: true,
@@ -156,8 +156,9 @@ function codeEditorinit(obj) {
       ],
       foldGutter: true,
       highlightLines: true,
-      indentUnit: 2,
+      indentUnit: parseInt(tabSize.value),
       cursorScrollMargin: 20,
+      mode: languageSelect.value,
     })
   );
 }

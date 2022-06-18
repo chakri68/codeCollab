@@ -1,5 +1,7 @@
 import Script from "next/dist/client/script";
 
+// Should have default values!
+
 export default function Codearea({ languages }) {
   return (
     <>
@@ -19,11 +21,12 @@ export default function Codearea({ languages }) {
             name="pasteName"
             id="pasteName"
             placeholder="paste title"
+            defaultValue="untitled"
             style={{ gridArea: "pasteTitleArea" }}
           />
           <div className="language" style={{ gridArea: "languageArea" }}>
             <label htmlFor="language">language: </label>
-            <select name="language" id="language">
+            <select name="language" id="language" defaultValue="text">
               {languages.map((obj) => (
                 <option key={obj.id} value={obj.value}>
                   {obj.name}
@@ -33,7 +36,7 @@ export default function Codearea({ languages }) {
           </div>
           <div className="theme" style={{ gridArea: "themeArea" }}>
             <label htmlFor="theme">theme: </label>
-            <select name="theme" id="theme">
+            <select name="theme" id="theme" defaultValue="monokai">
               <option value="monokai">Monokai</option>
               <option value="dracula">Dracula</option>
               <option value="zenburn">Zenburn</option>

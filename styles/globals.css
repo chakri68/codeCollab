@@ -353,13 +353,18 @@ div.full-screen-invisible {
   display: flex !important;
   visibility: hidden;
   opacity: 0;
-  transition: all 0.25s ease-out; /* Closing the modal */
+}
+
+.modal > * {
+  pointer-events: none !important;
+}
+.modal.is-active > * {
+  pointer-events: auto !important;
 }
 
 .modal.is-active {
   visibility: visible;
   opacity: 1;
-  transition: all 0.25s ease-in; /* Opening the modal */
 }
 
 .modal-background {
@@ -479,6 +484,10 @@ div.full-screen-invisible {
 }
 
 /* Transitions */
+
+.appear {
+  transition: all 0.25s ease-in; /* Opening the modal */
+}
 
 .modal.pop-down {
   justify-content: flex-start;

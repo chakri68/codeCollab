@@ -412,10 +412,8 @@ div.full-screen-invisible {
 /* Dropdown CSS */
 
 .dropdown-trigger.is-active + .dropdown-menu {
-  display: grid;
-  /* visibility: visible; */
-  /* position: static; */
-  /* unshrink, then fade in */
+  height: auto;
+  visibility: visible;
   transform: translateY(0%);
   opacity: 1;
   transition: font-size 0.25s, margin 0.25s, padding 0.25s, opacity 0.5s 0.25s,
@@ -440,10 +438,8 @@ div.full-screen-invisible {
     padding 0.5s 0.25s, transform 0.5s;
   transform: translateY(-100%);
   opacity: 0;
-  display: none;
-  /* visibility: hidden; */
-  /* fade out, then shrink */
-  /* position: absolute; */
+  visibility: hidden;
+  height: 0;
 }
 
 /* End */

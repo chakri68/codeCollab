@@ -174,6 +174,10 @@ function codeEditorinit(obj) {
   );
 }
 
+export function updateCode(newCode) {
+  myCodeMirror[0].setOption("value", newCode);
+}
+
 function handlePreviousSession() {
   if (localStorage.length != 0) {
     if (confirm("Restore the previous session?")) {
@@ -323,10 +327,12 @@ function HSLToHex(hsl) {
 }
 const modalTitle = document.querySelector("#customModal .modalTitle");
 const modalBody = document.querySelector("#customModal .modalBody");
+const modalBorder = document.querySelector("#customModal .modalBorder");
 
 function openCustomModal(title, bodyJSX, color = null) {
-  modalTitle.innerHTML = title;
+  modalTitle.textContent = title;
   modalBody.innerHTML = bodyJSX;
+  modalBorder.style.borderColor = color;
   if (color) modalTitle.style.color = color;
   openModal(customModal);
 }
@@ -661,7 +667,6 @@ function readFile(file) {
 
 function flagRead(files) {
   if (files.length == 0) return;
-  console.log(files);
   const fileList = files;
   const file = fileList[0];
   // let type = "file.name.py";
@@ -672,7 +677,12 @@ function flagRead(files) {
   if (type) {
     type = getKeyByValue(extensionsObj, type);
     if (type) languageSelect.value = type;
-    else return;
+    else {
+      console.log(file.type);
+      if (["image/jpeg", "image/png", "image/svg+xml"].includes(file.type))
+        return 1;
+      return;
+    }
   } else return;
   if (title) pasteTitle.value = title;
   readFile(file);

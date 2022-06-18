@@ -151,6 +151,10 @@ export default function Codearea({ languages }) {
       <Script strategy="beforeInteractive" src="/scripts/addon/lint/lint.js" /> */}
       <Script
         strategy="beforeInteractive"
+        src="https://unpkg.com/tesseract.js@v2.1.0/dist/tesseract.min.js"
+      />
+      <Script
+        strategy="beforeInteractive"
         src="https://unpkg.com/jshint@2.13.2/dist/jshint.js"
       />
       <Script
@@ -171,6 +175,7 @@ export default function Codearea({ languages }) {
       />
       {/* <Script strategy="beforeInteractive" src="/scripts/addon/simple.js" /> */}
       <Script type="module" src="/scripts/componentScripts/codeScript.js" />
+      <Script type="module" src="/scripts/componentScripts/ocr.js" />
     </>
   );
 }

@@ -16,10 +16,12 @@
     "js-yaml": "^4.1.0",
     "jshint": "^2.13.4",
     "jsonlint": "^1.6.3",
+    "lang-detector": "^1.0.6",
     "next": "12.1.6",
     "react": "18.1.0",
     "react-dom": "18.1.0",
-    "sass": "^1.51.0"
+    "sass": "^1.51.0",
+    "tesseract.js": "^2.0.0-beta.2"
   },
   "devDependencies": {
     "@types/codemirror": "^5.60.5",

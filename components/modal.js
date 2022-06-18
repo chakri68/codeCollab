@@ -19,7 +19,10 @@ export default function ModalPopUp({
           maxWidth: "min(500px, calc(100% - 40px))",
         }}
       >
-        <header className="modal-card-head" style={{ borderColor: prColor }}>
+        <header
+          className="modal-card-head modalBorder"
+          style={{ borderColor: prColor }}
+        >
           <p className="modal-card-title modalTitle" style={{ color: prColor }}>
             {titleJSX}
           </p>

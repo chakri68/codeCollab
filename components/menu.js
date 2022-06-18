@@ -251,6 +251,15 @@ export default function Menu({ items }) {
                     title="Toogle linting - showing errors"
                     type="checkbox"
                   />
+                  <label htmlFor="wordWrapToggle" title="Toggle word-wrap">
+                    Word Wrap
+                  </label>
+                  <input
+                    type="checkbox"
+                    name="wordWrap"
+                    id="wordWrapToggle"
+                    defaultChecked={true}
+                  />
                   {/* <input type="range" name="code-font-size" id="code-font-size" /> */}
                 </>
               }
@@ -379,18 +388,18 @@ export default function Menu({ items }) {
           </label>
           <label
             className="svgButton hvrBtn"
-            htmlFor="wordWrapToggle"
-            title="Toggle word-wrap"
+            htmlFor="saveBtn"
+            title="Save code"
+            style={{ transform: "scale(0.5, 0.59)" }}
           >
             <input
-              type="checkbox"
-              name="wordWrap"
-              id="wordWrapToggle"
+              type="button"
+              name="saveBtn"
+              id="saveBtn"
               style={{ display: "none" }}
-              defaultChecked
             />
             <svg xmlns="http://www.w3.org/2000/svg" height="48" width="48">
-              <path d="M34.45 25.15 32.35 23.05 38.3 17.1H5.85V14.1H38.3L32.3 8.1L34.4 6L44 15.6ZM13.55 42 4 32.45 13.6 22.85 15.7 24.95 9.7 30.95H42.15V33.95H9.7L15.65 39.9Z" />
+              <path d="M42 13.85V39Q42 40.2 41.1 41.1Q40.2 42 39 42H9Q7.8 42 6.9 41.1Q6 40.2 6 39V9Q6 7.8 6.9 6.9Q7.8 6 9 6H34.15ZM39 15.2 32.8 9H9Q9 9 9 9Q9 9 9 9V39Q9 39 9 39Q9 39 9 39H39Q39 39 39 39Q39 39 39 39ZM24 35.75Q26.15 35.75 27.675 34.225Q29.2 32.7 29.2 30.55Q29.2 28.4 27.675 26.875Q26.15 25.35 24 25.35Q21.85 25.35 20.325 26.875Q18.8 28.4 18.8 30.55Q18.8 32.7 20.325 34.225Q21.85 35.75 24 35.75ZM11.65 18.8H29.55V11.65H11.65ZM9 15.2V39Q9 39 9 39Q9 39 9 39Q9 39 9 39Q9 39 9 39V9Q9 9 9 9Q9 9 9 9Z" />
             </svg>
           </label>
           <label

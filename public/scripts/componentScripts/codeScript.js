@@ -17,6 +17,15 @@ import "../mode/css/css.js";
 
 // Global varaibles!!
 
+const popDownTime = 1500;
+
+const Local = {
+  code: "The code file",
+  language: "langauge",
+  title: "paste title",
+  pgTheme: "The whole page theme",
+};
+
 const lightThemes = ["cobalt", "base16-light", "eclipse", "mdn-like"];
 
 const pageThemeObj = {
@@ -132,6 +141,8 @@ const keyMap = document.getElementById("keyMap");
 const tabSize = document.getElementById("tabSize");
 const color = document.getElementById("prmyColorBtn");
 const customToggle = document.getElementById("customToggle");
+const saveBtn = document.getElementById("saveBtn");
+const customModal = document.getElementById("customModal");
 let optionObj = {
   autoCloseBrackets: true,
   lineNumbers: true,
@@ -161,6 +172,35 @@ function codeEditorinit(obj) {
       mode: languageSelect.value,
     })
   );
+}
+
+function handlePreviousSession() {
+  if (localStorage.length != 0) {
+    if (confirm("Restore the previous session?")) {
+      Restore({
+        language: function (res) {
+          languageSelect.value = res;
+          languageSelect.dispatchEvent(new Event("change")); // Because we need to import some js files for certain languages
+        },
+        theme: function (res) {
+          themeSelect.value = res;
+          themeSelect.dispatchEvent(new Event("change"));
+        },
+        title: function (res) {
+          pasteTitle.value = res;
+        },
+        code: function (res) {
+          myCodeMirror[0].setOption("value", res);
+        },
+        pgTheme: function (res) {
+          pageTheme.value = res;
+          pageTheme.dispatchEvent(new Event("change"));
+        },
+      });
+    } else {
+      localStorage.clear();
+    }
+  }
 }
 
 // Make fullscreen
@@ -280,6 +320,61 @@ function HSLToHex(hsl) {
   if (b.length == 1) b = "0" + b;
 
   return "#" + r + g + b;
+}
+const modalTitle = document.querySelector("#customModal .modalTitle");
+const modalBody = document.querySelector("#customModal .modalBody");
+
+function openCustomModal(title, bodyJSX, color = null) {
+  modalTitle.innerHTML = title;
+  modalBody.innerHTML = bodyJSX;
+  if (color) modalTitle.style.color = color;
+  openModal(customModal);
+}
+
+function Save(obj) {
+  let flag = false;
+  for (let i in obj) {
+    try {
+      localStorage.setItem(i, obj[i]);
+    } catch (error) {
+      flag = true;
+      console.log(error);
+    }
+  }
+  if (flag) openCustomModal("Not Saved", "<p>Saving failed...</p>", "red");
+  else openCustomModal("Saved", "<p>Saved succesfully!</p>", "green");
+  setTimeout(() => closeModal(customModal), popDownTime);
+}
+
+function Restore(obj) {
+  console.log(languageSelect.value);
+  let flag = false;
+  for (let i in obj) {
+    try {
+      if (localStorage.hasOwnProperty(i)) obj[i](localStorage.getItem(i));
+    } catch (error) {
+      flag = true;
+      console.log(error);
+    }
+  }
+  if (flag)
+    openCustomModal(
+      "Restoration failed",
+      "<p>The code couldn't be restored properly...</p>",
+      "red"
+    );
+  else openCustomModal("Restored", "<p>Restored succesfully!</p>", "green");
+  setTimeout(() => closeModal(customModal), popDownTime);
+}
+
+function handleSave() {
+  Save({
+    code: myCodeMirror[0].getDoc().getValue(),
+    language: languageSelect.value,
+    theme: themeSelect.value,
+    title: pasteTitle.value,
+    pgTheme: pageTheme.value,
+  });
 }
 
 function handleTabSize(e) {
@@ -685,6 +780,8 @@ function init() {
   pageTheme.addEventListener("change", handlePageTheme);
   // tabSize
   tabSize.addEventListener("change", handleTabSize);
+  // Handling save btn
+  saveBtn.addEventListener("click", handleSave);
 
   document.getElementById("codeDownloadBtn").addEventListener("click", () => {
     console.save(
@@ -778,3 +875,4 @@ function init() {
 
 init();
 makeDropZone(document.getElementById("text-editor"));
+handlePreviousSession();

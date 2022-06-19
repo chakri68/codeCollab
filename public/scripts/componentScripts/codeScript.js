@@ -633,7 +633,9 @@ function handleLanguageSelect() {
   if (lintLanguages.includes(languageSelect.value)) {
     import(`../addon/lint/${languageSelect.value}-lint.js`).then(() => {
       if (toggleLint.checked) {
-        myCodeMirror[0].setOption("lint", true);
+        if (languageSelect.value == "javascript") {
+          myCodeMirror[0].setOption("lint", { esversion: "10" });
+        } else myCodeMirror[0].setOption("lint", true);
       }
     });
   }
@@ -749,7 +751,9 @@ function init() {
   const toggleLint = document.getElementById("lintToggleBtn");
   toggleLint.addEventListener("change", () => {
     if (toggleLint.checked) {
-      myCodeMirror[0].setOption("lint", true);
+      if (languageSelect.value == "javascript")
+        myCodeMirror[0].setOption("lint", { esversion: "10" });
+      else myCodeMirror[0].setOption("lint", true);
     } else {
       myCodeMirror[0].setOption("lint", false);
     }

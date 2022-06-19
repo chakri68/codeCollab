@@ -3,6 +3,15 @@ import Script from "next/dist/client/script";
 // Should have default values!
 
 export default function Codearea({ languages }) {
+  // Sort by name in object array
+  languages.sort(function (a, b) {
+    var keyA = a.name.toLowerCase(),
+      keyB = b.name.toLowerCase();
+    // Compare the 2 dates
+    if (keyA < keyB) return -1;
+    if (keyA > keyB) return 1;
+    return 0;
+  });
   return (
     <>
       <div className="box" id="Codearea">

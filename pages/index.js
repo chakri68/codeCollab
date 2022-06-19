@@ -54,25 +54,25 @@ export default function Home() {
         />
         <Codearea
           languages={[
-            { id: 1, name: "plain text", value: "text" },
-            { id: 3, name: "python", value: "python" },
-            { id: 11, name: "C++", value: "cpp" },
-            { id: 10, name: "Java", value: "java" },
+            { id: 1, name: "Plain text", value: "text" },
             { id: 9, name: "C", value: "c" },
+            { id: 15, name: "Cobol", value: "cobol" },
+            { id: 11, name: "C++", value: "cpp" },
+            { id: 19, name: "C#", value: "csharp" },
+            { id: 8, name: "CSS", value: "css" },
+            { id: 16, name: "Fortran", value: "fortran" },
+            { id: 12, name: "HTML", value: "htmlmixed" },
+            { id: 3, name: "Python", value: "python" },
+            { id: 10, name: "Java", value: "java" },
             { id: 6, name: "Javascript", value: "javascript" },
+            { id: 7, name: "JSX", value: "jsx" },
             { id: 2, name: "Lua", value: "lua" },
             { id: 5, name: "Ruby", value: "ruby" },
             { id: 4, name: "Rust", value: "rust" },
-            { id: 12, name: "HTML", value: "htmlmixed" },
-            { id: 13, name: "XML", value: "xml" },
-            { id: 7, name: "JSX", value: "jsx" },
-            { id: 8, name: "CSS", value: "css" },
             { id: 14, name: "SASS", value: "sass" },
-            { id: 15, name: "Cobol", value: "cobol" },
-            { id: 16, name: "Fortran", value: "fortran" },
             { id: 17, name: "Shell", value: "shell" },
+            { id: 13, name: "XML", value: "xml" },
             { id: 18, name: "Verilog", value: "verilog" },
-            { id: 19, name: "C#", value: "csharp" },
           ]}
         />
       </div>

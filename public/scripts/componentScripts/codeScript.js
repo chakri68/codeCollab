@@ -207,6 +207,11 @@ function handlePreviousSession() {
   }
 }
 
+// Adding an event listener:
+textArea.addEventListener("change", () => {
+  updateCode(textArea.value);
+});
+
 // Make fullscreen
 
 // function changeVisibilityZero(e) {

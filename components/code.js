@@ -175,7 +175,16 @@ export default function Codearea({ languages }) {
       />
       {/* <Script strategy="beforeInteractive" src="/scripts/addon/simple.js" /> */}
       <Script type="module" src="/scripts/componentScripts/codeScript.js" />
-      <Script type="module" src="/scripts/componentScripts/ocr.js" />
+      <Script
+        strategy="afterInteractive"
+        type="text/javascript"
+        src="/scripts/lang-detect/langDetect.js"
+      />
+      {/* <Script
+        strategy="afterInteractive"
+        type="module"
+        src="/scripts/componentScripts/ocr.js"
+      /> */}
     </>
   );
 }

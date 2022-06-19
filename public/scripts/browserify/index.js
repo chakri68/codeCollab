@@ -5,6 +5,20 @@ const modalTitle = document.querySelector("#customModal .modalTitle");
 const modalBody = document.querySelector("#customModal .modalBody");
 const types = ["image/jpeg", "image/png", "image/svg+xml"];
 const detectLang = require("lang-detector");
+
+const languages = {
+  JavaScript: "javascript",
+  C: "c",
+  "C++": "cpp",
+  Python: "python",
+  Java: "java",
+  HTML: "htmlmixed",
+  CSS: "css",
+  Ruby: "ruby",
+  Go: "go",
+  PHP: "php",
+};
+
 // const worker = new Tesseract.TesseractWorker();
 // worker
 //   .recognize(file, $("#langsel").val())
@@ -45,8 +59,9 @@ function updateLoadingBar({ status, progress }) {
 
 function setLanguage(text) {
   let lang = detectLang(text);
-  if (lang != "Unknown") {
-    document.getElementById("language").value = lang;
+  console.log(lang);
+  if (lang && lang != "Unknown") {
+    document.getElementById("language").value = languages[lang];
     document.getElementById("language").dispatchEvent(new Event("change"));
   }
 }
@@ -63,6 +78,7 @@ function initTesseract() {
       document.getElementById("code").dispatchEvent(new Event("change"));
       setLanguage(text);
       closeModal(customModal);
+      document.getElementById("saveBtn").dispatchEvent(new Event("click"));
     });
   }
 }

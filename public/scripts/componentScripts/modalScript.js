@@ -1,3 +1,5 @@
+let customModalName = "customModal";
+
 // Functions to open and close a modal
 function openModal($el) {
   $el.classList.add("is-active");
@@ -31,10 +33,10 @@ function closeAllModals() {
     ".modal-background, .modal-close, .modal-card-head .delete, .modal-card-foot .button"
   ) || []
 ).forEach(($close) => {
-  const $target = $close.closest(".modal");
+  const $target = $close.closest(`.modal:not(#${customModalName})`);
 
   $close.addEventListener("click", () => {
-    closeModal($target);
+    if ($target) closeModal($target);
   });
 });
 

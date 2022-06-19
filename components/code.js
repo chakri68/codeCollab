@@ -189,6 +189,10 @@ export default function Codearea({ languages }) {
         type="text/javascript"
         src="/scripts/lang-detect/langDetect.js"
       />
+      <Script
+        strategy="afterInteractive"
+        src="/scripts/format-code/formatCode.js"
+      />
       {/* <Script
         strategy="afterInteractive"
         type="module"

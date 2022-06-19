@@ -174,6 +174,8 @@ function codeEditorinit(obj) {
   );
 }
 
+window.myCodeMirror = myCodeMirror;
+
 export function updateCode(newCode) {
   myCodeMirror[0].setOption("value", newCode);
 }

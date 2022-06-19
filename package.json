@@ -9,10 +9,12 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "browserify": "^17.0.0",
     "bulma": "^0.9.3",
     "codemirror": "^5.65.3",
     "csslint": "^1.0.5",
     "htmlhint": "^1.1.4",
+    "js-beautify": "^1.14.3",
     "js-yaml": "^4.1.0",
     "jshint": "^2.13.4",
     "jsonlint": "^1.6.3",

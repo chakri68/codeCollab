@@ -348,7 +348,7 @@ function Save(obj) {
   let flag = false;
   for (let i in obj) {
     try {
-      localStorage.setItem(i, obj[i]);
+      localStorage.setItem(i, obj[i].trim());
     } catch (error) {
       flag = true;
       console.log(error);
@@ -820,12 +820,19 @@ function init() {
   });
   // Warn before closing
   window.addEventListener("beforeunload", function (e) {
-    var confirmationMessage =
-      "It looks like you have been editing something. " +
-      "If you leave before saving, your changes will be lost.";
+    if (
+      !(
+        myCodeMirror[0].getDoc().getValue().trim() ==
+        this.localStorage.getItem("code").trim()
+      )
+    ) {
+      var confirmationMessage =
+        "It looks like you have been editing something. " +
+        "If you leave before saving, your changes will be lost.";
 
-    (e || window.event).returnValue = confirmationMessage; //Gecko + IE
-    return confirmationMessage; //Gecko + Webkit, Safari, Chrome etc.
+      (e || window.event).returnValue = confirmationMessage; //Gecko + IE
+      return confirmationMessage; //Gecko + Webkit, Safari, Chrome etc.
+    }
   });
 }
 

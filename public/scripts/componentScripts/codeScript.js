@@ -14,8 +14,17 @@ import "../keymap/sublime.js";
 import "../mode/xml/xml.js";
 import "../mode/javascript/javascript.js";
 import "../mode/css/css.js";
+import "../addon/hint/show-hint.js";
 
 // Global varaibles!!
+
+const hintLanguages = {
+  css: "../addon/hint/css-hint.js",
+  html: "../addon/hint/html-hint.js",
+  javascript: "../addon/hint/javascript-hint.js",
+  sql: "../addon/hint/sql-hint.js",
+  xml: "../addon/hint/xml-hint.js",
+};
 
 const popDownTime = 1500;
 
@@ -143,6 +152,7 @@ const color = document.getElementById("prmyColorBtn");
 const customToggle = document.getElementById("customToggle");
 const saveBtn = document.getElementById("saveBtn");
 const customModal = document.getElementById("customModal");
+const hintToggle = document.getElementById("hintToggle");
 let optionObj = {
   autoCloseBrackets: true,
   lineNumbers: true,
@@ -170,6 +180,7 @@ function codeEditorinit(obj) {
       indentUnit: parseInt(tabSize.value),
       cursorScrollMargin: 20,
       mode: languageSelect.value,
+      extraKeys: { "Ctrl-Space": "autocomplete" },
     })
   );
 }
@@ -586,6 +597,12 @@ let extensionsObj = {
 };
 
 function handleLanguageSelect() {
+  let currLanguage = languageSelect.value;
+  if (hintLanguages.hasOwnProperty(currLanguage)) {
+    import(hintLanguages[currLanguage]).then(() => {
+      console.log(`Hints for ${currLanguage} loaded`);
+    });
+  }
   let path;
   if (!urlObj.hasOwnProperty(languageSelect.value)) {
     document.getElementById("compilerBtn").disabled = true;
@@ -700,7 +717,12 @@ function flagRead(files) {
 
 function handleFile() {
   let flag = flagRead(this.files);
-  if (!flag) openModal(errorPopUp);
+function handleHints(e) {
+  if (!e.target.checked) {
+    myCodeMirror[0].setOption("extraKeys", {});
+  } else {
+    myCodeMirror[0].setOption("extraKeys", { "Ctrl-Space": "autocomplete" });
+  }
 }
 
 function init() {
@@ -793,6 +815,8 @@ function init() {
       }
     }
   });
+  // Hints
+  hintToggle.addEventListener("change", handleHints);
   // Font size
   fontSize.addEventListener("change", handleFontSize);
   // keyMaps

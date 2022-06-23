@@ -191,17 +191,16 @@ export default function Menu({ items }) {
                   >
                     Font Size
                   </label>
-                  <select
-                    name="code-font-size"
-                    id="code-font-size"
-                    defaultValue="normal"
-                    title="Font size in the code-editor"
-                  >
-                    <option value="x-small">Extra small</option>
-                    <option value="small">Small</option>
-                    <option value="normal">Normal</option>
-                    <option value="large">Large</option>
-                    <option value="x-large">Extra Large</option>
+                  <label htmlFor="hintToggle" title="Toggle hints">
+                    Hints
+                  </label>
+                  <input
+                    type="checkbox"
+                    name="hintToggle"
+                    title="Toggle hints"
+                    id="hintToggle"
+                    defaultChecked={true}
+                  />
                   </select>
                   <label
                     htmlFor="copyBehaviour"

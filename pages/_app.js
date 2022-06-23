@@ -11,6 +11,7 @@ import "codemirror/theme/mdn-like.css";
 import "codemirror/theme/material.css";
 import "../public/scripts/addon/fold/foldgutter.css";
 import "../public/scripts/addon/lint/lint.css";
+import "../public/scripts/addon/hint/show-hint.css";
 import Script from "next/dist/client/script";
 
 import Head from "next/head";

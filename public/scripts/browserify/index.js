@@ -66,10 +66,12 @@ function setLanguage(text) {
   }
 }
 
-function initTesseract() {
-  if (recogFile(this.files)) {
+function initTesseract(e) {
+  let files = e.detail;
+  console.log(files);
+  if (recogFile(files)) {
     openStatusModal("Recognising text");
-    Tesseract.recognize(this.files[0], "eng", {
+    Tesseract.recognize(files[0], "eng", {
       logger: (m) => {
         updateLoadingBar(m);
       },
@@ -83,4 +85,4 @@ function initTesseract() {
   }
 }
 
-fileUpload.addEventListener("change", initTesseract, true);
+fileUpload.addEventListener("initOCR", initTesseract);

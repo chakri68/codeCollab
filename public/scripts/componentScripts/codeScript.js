@@ -18,6 +18,10 @@ import "../addon/hint/show-hint.js";
 
 // Global varaibles!!
 
+// const imageEvent = new CustomEvent("initOCR", {detail: }); -- Line 702
+
+const types = ["image/jpeg", "image/png", "image/svg+xml"];
+
 const hintLanguages = {
   css: "../addon/hint/css-hint.js",
   html: "../addon/hint/html-hint.js",
@@ -692,7 +696,7 @@ function readFile(file) {
 }
 
 function flagRead(files) {
-  if (files.length == 0) return;
+  if (files.length == 0) return 0;
   const fileList = files;
   const file = fileList[0];
   // let type = "file.name.py";
@@ -705,11 +709,14 @@ function flagRead(files) {
     if (type) languageSelect.value = type;
     else {
       console.log(file.type);
-      if (["image/jpeg", "image/png", "image/svg+xml"].includes(file.type))
-        return 1;
-      return;
+      if (types.includes(file.type)) {
+        let imageEvent = new CustomEvent("initOCR", { detail: files });
+        document.getElementById("selectFile").dispatchEvent(imageEvent);
+        return 2;
     }
-  } else return;
+      return 0;
+    }
+  } else return 0;
   if (title) pasteTitle.value = title;
   readFile(file);
   return 1;
@@ -717,6 +724,11 @@ function flagRead(files) {
 
 function handleFile() {
   let flag = flagRead(this.files);
+  if (!flag) {
+    openModal(errorPopUp);
+  }
+}
+
 function handleHints(e) {
   if (!e.target.checked) {
     myCodeMirror[0].setOption("extraKeys", {});

@@ -608,21 +608,21 @@ function handleLanguageSelect() {
     });
   }
   let path;
-  if (!urlObj.hasOwnProperty(languageSelect.value)) {
+  if (!urlObj.hasOwnProperty(currLanguage)) {
     document.getElementById("compilerBtn").disabled = true;
   } else {
     document.getElementById("compilerBtn").disabled = false;
   }
-  if (["c", "cpp", "java", "text", "csharp"].includes(languageSelect.value)) {
+  if (["c", "cpp", "java", "text", "csharp"].includes(currLanguage)) {
     path = `../mode/clike/clike.js`;
   } else {
-    path = `../mode/${languageSelect.value}/${languageSelect.value}.js`;
+    path = `../mode/${currLanguage}/${currLanguage}.js`;
   }
   import(path).then(() => {
     // const myTextArea = document.createElement("textarea");
     // myTextArea.id = "code";
     // document.getElementById("text-editor").appendChild(myTextArea);
-    switch (languageSelect.value) {
+    switch (currLanguage) {
       case "cpp":
         optionObj.mode = "text/x-c++src";
         break;
@@ -651,12 +651,12 @@ function handleLanguageSelect() {
     myCodeMirror[0].setOption("mode", optionObj.mode);
     document
       .getElementById("codeForm")
-      .setAttribute("action", urlObj[languageSelect.value]);
+      .setAttribute("action", urlObj[currLanguage]);
   });
-  if (lintLanguages.includes(languageSelect.value)) {
-    import(`../addon/lint/${languageSelect.value}-lint.js`).then(() => {
+  if (lintLanguages.includes(currLanguage)) {
+    import(`../addon/lint/${currLanguage}-lint.js`).then(() => {
       if (toggleLint.checked) {
-        if (languageSelect.value == "javascript") {
+        if (currLanguage == "javascript") {
           myCodeMirror[0].setOption("lint", { esversion: "10" });
         } else myCodeMirror[0].setOption("lint", true);
       }
@@ -713,7 +713,7 @@ function flagRead(files) {
         let imageEvent = new CustomEvent("initOCR", { detail: files });
         document.getElementById("selectFile").dispatchEvent(imageEvent);
         return 2;
-    }
+      }
       return 0;
     }
   } else return 0;

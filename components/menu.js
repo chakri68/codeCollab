@@ -186,11 +186,25 @@ export default function Menu({ items }) {
               bodyJSX={
                 <>
                   <label
-                    htmlFor="code-font-size"
-                    title="Font size in the code-editor"
+                    htmlFor="lintToggleBtn"
+                    title="Toogle linting - showing errors"
                   >
-                    Font Size
+                    Toggle Lint
                   </label>
+                  <input
+                    id="lintToggleBtn"
+                    title="Toogle linting - showing errors"
+                    type="checkbox"
+                  />
+                  <label htmlFor="wordWrapToggle" title="Toggle word-wrap">
+                    Word Wrap
+                  </label>
+                  <input
+                    type="checkbox"
+                    name="wordWrap"
+                    id="wordWrapToggle"
+                    defaultChecked={true}
+                  />
                   <label htmlFor="hintToggle" title="Toggle hints">
                     Hints
                   </label>
@@ -201,6 +215,10 @@ export default function Menu({ items }) {
                     id="hintToggle"
                     defaultChecked={true}
                   />
+                  <label htmlFor="tabSize">Indentation</label>
+                  <select name="tabSize" id="tabSize" defaultValue="2">
+                    <option value="2">2</option>
+                    <option value="4">4</option>
                   </select>
                   <label
                     htmlFor="copyBehaviour"
@@ -234,31 +252,24 @@ export default function Menu({ items }) {
                     <option value="sublime">Sublime</option>
                     <option value="vim">Vim</option>
                   </select>
-                  <label htmlFor="tabSize">Select Indentation</label>
-                  <select name="tabSize" id="tabSize" defaultValue="2">
-                    <option value="2">2</option>
-                    <option value="4">4</option>
-                  </select>
                   <label
-                    htmlFor="lintToggleBtn"
-                    title="Toogle linting - showing errors"
+                    htmlFor="code-font-size"
+                    title="Font size in the code-editor"
                   >
-                    Toggle Lint
+                    Font Size
                   </label>
-                  <input
-                    id="lintToggleBtn"
-                    title="Toogle linting - showing errors"
-                    type="checkbox"
-                  />
-                  <label htmlFor="wordWrapToggle" title="Toggle word-wrap">
-                    Word Wrap
-                  </label>
-                  <input
-                    type="checkbox"
-                    name="wordWrap"
-                    id="wordWrapToggle"
-                    defaultChecked={true}
-                  />
+                  <select
+                    name="code-font-size"
+                    id="code-font-size"
+                    defaultValue="normal"
+                    title="Font size in the code-editor"
+                  >
+                    <option value="x-small">Extra small</option>
+                    <option value="small">Small</option>
+                    <option value="normal">Normal</option>
+                    <option value="large">Large</option>
+                    <option value="x-large">Extra Large</option>
+                  </select>
                   {/* <input type="range" name="code-font-size" id="code-font-size" /> */}
                 </>
               }

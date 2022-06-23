@@ -24,7 +24,7 @@ const types = ["image/jpeg", "image/png", "image/svg+xml"];
 
 const hintLanguages = {
   css: "../addon/hint/css-hint.js",
-  html: "../addon/hint/html-hint.js",
+  htmlmixed: "../addon/hint/html-hint.js",
   javascript: "../addon/hint/javascript-hint.js",
   sql: "../addon/hint/sql-hint.js",
   xml: "../addon/hint/xml-hint.js",

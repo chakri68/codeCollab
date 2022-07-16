@@ -338,6 +338,29 @@ export default function Menu({ items }) {
               type="checkbox"
             /> */}
             {/* <input type="range" name="code-font-size" id="code-font-size" /> */}
+            {/* <Dropdown
+              className="is-active"
+              title="Cloud Save"
+              bodyJSX={
+                <>
+                  <label htmlFor="expireTime">Time to expire</label>
+                  <select
+                    name="expireTime"
+                    id="expireTime"
+                    defaultValue="36000"
+                  >
+                    <option value="3600">1 hour</option>
+                    <option value="7200">2 hours</option>
+                    <option value="36000">10 hours</option>
+                    <option value="86400">1 day</option>
+                    <option value="172800">2 days</option>
+                    <option value="604800">1 week</option>
+                    <option value="2629746">1 month</option>
+                    <option value="31556952">1 year</option>
+                  </select>
+                </>
+              }
+            /> */}
           </>
         }
       />

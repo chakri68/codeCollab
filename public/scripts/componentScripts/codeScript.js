@@ -158,6 +158,7 @@ const saveBtn = document.getElementById("saveBtn");
 const customModal = document.getElementById("customModal");
 const hintToggle = document.getElementById("hintToggle");
 const uploadBtn = document.getElementById("uploadBtn");
+const expireTime = document.getElementById("expireTime");
 let optionObj = {
   autoCloseBrackets: true,
   lineNumbers: true,

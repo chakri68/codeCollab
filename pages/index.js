@@ -5,6 +5,7 @@ import Head from "next/head";
 import ModalPopUp from "../components/modal";
 import Footer from "../components/footer";
 import Script from "next/dist/client/script";
+import MenuBox from "../components/MenuBox";
 
 export default function Home() {
   return (
@@ -51,6 +52,32 @@ export default function Home() {
               <p>The file format is not supported!</p>
             </>
           }
+        />
+        <MenuBox
+          optionJSX={[
+            {
+              id: 1,
+              jsx: (
+                <>
+                  <label htmlFor="expireTime">Expire After</label>
+                  <select
+                    name="expireTime"
+                    id="expireTime"
+                    defaultValue="36000"
+                  >
+                    <option value="3600">1 hour</option>
+                    <option value="7200">2 hours</option>
+                    <option value="36000">10 hours</option>
+                    <option value="86400">1 day</option>
+                    <option value="172800">2 days</option>
+                    <option value="604800">1 week</option>
+                    <option value="2629746">1 month</option>
+                    <option value="31556952">1 year</option>
+                  </select>
+                </>
+              ),
+            },
+          ]}
         />
         <Codearea
           languages={[

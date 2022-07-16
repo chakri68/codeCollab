@@ -325,6 +325,19 @@ div.full-screen-invisible {
   padding-bottom: 10em !important;
 }
 
+#text-view div.CodeMirror-lines {
+  padding-bottom: 4px !important;
+}
+
+#Codeview,
+#Codearea {
+  overflow: hidden;
+}
+
+#text-view .CodeMirror {
+  height: auto !important;
+}
+
 .CodeMirror {
   font-size: var(--code-font-size);
 }

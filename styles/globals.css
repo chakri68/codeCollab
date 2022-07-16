@@ -369,6 +369,85 @@ div.full-screen-invisible {
   margin: auto;
 }
 
+/* MenuBox CSS */
+
+.MenuBox {
+  display: grid;
+  grid-auto-flow: column;
+}
+
+.MenuBoxEl {
+  width: 100%;
+  display: grid;
+  grid-auto-flow: column;
+  justify-content: space-between;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.MenuBoxEl label {
+  color: var(--text-gray);
+}
+
+.MenuBoxEl select,
+.MenuBoxEl input {
+  min-width: 130px;
+}
+
+/* END */
+
+.ToolBar {
+  display: grid;
+  grid-auto-flow: column;
+  align-content: center;
+  justify-content: space-between;
+}
+
+.ToolBar #pasteTitle {
+  display: grid;
+  width: fit-content;
+  align-content: center;
+  color: var(--text-primary);
+}
+
+.ToolBar .tools {
+  display: grid;
+  width: fit-content;
+  grid-auto-flow: column;
+}
+
+.codeViewSpan {
+  display: grid;
+  align-content: center;
+}
+
+#cpyCode {
+  background-color: var(--link-primary);
+  padding: 2px 10px;
+}
+
+.titleBlock .codeViewSpan {
+  margin: 0 10px;
+}
+
+.titleBlock .codeViewSpan:not(.button) {
+  color: var(--text-primary);
+}
+
+.titleBlock .codeViewSpan:nth-of-type(1) {
+  margin-left: 0;
+}
+
+.titleBlock .codeViewSpan:nth-last-of-type(1) {
+  margin-right: 0;
+}
+
+span.hvrBtn:hover {
+  cursor: pointer;
+  transition: color 0.15s linear, background-color 0.15s linear,
+    background 0.15s linear, fill 0.15s linear;
+}
+
 /* Modal CSS */
 
 .modal {
@@ -585,7 +664,7 @@ html,
   .btn {
     padding: 2px 10px;
   }
-  .titleBlock {
+  .titleBlock:not(.viewOnly) {
     row-gap: 15px;
     justify-content: space-between;
     grid:
@@ -595,6 +674,31 @@ html,
   #codeBtnDiv {
     row-gap: 15px;
     grid-auto-flow: row !important;
+  }
+  .ToolBar {
+    grid-auto-flow: row;
+    padding-top: 1rem !important;
+  }
+  .ToolBar .tools {
+    position: relative;
+    left: -1rem;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  #codeBtnDiv {
+    display: flex !important;
+    row-gap: 15px;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+  #codeBtnDiv button:nth-last-child(1) {
+    width: 100%;
+  }
+  #codeBtnDiv button {
+    flex: 1;
   }
 }
 

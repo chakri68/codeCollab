@@ -948,6 +948,8 @@ function init() {
   // Warn before closing
   window.addEventListener("beforeunload", function (e) {
     if (
+      this.localStorage.getItem("code") &&
+      myCodeMirror[0].getDoc().getValue() &&
       !(
         myCodeMirror[0].getDoc().getValue().trim() ==
         this.localStorage.getItem("code").trim()

@@ -347,16 +347,23 @@ function HSLToHex(hsl) {
 
   return "#" + r + g + b;
 }
-const modalTitle = document.querySelector("#customModal .modalTitle");
-const modalBody = document.querySelector("#customModal .modalBody");
-const modalBorder = document.querySelector("#customModal .modalBorder");
-
-function openCustomModal(title, bodyJSX, color = null) {
+const modalName = "customModal";
+const modalTitle = document.querySelector(`#${modalName} .modalTitle`);
+const modalBody = document.querySelector(`#${modalName} .modalBody`);
+const modalBorder = document.querySelector(`#${modalName} .modalBorder`);
+function openCustomModal(
+  title,
+  bodyJSX,
+  color = null,
+  { isClosable = true, autoClose = null } = {}
+) {
   modalTitle.textContent = title;
   modalBody.innerHTML = bodyJSX;
   modalBorder.style.borderColor = color;
   if (color) modalTitle.style.color = color;
-  openModal(customModal);
+  if (autoClose != null)
+    openModal(customModal, { isClosable: isClosable, autoClose: autoClose });
+  else openModal(customModal, { isClosable: isClosable });
 }
 
 function Save(obj) {
@@ -369,9 +376,14 @@ function Save(obj) {
       console.log(error);
     }
   }
-  if (flag) openCustomModal("Not Saved", "<p>Saving failed...</p>", "red");
-  else openCustomModal("Saved", "<p>Saved succesfully!</p>", "green");
-  setTimeout(() => closeModal(customModal), popDownTime);
+  if (flag)
+    openCustomModal("Not Saved", "<p>Saving failed...</p>", "red", {
+      autoClose: popDownTime,
+    });
+  else
+    openCustomModal("Saved", "<p>Saved succesfully!</p>", "green", {
+      autoClose: popDownTime,
+    });
 }
 
 function Restore(obj) {
@@ -389,10 +401,13 @@ function Restore(obj) {
     openCustomModal(
       "Restoration failed",
       "<p>The code couldn't be restored properly...</p>",
-      "red"
+      "red",
+      { autoClose: popDownTime }
     );
-  else openCustomModal("Restored", "<p>Restored succesfully!</p>", "green");
-  setTimeout(() => closeModal(customModal), popDownTime);
+  else
+    openCustomModal("Restored", "<p>Restored succesfully!</p>", "green", {
+      autoClose: popDownTime,
+    });
 }
 
 function handleSave() {
@@ -554,7 +569,7 @@ function drop(e) {
   const files = dt.files;
 
   let flag = flagRead(files);
-  if (!flag) openModal(errorPopUp);
+  if (!flag) openModal(errorPopUp, { isClosable: true });
 }
 // Linking a compiler
 
@@ -725,7 +740,7 @@ function flagRead(files) {
 function handleFile() {
   let flag = flagRead(this.files);
   if (!flag) {
-    openModal(errorPopUp);
+    openModal(errorPopUp, { isClosable: true });
   }
 }
 

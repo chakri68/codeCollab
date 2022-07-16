@@ -1,7 +1,25 @@
 let customModalName = "customModal";
 
+const modalBackground = document.querySelector(
+  `#${customModalName} > .modal-background`
+);
+const closeBtn = document.querySelector(`#${customModalName} button.delete`);
+function disableClose() {
+  modalBackground.style.setProperty("pointer-events", "none", "important");
+  closeBtn.style.opacity = 0;
+  closeBtn.style.setProperty("pointer-events", "none", "important");
+}
+function enableClose() {
+  modalBackground.style.setProperty("pointer-events", "auto");
+  closeBtn.style.opacity = 1;
+  closeBtn.style.setProperty("pointer-events", "auto");
+}
+
 // Functions to open and close a modal
-function openModal($el) {
+function openModal($el, { isClosable = false, autoClose = null } = {}) {
+  if (isClosable) enableClose();
+  else disableClose();
+  if (autoClose != null) setTimeout(() => closeModal($el), autoClose);
   $el.classList.add("is-active");
   document.getElementsByTagName("html")[0].classList.add("is-clipped");
 }
@@ -33,7 +51,7 @@ function closeAllModals() {
     ".modal-background, .modal-close, .modal-card-head .delete, .modal-card-foot .button"
   ) || []
 ).forEach(($close) => {
-  const $target = $close.closest(`.modal:not(#${customModalName})`);
+  const $target = $close.closest(`.modal`);
 
   $close.addEventListener("click", () => {
     if ($target) closeModal($target);

@@ -157,6 +157,7 @@ const customToggle = document.getElementById("customToggle");
 const saveBtn = document.getElementById("saveBtn");
 const customModal = document.getElementById("customModal");
 const hintToggle = document.getElementById("hintToggle");
+const uploadBtn = document.getElementById("uploadBtn");
 let optionObj = {
   autoCloseBrackets: true,
   lineNumbers: true,
@@ -752,6 +753,79 @@ function handleHints(e) {
   }
 }
 
+// CLoud Save Handler
+
+function checkCode() {
+  let code = myCodeMirror[0].getValue();
+  if (code.length != 0 && code != localStorage.getItem("cloudSave")) {
+    return true;
+  } else {
+    if (code == localStorage.getItem("cloudSave"))
+      openCustomModal(
+        "Multiple saves",
+        "<p>Code with the same contents was just saved</p>",
+        "red",
+        { autoClose: popDownTime }
+      );
+    else
+      openCustomModal("No code to save", "<p>No code to save</p>", "red", {
+        autoClose: popDownTime,
+      });
+    return false;
+  }
+}
+
+function checkTitle() {
+  let pattern = /$#@!^/i;
+  return !pattern.test(pasteTitle.value);
+}
+
+function checkExpireTime() {
+  return true;
+}
+
+function checkAll(funcArr) {
+  for (let i of funcArr) {
+    if (!i()) return false;
+  }
+  return true;
+}
+
+async function uploadCode() {
+  if (checkAll([checkCode, checkTitle, checkExpireTime])) {
+    // All checks completed
+
+    // Ask for author
+    const author = prompt("Enter the author name", "Anonymous");
+    let postObj = {
+      title: pasteTitle.value,
+      language: languageSelect.value,
+      code: myCodeMirror[0].getValue(),
+      author: author,
+      expire: Date.now() + parseInt(expireTime.value) * 1000,
+      // expire: Date.now() + 60 * 1000,
+    };
+    console.log(postObj);
+    const response = await fetch("/api/code", {
+      method: "POST",
+      body: JSON.stringify(postObj),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    let data = await response.json();
+    console.log(data);
+    if (data.success) {
+      localStorage.setItem("cloudSave", myCodeMirror[0].getValue());
+      console.log("NOICEE!");
+      window.open(`/${data.id}`, "_self");
+    } else console.log("SOO CLOSEE");
+  } else {
+    // Error
+    console.log("ERRORR!");
+  }
+}
+
 function init() {
   codeEditorinit(textArea);
   document
@@ -869,6 +943,8 @@ function init() {
       }`
     );
   });
+  // Add cloud save
+  uploadBtn.addEventListener("click", uploadCode);
   // Warn before closing
   window.addEventListener("beforeunload", function (e) {
     if (

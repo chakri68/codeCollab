@@ -139,6 +139,14 @@ nav#header {
   background-color: var(--text-primary) !important;
 }
 
+#menu div span:first-child {
+  margin-left: 0;
+}
+
+#menu div span:last-child {
+  margin-right: 0;
+}
+
 #menu > a:last-child {
   margin-right: 0px;
 }
@@ -148,7 +156,7 @@ nav#header {
 
 .box {
   background-color: var(--bg-light) !important;
-  padding: 5px !important;
+  padding: 5px 1.5rem !important;
 }
 
 #Codearea {

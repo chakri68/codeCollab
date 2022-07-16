@@ -19,6 +19,8 @@
     "jshint": "^2.13.4",
     "jsonlint": "^1.6.3",
     "lang-detector": "^1.0.6",
+    "mongoose": "^6.4.4",
+    "nanoid": "^4.0.0",
     "next": "12.1.6",
     "react": "18.1.0",
     "react-dom": "18.1.0",

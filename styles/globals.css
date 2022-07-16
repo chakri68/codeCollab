@@ -119,6 +119,7 @@ nav#header {
 }
 .btn,
 .btn-white {
+  border: none;
   border-color: var(--link-primary) !important;
   background-color: var(--link-primary) !important;
   color: var(--bg-dark) !important;

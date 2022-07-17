@@ -874,7 +874,7 @@ function init() {
       e.preventDefault();
       // Place your code here
       console.log("CTRL + S");
-      handleSave(false);
+      handleSave(true);
     }
   });
 

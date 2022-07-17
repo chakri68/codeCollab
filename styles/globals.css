@@ -355,6 +355,39 @@ div.full-screen-invisible {
   margin-left: 62px !important;
 }
 
+/* .CodeMirror-sizer {
+  margin-left: 3.625em !important;
+} */
+/* .CodeMirror-gutter.CodeMirror-lint-markers {
+  width: 1em !important;
+}
+.CodeMirror-gutter.CodeMirror-linenumbers {
+  pointer-events: none;
+  z-index: 1;
+  width: 1.5em !important;
+}
+.CodeMirror-gutter.CodeMirror-foldgutter {
+  width: 1em !important;
+}
+.CodeMirror-linenumber.CodeMirror-gutter-elt {
+  left: 0.8125em !important;
+  pointer-events: none;
+  z-index: 1;
+  width: 1.75em;
+}
+.CodeMirror-gutter-wrapper {
+  left: -2.9453125em !important;
+  left: -3em !important;
+}
+.CodeMirror-gutter-elt {
+  left: 2.25em !important;
+  left: 2.15em !important;
+  z-index: 2;
+}
+.CodeMirror-gutter-subtle {
+  z-index: 5;
+} */
+
 .CodeMirror-fullscreen {
   position: absolute !important;
   top: 0;

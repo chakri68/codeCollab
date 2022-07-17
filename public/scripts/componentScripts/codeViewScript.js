@@ -325,7 +325,7 @@ function handleLanguageSelect() {
   let currLanguage = languageSelect.innerText;
   let path;
   if (!urlObj.hasOwnProperty(currLanguage)) {
-    document.getElementById("compilerBtn").disabled = true;
+    document.getElementById("compilerBtn").style.display = "none";
   } else {
     document.getElementById("compilerBtn").disabled = false;
   }

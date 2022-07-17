@@ -1,5 +1,6 @@
 import dbConnect from "../../../db/lib/dbConnect";
 import Code from "../../../db/models/CodeData";
+import { nanoid } from "nanoid";
 
 export default async function handler(req, res) {
   const {
@@ -8,13 +9,24 @@ export default async function handler(req, res) {
   } = req;
   await dbConnect();
   switch (method) {
-    case "GET" /* Get a model by its ID */:
+    // case "GET" /* Get a model by its ID */:
+    //   try {
+    //     const pet = await Code.findById(pasteId);
+    //     if (!pet) {
+    //       return res.status(400).json({ success: false });
+    //     }
+    //     res.status(200).json({ success: true, data: pet });
+    //   } catch (error) {
+    //     res.status(400).json({ success: false });
+    //   }
+    //   break;
+    case "GET" /* Get a model by its pasteId */:
       try {
-        const pet = await Code.findById(pasteId);
-        if (!pet) {
-          return res.status(400).json({ success: false });
-        }
-        res.status(200).json({ success: true, data: pet });
+        const query = Code.where({ pasteId: pasteId });
+        query.findOne((err, code) => {
+          if (err) res.status(400).json({ success: false });
+          if (res) res.status(200).json({ success: true, data: code });
+        });
       } catch (error) {
         res.status(400).json({ success: false });
       }
@@ -55,10 +67,12 @@ export default async function handler(req, res) {
           language: code.language,
           code: code.code,
           expiresAt: code.expire,
+          pasteId: nanoid(8),
         });
         await newCode.save();
-        console.log("Saved!");
-        return res.status(201).json({ success: true, id: newCode._id });
+        return res
+          .status(201)
+          .json({ success: true, pasteId: newCode.pasteId });
       } catch (error) {
         res.status(400).json({ success: false });
       }

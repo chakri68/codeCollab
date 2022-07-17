@@ -2,6 +2,10 @@ import mongoose from "mongoose";
 
 /* CodeData will correspond to a collection in your MongoDB database. */
 const CodeData = new mongoose.Schema({
+  pasteId: {
+    type: String,
+    unique: true,
+  },
   title: {
     // Title of the code
 

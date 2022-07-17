@@ -830,7 +830,7 @@ async function uploadCode() {
       localStorage.setItem("cloudSave", myCodeMirror[0].getValue());
       console.log("NOICEE!");
       closeModal(customModal);
-      window.open(`/${data.id}`, "_self");
+      window.open(`/${data.pasteId}`, "_self");
     } else {
       closeModal(customModal);
       openModal(errorPopUp, { isClosable: true });

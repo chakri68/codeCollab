@@ -798,6 +798,7 @@ function checkAll(funcArr) {
 }
 
 async function uploadCode() {
+  handleSave(false);
   openCustomModal("Cloud Save", "<p>Saving...</p>", "var(--link-primary)", {
     isClosable: false,
   });

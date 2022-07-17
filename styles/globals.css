@@ -481,6 +481,11 @@ span.hvrBtn:hover {
     background 0.15s linear, fill 0.15s linear;
 }
 
+.CodeData .details {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
 #viewLanguage {
   display: grid;
   align-content: flex-end;

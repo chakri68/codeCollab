@@ -9,7 +9,13 @@ import Codeview from "../components/codeview";
 import dbConnect from "../db/lib/dbConnect";
 import Code from "../db/models/CodeData.js";
 import Minmenu from "../components/minMenu";
+import dynamic from "next/dist/shared/lib/dynamic";
 // import { nanoid } from "nanoid";
+
+const DynamicData = dynamic(() => import("../components/codedetails"), {
+  ssr: false,
+  loading: () => "loading...",
+});
 
 export default function CloudCode({
   code: { title, author, language, code, expiresAt, createdAt },
@@ -53,6 +59,12 @@ export default function CloudCode({
         />
         <Codeview langauge={language} code={code} />
       </div>
+      <DynamicData
+        createdAt={createdAt}
+        expiresAt={expiresAt}
+        author={author}
+        code={code}
+      />
       <Footer />
       <Script src="scripts/componentScripts/modalScript.js"></Script>
     </>

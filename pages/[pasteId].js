@@ -76,15 +76,21 @@ export async function getServerSideProps(context) {
   const { params } = context;
   await dbConnect();
   try {
-    let doc = await Code.findById(params.pasteId, { _id: 0 }).lean();
+    let doc = await Code.findOne({ pasteId: params.pasteId }).lean();
     doc.createdAt = doc.createdAt.toString();
-    doc.expiresAt = doc.createdAt.toString();
-    return {
-      props: {
-        code: doc,
-        link: params.pasteId,
-      },
-    };
+    doc.expiresAt = doc.expiresAt.toString();
+    doc._id = String(doc._id);
+    if (doc)
+      return {
+        props: {
+          code: doc,
+          link: params.pasteId,
+        },
+      };
+    else
+      return {
+        notFound: true,
+      };
   } catch (error) {
     return {
       notFound: true,

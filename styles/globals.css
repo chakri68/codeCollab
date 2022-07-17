@@ -481,6 +481,17 @@ span.hvrBtn:hover {
     background 0.15s linear, fill 0.15s linear;
 }
 
+#viewLanguage {
+  display: grid;
+  align-content: flex-end;
+  background-color: unset !important;
+  color: var(--text-primary) !important;
+  border-radius: 4px;
+  padding: 2px 10px;
+  border: none;
+  cursor: default;
+}
+
 /* Modal CSS */
 
 .modal {

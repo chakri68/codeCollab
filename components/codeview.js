@@ -18,7 +18,10 @@ export default function Codeview({ langauge, code }) {
             gridAutoFlow: "column",
           }}
         >
-          <span className="codeViewSpan language" id="viewLanguage">
+          <span
+            className="codeViewSpan language has-text-weight-medium"
+            id="viewLanguage"
+          >
             {langauge}
           </span>
           <span

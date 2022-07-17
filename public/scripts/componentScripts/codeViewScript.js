@@ -125,6 +125,28 @@ let optionObj = {
   matchBrackets: true,
   lineWrapping: true,
 };
+let languageColors = {
+  text: { primary: "#2766a0", light: false },
+  python: { primary: "#ffde4f", light: true },
+  cpp: { primary: "#004481", light: false },
+  java: { primary: "#e76f00", light: false },
+  c: { primary: "#293595", light: false },
+  javascript: { primary: "#f0db4f", light: true },
+  lua: { primary: "#010080", light: false },
+  ruby: { primary: "#910d04", light: false },
+  rust: { primary: "#f74b00", light: false },
+  htmlmixed: { primary: "#e44d26", light: false },
+  xml: { primary: "#b826b8", light: false },
+  jsx: { primary: "#eeda49", light: true },
+  css: { primary: "#264de4", light: false },
+  sass: { primary: "#264de4", light: false },
+  cobol: { primary: "#005ca5", light: false },
+  fortran: { primary: "#725196", light: false },
+  shell: { primary: "#293036", light: false },
+  verilog: { primary: "#0000aa", light: false },
+  csharp: { primary: "#290065", light: false },
+};
+
 function codeEditorinit(obj) {
   myCodeMirror.push(
     CodeMirror.fromTextArea(obj, {
@@ -371,7 +393,24 @@ async function copyToClipboard(str) {
       console.error("Async: Could not copy text: ", err);
       return false;
     }
+
+function setLanguageColor() {
+  if (languageColors.hasOwnProperty(languageSelect.innerText)) {
+    let obj = languageColors[languageSelect.innerText];
+    languageSelect.style.setProperty(
+      "background-color",
+      obj.primary,
+      "important"
   );
+    if (!obj.light)
+      languageSelect.style.setProperty(
+        "color",
+        "var(--text-primary)",
+        "important"
+      );
+    else
+      languageSelect.style.setProperty("color", "var(--bg-dark)", "important");
+  }
 }
 
 function init() {
@@ -459,6 +498,7 @@ function init() {
       if (res) alert("Copied!");
     });
   });
+  setLanguageColor();
 }
 
 (function (console) {

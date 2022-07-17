@@ -732,6 +732,10 @@ html,
     position: relative;
     left: -1rem;
   }
+  #text-view .CodeMirror {
+    padding-top: 4px;
+    padding-bottom: 4px;
+  }
 }
 
 @media screen and (max-width: 900px) {

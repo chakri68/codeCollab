@@ -368,7 +368,7 @@ function openCustomModal(
   else openModal(customModal, { isClosable: isClosable });
 }
 
-function Save(obj) {
+function Save(obj, popup) {
   let flag = false;
   for (let i in obj) {
     try {
@@ -378,6 +378,7 @@ function Save(obj) {
       console.log(error);
     }
   }
+  if (popup) {
   if (flag)
     openCustomModal("Not Saved", "<p>Saving failed...</p>", "red", {
       autoClose: popDownTime,
@@ -386,6 +387,7 @@ function Save(obj) {
     openCustomModal("Saved", "<p>Saved succesfully!</p>", "green", {
       autoClose: popDownTime,
     });
+}
 }
 
 function Restore(obj) {
@@ -412,14 +414,17 @@ function Restore(obj) {
     });
 }
 
-function handleSave() {
-  Save({
+function handleSave(popup = true) {
+  Save(
+    {
     code: myCodeMirror[0].getDoc().getValue(),
     language: languageSelect.value,
     theme: themeSelect.value,
     title: pasteTitle.value,
     pgTheme: pageTheme.value,
-  });
+    },
+    popup
+  );
 }
 
 function handleTabSize(e) {

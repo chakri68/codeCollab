@@ -850,6 +850,17 @@ function init() {
     }
   });
 
+  // Add ctrl + s event listener
+  document.addEventListener("keydown", (e) => {
+    if (e.ctrlKey && e.key === "s") {
+      // Prevent the Save dialog to open
+      e.preventDefault();
+      // Place your code here
+      console.log("CTRL + S");
+      handleSave(false);
+    }
+  });
+
   document
     .getElementById("fullScreen")
     .addEventListener("fullscreenchange", () => {

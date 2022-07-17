@@ -384,15 +384,8 @@ function codeDownload() {
 }
 
 async function copyToClipboard(str) {
-  navigator.clipboard.writeText(str).then(
-    function () {
-      console.log("Async: Copying to clipboard was successful!");
-      return true;
-    },
-    function (err) {
-      console.error("Async: Could not copy text: ", err);
-      return false;
-    }
+  return navigator.clipboard.writeText(str);
+}
 
 function setLanguageColor() {
   if (languageColors.hasOwnProperty(languageSelect.innerText)) {
@@ -401,7 +394,7 @@ function setLanguageColor() {
       "background-color",
       obj.primary,
       "important"
-  );
+    );
     if (!obj.light)
       languageSelect.style.setProperty(
         "color",
@@ -489,13 +482,13 @@ function init() {
     .getElementById("codeDownloadBtn")
     .addEventListener("click", codeDownload);
   cpyLink.addEventListener("click", () => {
-    copyToClipboard(window.location.href).then((res) => {
-      if (res) alert("Link copied!");
+    copyToClipboard(window.location.href).then(() => {
+      alert("Link copied!");
     });
   });
   cpyCode.addEventListener("click", () => {
-    copyToClipboard(myCodeMirror[0].getValue()).then((res) => {
-      if (res) alert("Copied!");
+    copyToClipboard(myCodeMirror[0].getValue()).then(() => {
+      alert("Copied!");
     });
   });
   setLanguageColor();

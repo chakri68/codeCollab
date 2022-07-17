@@ -103,7 +103,6 @@ let changeObj = {
 
 // End
 
-const lintLanguages = ["css", "javascript", "json", "yaml", "html"];
 var myCodeMirror = [];
 const root = document.querySelector(":root");
 let rs = getComputedStyle(root);
@@ -125,6 +124,29 @@ let optionObj = {
   matchBrackets: true,
   lineWrapping: true,
 };
+
+let extensionsObj = {
+  text: "txt",
+  python: "py",
+  cpp: "cpp",
+  java: "java",
+  c: "c",
+  javascript: "js",
+  lua: "lua",
+  ruby: "rb",
+  rust: "rs",
+  htmlmixed: "html",
+  xml: "xml",
+  jsx: "jsx",
+  css: "css",
+  sass: "scss",
+  cobol: "cbl",
+  fortran: "f60",
+  shell: "sh",
+  verilog: "v",
+  csharp: "cs",
+};
+
 let languageColors = {
   text: { primary: "#2766a0", light: false },
   python: { primary: "#ffde4f", light: true },
@@ -348,28 +370,6 @@ function handleLanguageSelect() {
       .setAttribute("action", urlObj[currLanguage]);
   });
 }
-
-let extensionsObj = {
-  text: "txt",
-  python: "py",
-  cpp: "cpp",
-  java: "java",
-  c: "c",
-  javascript: "js",
-  lua: "lua",
-  ruby: "rb",
-  rust: "rs",
-  htmlmixed: "html",
-  xml: "xml",
-  jsx: "jsx",
-  css: "css",
-  sass: "scss",
-  cobol: "cbl",
-  fortran: "f60",
-  shell: "sh",
-  verilog: "v",
-  csharp: "cs",
-};
 
 function codeDownload() {
   let name = document.getElementById("pasteTitle").innerText;

@@ -79,7 +79,6 @@ export async function getServerSideProps(context) {
     let doc = await Code.findById(params.pasteId, { _id: 0 }).lean();
     doc.createdAt = doc.createdAt.toString();
     doc.expiresAt = doc.createdAt.toString();
-    console.log(doc);
     return {
       props: {
         code: doc,

@@ -379,15 +379,15 @@ function Save(obj, popup) {
     }
   }
   if (popup) {
-  if (flag)
-    openCustomModal("Not Saved", "<p>Saving failed...</p>", "red", {
-      autoClose: popDownTime,
-    });
-  else
-    openCustomModal("Saved", "<p>Saved succesfully!</p>", "green", {
-      autoClose: popDownTime,
-    });
-}
+    if (flag)
+      openCustomModal("Not Saved", "<p>Saving failed...</p>", "red", {
+        autoClose: popDownTime,
+      });
+    else
+      openCustomModal("Saved", "<p>Saved succesfully!</p>", "green", {
+        autoClose: popDownTime,
+      });
+  }
 }
 
 function Restore(obj) {
@@ -417,11 +417,11 @@ function Restore(obj) {
 function handleSave(popup = true) {
   Save(
     {
-    code: myCodeMirror[0].getDoc().getValue(),
-    language: languageSelect.value,
-    theme: themeSelect.value,
-    title: pasteTitle.value,
-    pgTheme: pageTheme.value,
+      code: myCodeMirror[0].getDoc().getValue(),
+      language: languageSelect.value,
+      theme: themeSelect.value,
+      title: pasteTitle.value,
+      pgTheme: pageTheme.value,
     },
     popup
   );

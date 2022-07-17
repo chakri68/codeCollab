@@ -798,6 +798,9 @@ function checkAll(funcArr) {
 }
 
 async function uploadCode() {
+  openCustomModal("Cloud Save", "<p>Saving...</p>", "var(--link-primary)", {
+    isClosable: false,
+  });
   if (checkAll([checkCode, checkTitle, checkExpireTime])) {
     // All checks completed
 
@@ -825,10 +828,17 @@ async function uploadCode() {
     if (data.success) {
       localStorage.setItem("cloudSave", myCodeMirror[0].getValue());
       console.log("NOICEE!");
+      closeModal(customModal);
       window.open(`/${data.id}`, "_self");
-    } else console.log("SOO CLOSEE");
+    } else {
+      closeModal(customModal);
+      openModal(errorPopUp, { isClosable: true });
+      console.log("SOO CLOSEE");
+    }
   } else {
     // Error
+    closeModal(customModal);
+    openModal(errorPopUp, { isClosable: true });
     console.log("ERRORR!");
   }
 }

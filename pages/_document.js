@@ -12,7 +12,10 @@ export default function Document() {
           name="description"
           content="Write, share code and collaborate with other developers!"
         />
-
+        <meta
+          name="keywords"
+          content="code, editor, online, free, share, collab"
+        ></meta>
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://code-collab.vercel.app/" />
         <meta

@@ -111,7 +111,7 @@ nav#header {
 
 .l {
   color: var(--link-primary);
-  margin: 0px 10px;
+  /* margin: 0px 10px; */
 }
 .l:hover {
   color: var(--link-hover) !important;
@@ -707,7 +707,8 @@ html,
   }
   #header {
     grid:
-      "logoImgArea logoTextArea . . donateArea"
+      "logoImgArea logoTextArea . . ."
+      "donateArea . . . ."
       "contentArea contentArea contentArea contentArea contentArea" !important;
   }
   .btn {

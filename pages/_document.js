@@ -4,10 +4,10 @@ export default function Document() {
   return (
     <Html>
       <Head>
-        <meta
+        {/* <meta
           name="title"
           content="codeCollab - Edit, Share Code and Collaborate!"
-        />
+        /> */}
         <meta
           name="description"
           content="Write, share code and collaborate with other developers!"
@@ -18,10 +18,10 @@ export default function Document() {
         ></meta>
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://code-collab.vercel.app/" />
-        <meta
+        {/* <meta
           property="og:title"
           content="codeCollab - Edit, Share Code and Collaborate!"
-        />
+        /> */}
         <meta
           property="og:description"
           content="Write, share code and collaborate with other developers!"
@@ -36,10 +36,10 @@ export default function Document() {
           property="twitter:url"
           content="https://code-collab.vercel.app/"
         />
-        <meta
+        {/* <meta
           property="twitter:title"
           content="codeCollab - Edit, Share Code and Collaborate!"
-        />
+        /> */}
         <meta
           property="twitter:description"
           content="Write, share code and collaborate with other developers!"

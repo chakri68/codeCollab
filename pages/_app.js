@@ -20,6 +20,18 @@ function MyApp({ Component, pageProps }) {
   return (
     <>
       <Head>
+        <meta
+          name="title"
+          content="codeCollab - Edit, Share Code and Collaborate!"
+        />
+        <meta
+          property="og:title"
+          content="codeCollab - Edit, Share Code and Collaborate!"
+        />
+        <meta
+          property="twitter:title"
+          content="codeCollab - Edit, Share Code and Collaborate!"
+        />
         <link
           rel="apple-touch-icon"
           sizes="180x180"

@@ -26,6 +26,8 @@ export default function CloudCode({
       <Head>
         <title>codeCollab | {title}</title>
         <meta name="title" content={`codeCollab | ${title}`} />
+        <meta property="og:title" content={`codeCollab | ${title}`} />
+        <meta property="twitter:title" content={`codeCollab | ${title}`} />
       </Head>
       <Header />
       <ToolBar title={title} link={link} />

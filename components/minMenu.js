@@ -158,6 +158,7 @@ export default function Minmenu({ items }) {
             display: "flex",
             flexWrap: "wrap",
             rowGap: "10px",
+            columnGap: "20px",
             background: "var(--bg-light)",
             paddingTop: "15px",
             paddingBottom: "15px",

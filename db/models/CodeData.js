@@ -30,7 +30,7 @@ const CodeData = new mongoose.Schema({
     //   The code
     type: String,
     required: [true, "The code cannot be empty"],
-    maxlength: [4000, "Code can't be more than 2000 characters long"],
+    maxlength: [10000000, "Code can't be more than 10000000 characters long"], // 10mb
   },
   createdAt: {
     type: Date,

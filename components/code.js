@@ -199,7 +199,27 @@ export default function Codearea({ languages }) {
         src="https://unpkg.com/js-yaml@4.1.0/dist/js-yaml.js"
       />
       {/* <Script strategy="beforeInteractive" src="/scripts/addon/simple.js" /> */}
-      <Script type="module" src="/scripts/componentScripts/codeScript.js" />
+      <Script
+        strategy="beforeInteractive"
+        src="https://www.gstatic.com/firebasejs/3.3.0/firebase.js"
+      />
+      <Script
+        strategy="beforeInteractive"
+        src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.17.0/codemirror.js"
+      />
+      <link
+        rel="stylesheet"
+        href="https://cdn.firebase.com/libs/firepad/1.4.0/firepad.css"
+      />
+      <Script
+        strategy="beforeInteractive"
+        src="https://cdn.firebase.com/libs/firepad/1.4.0/firepad.min.js"
+      />
+      <Script
+        strategy="afterInteractive"
+        type="module"
+        src="/scripts/componentScripts/codeScript.js"
+      />
       <Script
         strategy="afterInteractive"
         type="text/javascript"

@@ -1,4 +1,4 @@
-import "../lib/codemirror.js";
+// import "../lib/codemirror.js";
 import "../addon/closeBrackets.js";
 import "../addon/matchBrackets.js";
 import "../addon/matchTags.js";
@@ -166,6 +166,22 @@ let optionObj = {
   matchBrackets: true,
   lineWrapping: true,
 };
+
+function getExampleRef() {
+  var ref = firebase.database().ref();
+  var hash = window.location.hash.replace(/#/g, "");
+  if (hash) {
+    ref = ref.child(hash);
+  } else {
+    ref = ref.push(); // generate unique location.
+    window.location = window.location + "#" + ref.key; // add it as a hash to the URL.
+  }
+  if (typeof console !== "undefined") {
+    console.log("Firebase data: ", ref.toString());
+  }
+  return ref;
+}
+
 function codeEditorinit(obj) {
   myCodeMirror.push(
     CodeMirror.fromTextArea(obj, {
@@ -189,6 +205,24 @@ function codeEditorinit(obj) {
       extraKeys: { "Ctrl-Space": "autocomplete" },
     })
   );
+  const firebaseConfig = {
+    apiKey: "AIzaSyDF-nDiZ_u0yjSuTdSi6hbb8bggy7niKRY",
+    authDomain: "codecollab-a2e1d.firebaseapp.com",
+    databaseURL: "https://codecollab-a2e1d-default-rtdb.firebaseio.com",
+    projectId: "codecollab-a2e1d",
+    storageBucket: "codecollab-a2e1d.appspot.com",
+    messagingSenderId: "64159842752",
+    appId: "1:64159842752:web:daa6df9315f568a7584825",
+    measurementId: "G-EH4RFD9HVG",
+  };
+
+  firebase.initializeApp(firebaseConfig);
+
+  // Get Firebase Database reference.
+  var firepadRef = getExampleRef();
+
+  // Create Firepad (with rich text toolbar and shortcuts enabled).
+  var firepad = Firepad.fromCodeMirror(firepadRef, myCodeMirror[0]);
 }
 
 window.myCodeMirror = myCodeMirror;

@@ -10,6 +10,7 @@ svg {
 }
 
 :root {
+  --bg-warn: red;
   --text-primary: white;
   --bg-rgbh1: 0;
   --bg-rgbh2: 0;
@@ -775,4 +776,203 @@ html,
   -moz-transition: none !important;
   -ms-transition: none !important;
   -o-transition: none !important;
+}
+
+/* Styles for togetherJS */
+
+#togetherjs-container {
+  font-family: var(--font-family);
+}
+
+#start-togetherjs {
+  height: 3rem;
+  padding: 2px 10px;
+  min-width: 250px;
+  margin-bottom: 1.5rem;
+}
+
+#togetherjs-walkthrough {
+  position: absolute !important;
+  color: var(--text-primary);
+  background-color: var(--bg-dark);
+  min-height: 530px;
+  height: fit-content;
+}
+
+#togetherjs-walkthrough header,
+.togetherjs-window header {
+  font-weight: 500 !important;
+  background: var(--link-hover) !important;
+}
+#togetherjs-walkthrough header {
+  visibility: hidden;
+}
+
+#togetherjs-walkthrough header::after {
+  content: "Collaborate with others!";
+  border-radius: inherit;
+  border-top-right-radius: 0;
+  text-align: center;
+  visibility: visible;
+  font-size: 1rem;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: inherit;
+  padding: inherit;
+  background-color: inherit;
+  width: calc(100% - 70px); /* Remove space for the x button */
+}
+
+span.togetherjs-tool-name {
+  display: none;
+}
+
+#togetherjs-walkthrough span {
+  color: inherit;
+}
+
+button.togetherjs-close,
+.togetherjs-window button.togetherjs-close {
+  border-left: none !important;
+  visibility: visible !important;
+}
+
+button.togetherjs-close:hover {
+  background-color: var(--link-hover) !important;
+}
+
+#togetherjs-walkthrough *,
+.togetherjs-window * {
+  color: var(--text-primary);
+  font-size: small;
+  font-family: var(--font-family) !important;
+}
+
+#togetherjs-walkthrough-progress {
+  bottom: 58px !important;
+}
+
+.togetherjs-buttons {
+  border-top: 2px solid var(--link-primary) !important;
+  background-color: var(--bg-light) !important;
+  margin-top: 100px !important;
+}
+
+button.togetherjs-dismiss {
+  /* border-radius: 4px;
+  padding: 2px 10px;
+  background-color: var(--bg-warn);
+  font-weight: 500;
+  border-color: var(--bg-light) !important; */
+  color: var(--text-primary) !important;
+}
+
+button.togetherjs-primary:hover {
+  background-color: var(--link-primary) !important;
+  cursor: pointer;
+}
+
+/* DOCK */
+
+#togetherjs-dock {
+  background-color: var(--bg-light) !important;
+}
+
+.togetherjs-button:hover {
+  background-color: var(--link-hover) !important;
+}
+
+#togetherjs-dock {
+  top: calc(50% - 130px);
+  overflow: hidden;
+  right: 0;
+}
+
+#togetherjs-dock:hover {
+  cursor: grab;
+  cursor: -moz-grab;
+  cursor: -webkit-grab;
+}
+
+#togetherjs-dock:active {
+  cursor: grabbing;
+  cursor: moz-grabbing;
+  cursor: -webkit-grabbing;
+}
+
+.togetherjs-window {
+  color: var(--text-primary) !important;
+  background-color: var(--bg-light) !important;
+}
+
+#togetherjs-chat-input {
+  background-color: inherit;
+  border-color: var(--text-gray) !important;
+}
+
+#togetherjs-chat-input:focus-visible {
+  border-color: var(--link-primary) !important;
+  outline: none;
+}
+
+.togetherjs-person-name-abbrev,
+.togetherjs-person-name-abbrev-self,
+.togetherjs-timestamp * {
+  color: var(--text-gray) !important;
+}
+
+#togetherjs-chat-messages {
+  background-color: var(--bg-light) !important;
+}
+
+#togetherjs-chat-input-box {
+  background-color: var(--bg-light) !important;
+  border-top: 2px solid var(--link-primary) !important;
+}
+
+.togetherjs-chat-item {
+  border-color: var(--text-gray) !important;
+}
+
+#togetherjs-rtc-info {
+  background-color: var(--bg-dark) !important;
+}
+
+.togetherjs-chat-join-item,
+.togetherjs-chat-left-item {
+  background-color: var(--bg-dark) !important;
+}
+
+/* MENU */
+
+.togetherjs-menu {
+  background-color: var(--bg-light) !important;
+  color: var(--text-primary);
+  font-family: var(--font-family) !important;
+}
+
+/* MODAL */
+
+.togetherjs-modal header {
+  font-weight: 500 !important;
+  background-color: var(--link-hover) !important;
+}
+
+.togetherjs-modal {
+  color: var(--text-primary) !important;
+  background-color: var(--bg-light) !important;
+}
+
+#togetherjs-chat-notifier {
+  border-radius: 4px;
+  background-color: var(--bg-dark);
+  box-shadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 10%),
+    0 0px 0 1px rgb(10 10 10 / 2%);
+}
+
+#togetherjs-chat-notifier * {
+  font-family: inherit;
+  color: var(--text-primary);
 }

@@ -1,21 +1,21 @@
+import CodeMirror from "codemirror";
 import "../lib/codemirror.js";
-import "../addon/closeBrackets.js";
-import "../addon/matchBrackets.js";
-import "../addon/matchTags.js";
-import "../addon/fullScreen.js";
-import "../addon/xml-fold.js";
+import "../addon/edit/closeBrackets.js";
+import "../addon/edit/matchBrackets.js";
+import "../addon/edit/matchTags.js";
+import "../addon/edit/fullScreen.js";
+import "../addon/fold/xml-fold.js";
 import "../addon/fold/foldcode.js";
 import "../addon/fold/foldgutter.js";
 import "../addon/fold/allfolds.js";
 import "../addon/lint/lint.js";
-import "../addon/simple.js";
-import "../addon/closeTag.js";
+import "../addon/edit/simple.js";
+import "../addon/edit/closeTag.js";
 import "../keymap/sublime.js";
 import "../mode/xml/xml.js";
 import "../mode/javascript/javascript.js";
 import "../mode/css/css.js";
 import "../addon/hint/show-hint.js";
-
 // Global varaibles!!
 
 // const imageEvent = new CustomEvent("initOCR", {detail: }); -- Line 702
@@ -139,6 +139,7 @@ let changeObj = {
 
 const lintLanguages = ["css", "javascript", "json", "yaml", "html"];
 var myCodeMirror = [];
+window.myCodeMirror = myCodeMirror;
 const root = document.querySelector(":root");
 let rs = getComputedStyle(root);
 const pageTheme = document.getElementById("pageTheme");
@@ -167,31 +168,54 @@ let optionObj = {
   lineWrapping: true,
 };
 function codeEditorinit(obj) {
-  myCodeMirror.push(
-    CodeMirror.fromTextArea(obj, {
-      autoCloseBrackets: true,
-      lineNumbers: true,
-      theme: themeSelect.value,
-      matchBrackets: true,
-      lineWrapping: true,
-      autoCloseTags: true,
-      matchTags: true,
-      gutters: [
-        "CodeMirror-lint-markers",
-        "CodeMirror-linenumbers",
-        "CodeMirror-foldgutter",
-      ],
-      foldGutter: true,
-      highlightLines: true,
-      indentUnit: parseInt(tabSize.value),
-      cursorScrollMargin: 20,
-      mode: languageSelect.value,
-      extraKeys: { "Ctrl-Space": "autocomplete" },
-    })
-  );
-}
+  // Import the functions you need from the SDKs you need
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
 
-window.myCodeMirror = myCodeMirror;
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyDF-nDiZ_u0yjSuTdSi6hbb8bggy7niKRY",
+    authDomain: "codecollab-a2e1d.firebaseapp.com",
+    projectId: "codecollab-a2e1d",
+    storageBucket: "codecollab-a2e1d.appspot.com",
+    messagingSenderId: "64159842752",
+    appId: "1:64159842752:web:daa6df9315f568a7584825",
+    measurementId: "G-EH4RFD9HVG",
+    databaseURL: "https://codecollab-a2e1d-default-rtdb.firebaseio.com",
+  };
+
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  // Get Firebase Database reference.
+  var firepadRef = firebase.database().ref();
+
+  let codeMirror = CodeMirror.fromTextArea(obj, {
+    autoCloseBrackets: true,
+    lineNumbers: true,
+    theme: themeSelect.value,
+    matchBrackets: true,
+    lineWrapping: true,
+    autoCloseTags: true,
+    matchTags: true,
+    gutters: [
+      "CodeMirror-lint-markers",
+      "CodeMirror-linenumbers",
+      "CodeMirror-foldgutter",
+    ],
+    foldGutter: true,
+    highlightLines: true,
+    indentUnit: parseInt(tabSize.value),
+    cursorScrollMargin: 20,
+    mode: languageSelect.value,
+    extraKeys: { "Ctrl-Space": "autocomplete" },
+  });
+  myCodeMirror.push(codeMirror);
+
+  // Create Firepad (with rich text toolbar and shortcuts enabled).
+  console.log(codeMirror);
+  var firepad = Firepad.fromCodeMirror(firepadRef, codeMirror);
+}
 
 export function updateCode(newCode) {
   myCodeMirror[0].setOption("value", newCode);

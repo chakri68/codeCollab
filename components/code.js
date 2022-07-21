@@ -199,7 +199,14 @@ export default function Codearea({ languages }) {
         src="https://unpkg.com/js-yaml@4.1.0/dist/js-yaml.js"
       />
       {/* <Script strategy="beforeInteractive" src="/scripts/addon/simple.js" /> */}
-      <Script type="module" src="/scripts/componentScripts/codeScript.js" />
+      <Script
+        strategy="beforeInteractive"
+        src="https://firepad.io/releases/v1.5.10/firepad.min.js"
+      />
+      <Script
+        strategy="afterInteractive"
+        src="/scripts/componentScripts/codeScriptES5Br.js"
+      />
       <Script
         strategy="afterInteractive"
         type="text/javascript"

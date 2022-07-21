@@ -60,6 +60,15 @@ function MyApp({ Component, pageProps }) {
         strategy="beforeInteractive"
         src="/scripts/componentScripts/initBody.js"
       />
+      {/* <link
+        rel="stylesheet"
+        href="https://firepad.io/releases/v1.5.10/firepad.css"
+      /> */}
+      <Script src="https://www.gstatic.com/firebasejs/7.6.2/firebase.js" />
+      {/* <Script>
+        var TogetherJSConfig_hubBase = "https://togetherjs-hub.glitch.me/"
+      </Script>
+      <Script src="https://togetherjs.com/togetherjs-min.js" /> */}
     </>
   );
 }

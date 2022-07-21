@@ -13,6 +13,14 @@ export default function Home() {
       <Head>
         <title>codeCollab - Edit and Share Code!</title>
       </Head>
+      {/* <button
+        onClick={() => {
+          TogetherJS(this);
+          return false;
+        }}
+      >
+        Start TogetherJS
+      </button> */}
       <Header />
       <div id="fullScreen">
         <Menu

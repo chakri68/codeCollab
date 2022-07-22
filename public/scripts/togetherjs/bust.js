@@ -16099,12 +16099,7 @@ And must call:
         function (error) {
           console.error("Error in getUserMedia:", error);
         };
-      (
-        navigator.getUserMedia ||
-        navigator.mozGetUserMedia ||
-        navigator.webkitGetUserMedia ||
-        navigator.msGetUserMedia
-      ).call(navigator, options, success, failure);
+      navigator.mediaDevices.getUserMedia(options).then(success).catch(failure);
     }
 
     /****************************************
@@ -16168,7 +16163,7 @@ And must call:
           },
           function (stream) {
             streaming = true;
-            $video[0].src = URL.createObjectURL(stream);
+            $video[0].src = window.URL.createObjectURL(new MediaStream(stream));
             $video[0].play();
           },
           function (err) {
@@ -16375,7 +16370,7 @@ And must call:
           element.play();
         } else {
           element.autoplay = true;
-          element.src = URL.createObjectURL(media);
+          element.srcObject = media;
         }
       }
 

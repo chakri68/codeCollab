@@ -196,7 +196,11 @@ export default function Home() {
       </div>
       <Footer />
       <Script src="scripts/componentScripts/modalScript.js" />
-      <Script src="https://togetherjs.com/togetherjs-min.js" />
+      {/* <Script src="https://togetherjs.com/togetherjs-min.js" /> */}
+      <Script
+        strategy="beforeInteractive"
+        src="scripts/togetherjs/togetherjs-min.js"
+      />
     </>
   );
 }

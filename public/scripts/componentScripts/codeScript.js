@@ -620,6 +620,7 @@ let extensionsObj = {
   shell: "sh",
   verilog: "v",
   csharp: "cs",
+  julia: "jl",
 };
 
 function handleLanguageSelect() {
@@ -656,6 +657,9 @@ function handleLanguageSelect() {
         break;
       case "csharp":
         optionObj.mode = "text/x-csharp";
+        break;
+      case "julia":
+        optionObj.mode = "text/x-julia";
         break;
       default:
         optionObj.mode = languageSelect.value;

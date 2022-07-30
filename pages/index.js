@@ -85,7 +85,7 @@ export default function Home() {
   }
   useEffect(() => {
     togetherJSinit();
-  }, []);
+  });
   return (
     <>
       <Head>

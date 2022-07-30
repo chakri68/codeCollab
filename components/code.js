@@ -2,7 +2,7 @@ import Script from "next/dist/client/script";
 
 // Should have default values!
 
-export default function Codearea({ languages }) {
+export default function Codearea({ languages }, isMin = false) {
   // Sort by name in object array
   languages.sort(function (a, b) {
     var keyA = a.name.toLowerCase(),
@@ -174,10 +174,14 @@ export default function Codearea({ languages }) {
         src="/scripts/addon/fold/allfolds.js"
       />
       <Script strategy="beforeInteractive" src="/scripts/addon/lint/lint.js" /> */}
-      <Script
-        strategy="beforeInteractive"
-        src="https://unpkg.com/tesseract.js@v2.1.0/dist/tesseract.min.js"
-      />
+      {!isMin ? (
+        <Script
+          strategy="beforeInteractive"
+          src="https://unpkg.com/tesseract.js@v2.1.0/dist/tesseract.min.js"
+        />
+      ) : (
+        ""
+      )}
       <Script
         strategy="beforeInteractive"
         src="https://unpkg.com/jshint@2.13.2/dist/jshint.js"
@@ -198,17 +202,29 @@ export default function Codearea({ languages }) {
         strategy="beforeInteractive"
         src="https://unpkg.com/js-yaml@4.1.0/dist/js-yaml.js"
       />
-      {/* <Script strategy="beforeInteractive" src="/scripts/addon/simple.js" /> */}
-      <Script type="module" src="/scripts/componentScripts/codeScript.js" />
-      <Script
-        strategy="afterInteractive"
-        type="text/javascript"
-        src="/scripts/lang-detect/langDetect.js"
-      />
-      <Script
-        strategy="afterInteractive"
-        src="/scripts/format-code/formatCode.js"
-      />
+      {!isMin ? (
+        <Script type="module" src="/scripts/componentScripts/codeScript.js" />
+      ) : (
+        <Script
+          type="module"
+          src="/scripts/componentScripts/codeScript-min.js"
+        />
+      )}
+      {!isMin ? (
+        <>
+          <Script
+            strategy="afterInteractive"
+            type="text/javascript"
+            src="/scripts/lang-detect/langDetect.js"
+          />
+          <Script
+            strategy="afterInteractive"
+            src="/scripts/format-code/formatCode.js"
+          />{" "}
+        </>
+      ) : (
+        ""
+      )}
       {/* <Script
         strategy="afterInteractive"
         type="module"

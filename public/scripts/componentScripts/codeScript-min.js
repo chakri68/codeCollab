@@ -202,8 +202,10 @@ function handlePreviousSession() {
           myCodeMirror[0].setOption("value", res);
         },
         pgTheme: function (res) {
-          pageTheme.value = res;
-          pageTheme.dispatchEvent(new Event("change"));
+          if (pageTheme) {
+            pageTheme.value = res;
+            pageTheme.dispatchEvent(new Event("change"));
+          }
         },
       });
     } else {
@@ -289,7 +291,7 @@ function handleSave(popup = true) {
       language: languageSelect.value,
       theme: themeSelect.value,
       title: pasteTitle.value,
-      pgTheme: pageTheme.value,
+      pgTheme: pageTheme ? pageTheme.value : "codeEditor",
     },
     popup
   );

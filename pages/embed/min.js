@@ -83,10 +83,10 @@ export default function min() {
           isMin={true}
         />
       </div>
-      <Script src="scripts/componentScripts/modalScript.js" />
+      <Script src="../scripts/componentScripts/modalScript.js" />
       <Script
         strategy="beforeInteractive"
-        src="scripts/togetherjs/togetherjs-min.js"
+        src="../scripts/togetherjs/togetherjs-min.js"
       />
     </>
   );

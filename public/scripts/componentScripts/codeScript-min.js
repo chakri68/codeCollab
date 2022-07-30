@@ -469,7 +469,7 @@ function handleLanguageSelect() {
   });
   if (lintLanguages.includes(currLanguage)) {
     import(`../addon/lint/${currLanguage}-lint.js`).then(() => {
-      if (toggleLint.checked) {
+      if (!toggleLint || toggleLint.checked) {
         if (currLanguage == "javascript") {
           myCodeMirror[0].setOption("lint", { esversion: "10" });
         } else myCodeMirror[0].setOption("lint", true);

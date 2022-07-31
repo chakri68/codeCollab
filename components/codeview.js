@@ -2,7 +2,7 @@ import Script from "next/dist/client/script";
 
 // Should have default values!
 
-export default function Codeview({ langauge, code }) {
+export default function Codeview({ langauge, code, embed }) {
   return (
     <>
       <div className="box" id="Codeview" style={{ padding: "0 !important" }}>
@@ -106,7 +106,17 @@ export default function Codeview({ langauge, code }) {
           Run code using Jdoodle
         </button>
       </div>
-      <Script type="module" src="/scripts/componentScripts/codeViewScript.js" />
+      {!embed ? (
+        <Script
+          type="module"
+          src="/scripts/componentScripts/codeViewScript.js"
+        />
+      ) : (
+        <Script
+          type="module"
+          src="/scripts/componentScripts/codeEmbedScript.js"
+        />
+      )}
     </>
   );
 }

@@ -17,7 +17,7 @@ import "../addon/hint/show-hint.js";
 
 const hintLanguages = {
   css: "../addon/hint/css-hint.js",
-  htmlmixed: "../addon/hint/html-hint.js",
+  htmlmixed: ["../addon/hint/html-hint.js", "../addon/hint/xml-hint.js"],
   javascript: "../addon/hint/javascript-hint.js",
   sql: "../addon/hint/sql-hint.js",
   xml: "../addon/hint/xml-hint.js",
@@ -423,9 +423,17 @@ let extensionsObj = {
 function handleLanguageSelect() {
   let currLanguage = languageSelect.value;
   if (hintLanguages.hasOwnProperty(currLanguage)) {
-    import(hintLanguages[currLanguage]).then(() => {
-      console.log(`Hints for ${currLanguage} loaded`);
-    });
+    if (!Array.isArray(hintLanguages[currLanguage])) {
+      import(hintLanguages[currLanguage]).then(() => {
+        console.log(`Hints for ${currLanguage} loaded`);
+      });
+    } else {
+      for (let i of hintLanguages[currLanguage]) {
+        import(i).then(() => {
+          console.log(`Hints for ${currLanguage} loaded`);
+        });
+      }
+    }
   }
   let path;
   if (!urlObj.hasOwnProperty(currLanguage)) {

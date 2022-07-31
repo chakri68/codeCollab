@@ -60,6 +60,8 @@ function codeEditorinit(obj) {
       foldGutter: true,
       indentUnit: tabSize ? parseInt(tabSize.value) : 4,
       mode: language,
+      readOnly: true,
+      cursorBlinkRate: -1,
     })
   );
 }

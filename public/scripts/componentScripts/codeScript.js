@@ -828,7 +828,10 @@ async function uploadCode() {
 
     // Ask for author
     const author = prompt("Enter the author name", "Anonymous");
-    if (author == null) return;
+    if (author == null) {
+      closeModal(customModal);
+      return;
+    }
     let postObj = {
       title: pasteTitle.value,
       language: languageSelect.value,

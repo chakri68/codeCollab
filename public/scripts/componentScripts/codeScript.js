@@ -15,6 +15,10 @@ import "../mode/xml/xml.js";
 import "../mode/javascript/javascript.js";
 import "../mode/css/css.js";
 import "../addon/hint/show-hint.js";
+import "../addon/search/match-highlighter.js";
+import "../addon/search/searchcursor.js";
+import "../addon/search/matchesonscrollbar.js";
+import "../addon/scroll/annotatescrollbar.js";
 
 // Global varaibles!!
 
@@ -159,6 +163,7 @@ const customModal = document.getElementById("customModal");
 const hintToggle = document.getElementById("hintToggle");
 const uploadBtn = document.getElementById("uploadBtn");
 const expireTime = document.getElementById("expireTime");
+const highlightSelection = document.getElementById("highlightSelection");
 let optionObj = {
   autoCloseBrackets: true,
   lineNumbers: true,
@@ -694,6 +699,18 @@ function getKeyByValue(object, value) {
   return Object.keys(object).find((key) => object[key] === value);
 }
 
+// handleHighlightSelection
+function handleHighlightSelection(el) {
+  if (!el.target.checked) {
+    myCodeMirror[0].setOption("highlightSelectionMatches", false);
+  } else {
+    myCodeMirror[0].setOption("highlightSelectionMatches", {
+      showToken: /\w/,
+      annotateScrollbar: true,
+    });
+  }
+}
+
 // FullScreen Toggle
 
 function toggleScreenSize(e) {
@@ -870,6 +887,9 @@ function init() {
       document.exitFullscreen();
     }
   });
+  // highlightSelection
+
+  highlightSelection.addEventListener("change", handleHighlightSelection);
 
   // Add ctrl + s event listener
   document.addEventListener("keydown", (e) => {

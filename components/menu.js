@@ -182,9 +182,28 @@ export default function Menu({ items }) {
             />*/}
             <Dropdown
               className="is-active"
-              title="Text Editor"
+              title="Code Editor"
               bodyJSX={
                 <>
+                  <label htmlFor="hintToggle" title="Toggle hints">
+                    Hints
+                  </label>
+                  <input
+                    type="checkbox"
+                    name="hintToggle"
+                    title="Toggle hints"
+                    id="hintToggle"
+                    defaultChecked={true}
+                  />
+                  <label htmlFor="wordWrapToggle" title="Toggle word-wrap">
+                    Word Wrap
+                  </label>
+                  <input
+                    type="checkbox"
+                    name="wordWrap"
+                    id="wordWrapToggle"
+                    defaultChecked={true}
+                  />
                   <label
                     htmlFor="lintToggleBtn"
                     title="Toogle linting - showing errors"
@@ -196,24 +215,16 @@ export default function Menu({ items }) {
                     title="Toogle linting - showing errors"
                     type="checkbox"
                   />
-                  <label htmlFor="wordWrapToggle" title="Toggle word-wrap">
-                    Word Wrap
+                  <label
+                    htmlFor="highlightSelection"
+                    title="Highlight Selcted text"
+                  >
+                    Highlight Selection
                   </label>
                   <input
+                    id="highlightSelection"
+                    title="Highlight Selcted text"
                     type="checkbox"
-                    name="wordWrap"
-                    id="wordWrapToggle"
-                    defaultChecked={true}
-                  />
-                  <label htmlFor="hintToggle" title="Toggle hints">
-                    Hints
-                  </label>
-                  <input
-                    type="checkbox"
-                    name="hintToggle"
-                    title="Toggle hints"
-                    id="hintToggle"
-                    defaultChecked={true}
                   />
                   <label htmlFor="tabSize">Indentation</label>
                   <select name="tabSize" id="tabSize" defaultValue="2">

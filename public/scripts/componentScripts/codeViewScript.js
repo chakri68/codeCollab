@@ -491,6 +491,15 @@ function init() {
       alert("Copied!");
     });
   });
+  embed.addEventListener("click", () => {
+    copyToClipboard(
+      `<iframe src='https://code-collab.vercel.app/embed/${window.location.href
+        .split("/")
+        .at(
+          -1
+        )}' style='width:80%;border:none;'></iframe><script src='https://code-collab.vercel.app/scripts/iframeResize/iframeResize.js'></script><script>iFrameResize();</script>`
+    ).then(() => alert("Copied!"));
+  });
   setLanguageColor();
 }
 

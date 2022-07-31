@@ -586,6 +586,8 @@ function init() {
   themeSelect.addEventListener("change", () => {
     myCodeMirror[0].setOption("theme", themeSelect.value);
   });
+  setTheme(pageThemeObj, themeSelect.value);
+  themeSelect.addEventListener("change", currentTheme);
   languageSelect.addEventListener("change", handleLanguageSelect);
 
   // Add ctrl + s event listener

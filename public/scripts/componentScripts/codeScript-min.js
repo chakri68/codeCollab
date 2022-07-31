@@ -661,6 +661,10 @@ function init() {
       return confirmationMessage; //Gecko + Webkit, Safari, Chrome etc.
     }
   });
+  // Edit styles
+  document.body.style.padding = "5px 5px 15px 5px";
+  document.querySelector(".CodeMirror").style.height = "150vh";
+  document.querySelector(".CodeMirror").scrollIntoView();
 }
 (function (console) {
   console.save = function (data, filename) {

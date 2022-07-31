@@ -2,7 +2,7 @@ import Script from "next/dist/client/script";
 
 // Should have default values!
 
-export default function Codearea({ languages }, isMin = false) {
+export default function Codearea({ languages, isMin = false }) {
   // Sort by name in object array
   languages.sort(function (a, b) {
     var keyA = a.name.toLowerCase(),

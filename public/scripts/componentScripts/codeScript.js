@@ -57,6 +57,11 @@ const pageThemeObj = {
       s: "0%",
       l: "7.8%",
     },
+    linkPrimary: {
+      h: "149",
+      s: "90%",
+      l: "49%",
+    },
   },
   monokai: {
     primary: {
@@ -476,15 +481,27 @@ function setTheme(obj, theme) {
   }
   if (lightThemes.includes(theme)) {
     root.style.setProperty("--text-primary", "black");
-    root.style.setProperty("--text-h", "var(--bg-rgbh1)");
-    root.style.setProperty("--text-s", "calc(var(--bg-rgbs1) / 4.5)");
-    root.style.setProperty("--text-l", "calc(var(--bg-rgbl1) / 25)");
+    if (obj[theme].hasOwnProperty("linkPrimary")) {
+      root.style.setProperty("--text-h", obj[theme].linkPrimary.h);
+      root.style.setProperty("--text-s", obj[theme].linkPrimary.s);
+      root.style.setProperty("--text-l", obj[theme].linkPrimary.l);
+    } else {
+      root.style.setProperty("--text-h", "var(--bg-rgbh1)");
+      root.style.setProperty("--text-s", "calc(var(--bg-rgbs1) / 4.5)");
+      root.style.setProperty("--text-l", "calc(var(--bg-rgbl1) / 25)");
+    }
   } else {
     {
       root.style.setProperty("--text-primary", "white");
-      root.style.setProperty("--text-h", "var(--bg-rgbh1)");
-      root.style.setProperty("--text-s", "calc(var(--bg-rgbs1) * 4)");
-      root.style.setProperty("--text-l", "calc(var(--bg-rgbl1) * 3.75)");
+      if (obj[theme].hasOwnProperty("linkPrimary")) {
+        root.style.setProperty("--text-h", obj[theme].linkPrimary.h);
+        root.style.setProperty("--text-s", obj[theme].linkPrimary.s);
+        root.style.setProperty("--text-l", obj[theme].linkPrimary.l);
+      } else {
+        root.style.setProperty("--text-h", "var(--bg-rgbh1)");
+        root.style.setProperty("--text-s", "calc(var(--bg-rgbs1) * 4)");
+        root.style.setProperty("--text-l", "calc(var(--bg-rgbl1) * 3.75)");
+      }
     }
   }
   // if (!customToggle.ariaChecked) {
@@ -535,7 +552,7 @@ function handleFontSize(e) {
   if (e.target.value != rs.getPropertyValue("--code-font-size")) {
     if (
       confirm(
-        `Are you sure you want to chnage the font size to ${e.target.value}?`
+        `Are you sure you want to change the font size to ${e.target.value}?`
       )
     ) {
       changeObj.fontSize = e.target.value;

@@ -331,6 +331,10 @@ div.full-screen-invisible {
 
 /* CodeMirror CSS */
 
+.CodeMirror-lines {
+  margin-left: 10px !important;
+}
+
 /* Highlight CSS */
 
 .CodeMirror-focused .cm-matchhighlight {

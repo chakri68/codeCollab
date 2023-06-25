@@ -32,7 +32,7 @@ export default function Home() {
     window.BeforeUnloadEvent = () => {
       TogetherJS(this);
     };
-    window.TogetherJSConfig_hubBase = "https://codecollab-hub.herokuapp.com";
+    window.TogetherJSConfig_hubBase = "https://codecollab-hub.onrender.com";
     //JQuery drag issues fix, declare it before togetherjs
     // Make the DIV element draggable:
     waitForElm("#togetherjs-dock").then((elmnt) => dragElement(elmnt));

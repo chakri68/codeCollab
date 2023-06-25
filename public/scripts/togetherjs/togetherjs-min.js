@@ -518,7 +518,7 @@
     return "TogetherJS";
   };
 
-  var defaultHubBase = "https://codecollab-hub.herokuapp.com";
+  var defaultHubBase = "https://codecollab-hub.onrender.com";
   if (defaultHubBase == "__" + "hubUrl" + "__") {
     // Substitution wasn't made
     defaultHubBase = "https://hub.togetherjs.mozillalabs.com";
